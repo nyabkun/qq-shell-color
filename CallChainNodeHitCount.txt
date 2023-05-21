@@ -1,0 +1,23 @@
+## main
+                             qMASK_COLORED [KtProperty] <Top Level> : 72
+  QMaskBetween.QMaskBetween() [KtPrimaryConstructor] <Second Level> : 67
+              QMaskBetween.apply() [KtNamedFunction] <Second Level> : 66
+          QMaskBetween.applyMore() [KtNamedFunction] <Second Level> : 44
+         String.qApplyColorNestable() [KtNamedFunction] <Top Level> : 27
+                String.qFindBetween() [KtNamedFunction] <Top Level> : 27
+                   QBetween.find() [KtNamedFunction] <Second Level> : 25
+                                  QMaskResult [KtClass] <Top Level> : 20
+            QMaskResult.toString() [KtNamedFunction] <Second Level> : 19
+String.qReplaceFirstIfNonEmptyStringGroup() [KtNamedFunction] <Top Level> : 18
+
+## test
+            QShColorTest.nestedColor() [KtNamedFunction] <Second Level> : 422
+                          Any?.shouldBe() [KtNamedFunction] <Top Level> : 418
+                              qBrackets() [KtNamedFunction] <Top Level> : 200
+                     QE.throwItBrackets() [KtNamedFunction] <Top Level> : 194
+          QException.QException() [KtPrimaryConstructor] <Second Level> : 192
+          QException.printStackTrace() [KtNamedFunction] <Second Level> : 178
+                   QException.mySrcAndStack [KtProperty] <Second Level> : 177
+                                   main() [KtNamedFunction] <Top Level> : 170
+                                  qTest() [KtNamedFunction] <Top Level> : 169
+                        qLogStackFrames() [KtNamedFunction] <Top Level> : 155
