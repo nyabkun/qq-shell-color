@@ -24,7 +24,7 @@ plugins {
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.serialization") version kotlinVersion
     id("maven-publish")
-//    id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
+    
 }
 
 group = "com.nyabkun.qol"
@@ -43,19 +43,6 @@ java {
     }
 }
 
-// https://www.youtube.com/watch?v=hSgPNbEcX98
-// https://github.com/search?q=%22ktlint+%7B%22+language%3Akotlin+path%3Abuild.gradle.kts&type=code
-// tasks.getByPath("build").dependsOn("ktlintFormat")
-// ktlint {
-//     // ignoreFailures.set(false)
-//     ignoreFailures.set(true)
-//     disabledRules.set(listOf("final-newline", "no-wildcard-imports"))
-//     reporters {
-//         reporter(ReporterType.PLAIN)
-//         reporter(ReporterType.CHECKSTYLE)
-//         reporter(ReporterType.SARIF)
-//     }
-// }
 
 sourceSets.main {
     java.srcDirs("src-split")
