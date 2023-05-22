@@ -57,7 +57,6 @@ Refer to [build.gradle.kts](build.gradle.kts) to directly check project settings
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.20")
-    testImplementation(kotlin("test"))
 }
 ```
 

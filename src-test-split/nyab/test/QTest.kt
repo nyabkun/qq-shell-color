@@ -64,7 +64,7 @@ import nyab.util.yellow
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=3] = QTest <-[Ref]- qTest() <-[Call]- main()[Root]
+// CallChain[size=2] = QTest <-[Call]- QShColorTest.nestedColor()[Root]
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FUNCTION)
 internal annotation class QTest(val testOnlyThis: Boolean = false)

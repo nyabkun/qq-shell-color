@@ -56,7 +56,6 @@ import kotlin.reflect.full.isSuperclassOf
 import kotlin.reflect.full.memberExtensionFunctions
 import kotlin.reflect.full.memberFunctions
 import kotlin.streams.asSequence
-import kotlin.test.Test
 import org.intellij.lang.annotations.Language
 
 
@@ -75,15 +74,7 @@ fun main() {
 // << Root of the CallChain >>
 class QShColorTest {
     // << Root of the CallChain >>
-    class QTestAll {
-        @Test
-        fun testAll() {
-            qTest()
-        }
-    }
-
-    // << Root of the CallChain >>
-    @Test
+    @QTest
     fun colourful() {
         ("c".yellow + "o".blue + "l".red + "o".magenta + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red).qColorDebug() shouldBe """
             [YELLOW]c[END][BLUE]o[END][RED]l[END][MAGENTA]o[END][GREEN]u[END][CYAN]r[END][YELLOW]f[END][BLUE]u[END][RED]l[END]
@@ -91,7 +82,7 @@ class QShColorTest {
     }
 
     // << Root of the CallChain >>
-    @Test
+    @QTest
     fun background() {
         "GreenBG".qColor(fg = null, bg = QShColor.GREEN, false).qColorDebug() shouldBe """
             [GREEN_BG]GreenBG[END]
@@ -99,7 +90,7 @@ class QShColorTest {
     }
 
     // << Root of the CallChain >>
-    @Test
+    @QTest
     fun foregroundAndBackground() {
         "RedFG_YellowBG".qColor(fg = QShColor.RED, bg = QShColor.YELLOW, false).qColorDebug() shouldBe """
             [YELLOW_BG][RED]RedFG_YellowBG[END][END]
@@ -107,7 +98,7 @@ class QShColorTest {
     }
 
     // << Root of the CallChain >>
-    @Test
+    @QTest
     fun multiline() {
         "abc\ndef\nhij".qColor(fg = QShColor.RED, bg = null).qColorDebug() shouldBe """
             [RED]abc[END]
@@ -123,7 +114,7 @@ class QShColorTest {
     }
 
     // << Root of the CallChain >>
-    @Test
+    @QTest
     fun multiline_fg_bg() {
         "abc\ndef\nhij".qColor(fg = QShColor.RED, bg = QShColor.BLUE).qColorDebug() shouldBe """
             [BLUE_BG][RED]abc[END][END]
@@ -133,7 +124,7 @@ class QShColorTest {
     }
 
     // << Root of the CallChain >>
-    @Test
+    @QTest
     fun colorTarget() {
         """val color = "green"""".qColorTarget(
             ptn = """val""".toRegex(),
@@ -147,7 +138,7 @@ class QShColorTest {
     }
 
     // << Root of the CallChain >>
-    @Test
+    @QTest
     fun noColor() {
         """val color = "text"""".qColorTarget(
             ptn = """val""".toRegex(),
@@ -159,7 +150,7 @@ class QShColorTest {
     }
 
     // << Root of the CallChain >>
-    @Test
+    @QTest
     fun nestedColor() {
         "${"🚀".red} Test Start ${"🚀".red}\nTestClass".blue.qColorDebug() shouldBe """
             [RED]🚀[END][BLUE] Test Start [END][RED]🚀[END]
@@ -733,7 +724,7 @@ private class QMatchMethodAnnotationName(val nameMatcher: QM, val declaredAnnota
     }
 }
 
-// CallChain[size=3] = QTest <-[Ref]- qTest() <-[Call]- main()[Root]
+// CallChain[size=2] = QTest <-[Call]- QShColorTest.nestedColor()[Root]
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FUNCTION)
 private annotation class QTest(val testOnlyThis: Boolean = false)
