@@ -29,7 +29,7 @@ plugins {
 
 group = "com.nyabkun.qol"
 
-version = "v2023-05-21"
+version = "v2023-05-22"
 
 repositories {
     mavenCentral()
@@ -116,6 +116,7 @@ val testSingleRuntimeOnly: Configuration by configurations.getting {
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.20")
     testImplementation(kotlin("test"))
 }

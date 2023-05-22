@@ -55,6 +55,7 @@ Refer to [build.gradle.kts](build.gradle.kts) to directly check project settings
 
 ```kotlin
 dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.20")
     testImplementation(kotlin("test"))
 }
@@ -72,7 +73,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.nyabkun:qq-shell-color:v2023-05-21'
+    implementation 'com.github.nyabkun:qq-shell-color:v2023-05-22'
 }
 ```
 
@@ -84,7 +85,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.nyabkun:qq-shell-color:v2023-05-21")
+    implementation("com.github.nyabkun:qq-shell-color:v2023-05-22")
 }
 ```
 
@@ -103,7 +104,7 @@ dependencies {
     <dependency>
         <groupId>com.github.nyabkun</groupId>
         <artifactId>qq-shell-color</artifactId>
-        <version>v2023-05-21</version>
+        <version>v2023-05-22</version>
     </dependency>
 </dependencies>
 ```

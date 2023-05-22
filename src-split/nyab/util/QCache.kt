@@ -17,13 +17,8 @@ import java.util.concurrent.locks.ReentrantLock
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=4] = qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
-internal fun <K : Any, V : Any> qCacheItOneSecThreadLocal(key: K, block: () -> V): V =
-    qCacheItTimedThreadLocal(key, 1000L, block)
-
-// CallChain[size=5] = qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
-internal fun <K : Any, V : Any> qCacheItTimedThreadLocal(key: K, duration: Long, block: () -> V): V =
-    qThreadLocalCache.get().getOrPut(key) { QCacheEntry(block(), duration, qNow) }.value as V
+// CallChain[size=8] = qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL <-[Call]- QCacheMap.QCacheMap() < ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+internal const val qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL = 1000L
 
 // CallChain[size=6] = qThreadLocalCache <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneS ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
 private val qThreadLocalCache: ThreadLocal<QCacheMap> by lazy {
@@ -33,6 +28,14 @@ private val qThreadLocalCache: ThreadLocal<QCacheMap> by lazy {
         )
     }
 }
+
+// CallChain[size=4] = qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+internal fun <K : Any, V : Any> qCacheItOneSecThreadLocal(key: K, block: () -> V): V =
+    qCacheItTimedThreadLocal(key, 1000L, block)
+
+// CallChain[size=5] = qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+internal fun <K : Any, V : Any> qCacheItTimedThreadLocal(key: K, duration: Long, block: () -> V): V =
+    qThreadLocalCache.get().getOrPut(key) { QCacheEntry(block(), duration, qNow) }.value as V
 
 // CallChain[size=7] = QCacheMap <-[Ref]- qThreadLocalCache <-[Call]- qCacheItTimedThreadLocal() <-[ ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
 internal class QCacheMap(
@@ -70,6 +73,3 @@ internal data class QCacheEntry(val value: Any?, val duration: Long, val creatio
     // CallChain[size=8] = QCacheEntry.isExpired() <-[Call]- QCacheMap.clearExpired() <-[Call]- QCacheMa ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
     fun isExpired() = (qNow - creationTime) > duration
 }
-
-// CallChain[size=8] = qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL <-[Call]- QCacheMap.QCacheMap() < ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
-internal const val qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL = 1000L

@@ -16,18 +16,6 @@ import nyab.conf.QE
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=2] = String.qIsSingleLine() <-[Call]- String.qColor()[Root]
-internal fun String.qIsSingleLine(): Boolean {
-    return !this.qIsMultiLine()
-}
-
-// CallChain[size=6] = String.qWithNewLineSurround() <-[Call]- QMaskResult.toString() <-[Propag]- QM ... <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-internal fun String.qWithNewLineSurround(numNewLine: Int = 1, onlyIf: QOnlyIfStr = QOnlyIfStr.Multiline): String {
-    if (!onlyIf.matches(this)) return this
-
-    return qWithNewLinePrefix(numNewLine, QOnlyIfStr.Always).qWithNewLineSuffix(numNewLine, QOnlyIfStr.Always)
-}
-
 // CallChain[size=6] = QOnlyIfStr <-[Ref]- QMaskResult.toString() <-[Propag]- QMaskResult <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
 internal enum class QOnlyIfStr(val matches: (String) -> Boolean) {
     // CallChain[size=6] = QOnlyIfStr.Multiline <-[Call]- QMaskResult.toString() <-[Propag]- QMaskResult <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
@@ -44,11 +32,6 @@ internal enum class QOnlyIfStr(val matches: (String) -> Boolean) {
     NotBlank({ it.isNotBlank() }),
     // CallChain[size=7] = QOnlyIfStr.Always <-[Propag]- QOnlyIfStr.Multiline <-[Call]- QMaskResult.toSt ... <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
     Always({ true })
-}
-
-// CallChain[size=7] = String.qIsMultiLine() <-[Call]- QOnlyIfStr.Multiline <-[Call]- QMaskResult.to ... <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-internal fun String.qIsMultiLine(): Boolean {
-    return this.contains("\n") || this.contains("\r")
 }
 
 // CallChain[size=7] = String.qWithNewLinePrefix() <-[Call]- String.qWithNewLineSurround() <-[Call]- ... <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
@@ -71,6 +54,23 @@ internal fun String.qWithNewLineSuffix(numNewLine: Int = 1, onlyIf: QOnlyIfStr =
     val nCount = takeLastWhile { it == '\n' || it == '\r' }.count()
 
     return substring(0, length - nCount) + "\n".repeat(numNewLine)
+}
+
+// CallChain[size=6] = String.qWithNewLineSurround() <-[Call]- QMaskResult.toString() <-[Propag]- QM ... <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
+internal fun String.qWithNewLineSurround(numNewLine: Int = 1, onlyIf: QOnlyIfStr = QOnlyIfStr.Multiline): String {
+    if (!onlyIf.matches(this)) return this
+
+    return qWithNewLinePrefix(numNewLine, QOnlyIfStr.Always).qWithNewLineSuffix(numNewLine, QOnlyIfStr.Always)
+}
+
+// CallChain[size=7] = String.qIsMultiLine() <-[Call]- QOnlyIfStr.Multiline <-[Call]- QMaskResult.to ... <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
+internal fun String.qIsMultiLine(): Boolean {
+    return this.contains("\n") || this.contains("\r")
+}
+
+// CallChain[size=2] = String.qIsSingleLine() <-[Call]- String.qColor()[Root]
+internal fun String.qIsSingleLine(): Boolean {
+    return !this.qIsMultiLine()
 }
 
 // CallChain[size=8] = QLineSeparator <-[Ref]- String.qWithNewLinePrefix() <-[Call]- String.qWithNew ... <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]

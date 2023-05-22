@@ -2323,7 +2323,7 @@ private fun qBrackets(vararg keysAndValues: Any?): String {
 }
 
 // CallChain[size=10] = QOut <-[Ref]- QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- QExceptio ... ckets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
-interface QOut {
+private interface QOut {
     // CallChain[size=12] = QOut.isAcceptColoredText <-[Propag]- QOut.CONSOLE <-[Call]- QMyLog.out <-[Ca ... ckets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
     val isAcceptColoredText: Boolean
 
@@ -2733,7 +2733,7 @@ private val String.noColor: String
     }
 
 // CallChain[size=4] = QShColor <-[Ref]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
-enum class QShColor(val code: Int) {
+private enum class QShColor(val code: Int) {
     // CallChain[size=5] = QShColor.BLACK <-[Propag]- QShColor.LIGHT_GREEN <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
     BLACK(30),
     // CallChain[size=5] = QShColor.RED <-[Propag]- QShColor.LIGHT_GREEN <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]

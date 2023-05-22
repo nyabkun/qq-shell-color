@@ -13,6 +13,7 @@
 package nyab.util
 
 import java.lang.StackWalker.StackFrame
+import java.util.*
 import java.util.stream.Stream
 import kotlin.reflect.KClass
 import kotlin.streams.asSequence
@@ -40,14 +41,6 @@ internal fun qCallerSrcLineSignature(stackDepth: Int = 0): String {
     }
 }
 
-// CallChain[size=3] = qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
-internal inline fun qStackFrame(
-        stackDepth: Int = 0,
-        noinline filter: (StackFrame) -> Boolean = QE.STACK_FRAME_FILTER,
-): StackFrame {
-    return qStackFrames(stackDepth, 1, filter)[0]
-}
-
 // CallChain[size=4] = qStackFrames() <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
 internal inline fun qStackFrames(
         stackDepth: Int = 0,
@@ -57,4 +50,12 @@ internal inline fun qStackFrames(
     return StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE).walk { s: Stream<StackFrame> ->
         s.asSequence().filter(filter).drop(stackDepth).take(size).toList()
     }
+}
+
+// CallChain[size=3] = qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+internal inline fun qStackFrame(
+        stackDepth: Int = 0,
+        noinline filter: (StackFrame) -> Boolean = QE.STACK_FRAME_FILTER,
+): StackFrame {
+    return qStackFrames(stackDepth, 1, filter)[0]
 }

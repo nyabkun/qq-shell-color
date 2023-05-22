@@ -15,6 +15,16 @@ import org.intellij.lang.annotations.Language
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
+// CallChain[size=3] = RO <-[Ref]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+internal typealias RO = RegexOption
+
+// CallChain[size=3] = qRe() <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+internal fun qRe(@Language("RegExp") regex: String, vararg opts: RO): Regex {
+    return qCacheItOneSecThreadLocal(regex + opts.contentToString()) {
+        Regex(regex, setOf(*opts))
+    }
+}
+
 // CallChain[size=2] = re <-[Call]- String.qApplyColorNestable()[Root]
 // https://youtrack.jetbrains.com/issue/KTIJ-5643
 internal val @receiver:Language("RegExp") String.re: Regex
@@ -28,15 +38,5 @@ internal fun String.qReplaceFirstIfNonEmptyStringGroup(@Language("RegExp") regex
         re.replaceFirst(this, replace)
     } else {
         this
-    }
-}
-
-// CallChain[size=3] = RO <-[Ref]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
-internal typealias RO = RegexOption
-
-// CallChain[size=3] = qRe() <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
-internal fun qRe(@Language("RegExp") regex: String, vararg opts: RO): Regex {
-    return qCacheItOneSecThreadLocal(regex + opts.contentToString()) {
-        Regex(regex, setOf(*opts))
     }
 }
