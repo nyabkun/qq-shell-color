@@ -1,49 +1,11 @@
 # 🐕 qq-shell-color
 
 **qq-shell-color** is a Kotlin library that can color your console output.
-- Just copy and paste 🟦 Single-File version [QShColor.kt](src-single/QShColor.kt) into your project. 
-- Or you can use 🟩 Split-File Jar version. See [Maven Dependency Section](#-split-file-jar-version-maven-dependency).
+
+- Just copy and paste 🟦 Single-File version [QShColor.kt](src-single/QShColor.kt) into your project.- Or you can use 🟩 Split-File Jar version. See [Maven Dependency Section](#-split-file-jar-version-maven-dependency).
 - Feel free to fork or copy to your own codebase.
 
-## Example
 
-### output
-<p align="center">
-    
-</p>
-<p align="center">
-    <img src="img/result.png" width="611" alt="result.png">
-</p>
-
-### code
-
-Full Source  [QShColorExample.kt](src-example/QShColorExample.kt)
-
-```kotlin
-fun main() {
-    var txt = "c".yellow + "o".blue + "l".red + "o".magenta + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red
-
-    println(txt)
-
-    txt = "you can set background".qColor(fg = QShColor.RED, bg = QShColor.BLUE)
-
-    println(txt)
-
-    txt = """val color = "you can use regex to color targeted text"""".qColorTarget(
-        ptn = """val(?!\S)""".toRegex(),
-        color = QShColor.MAGENTA
-    ).qColorTarget(
-        ptn = """".*?"""".toRegex(),
-        color = QShColor.GREEN
-    )
-
-    println(txt)
-}
-```
-
-Please see [QShColorTest.kt](src-test-split/nyab/util/QShColorTest.kt) for more code examples.
-Single-File version [src-test-single/QShColorTest.kt](src-test-single/QShColorTest.kt) is a self-contained source code that includes a runnable main function.
-You can easily copy and paste it into your codebase.        
 
 ## 🟦 Single-File version Dependency
 
@@ -110,11 +72,9 @@ dependencies {
 
 ## How did I create this library
 
-I created this library by developing a program within my own codebase that automatically resolves dependencies at the method or property level, extracts necessary code elements, and generates a compact, self-contained, single-file library.
-
-The program uses [PSI](https://plugins.jetbrains.com/docs/intellij/psi.html) to resolve dependencies for function calls and references to classes.
-
-Although my original repository is currently disorganized, I have been gradually extracting and publishing small libraries. I also plan to prepare the original repository for publication in the future
+- I developed [qq-compact-lib](https://github.com/nyabkun/qq-compact-lib) that resolves dependencies and generates compact, self-contained libraries.
+- It utilizes [PSI](https://plugins.jetbrains.com/docs/intellij/psi.html) to resolve function calls and class references.
+- The original repository is currently being organized, and I'm gradually extracting and publishing smaller libraries.
 
 ## References
 
