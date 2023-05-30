@@ -25,53 +25,94 @@ fun main() {
 
 // << Root of the CallChain >>
 class QShColorTest {
+
+    // << Root of the CallChain >>
+    @QTest
+    fun nestRedBlue() {
+        """red+blue""".red.blue.qColorAndDecoDebug() shouldBe
+                "[Blue][Red]red+blue[End]"
+    }
+
+    // << Root of the CallChain >>
+    @QTest
+    fun fgAndBg() {
+        """fg + bg""".qColor(QShColor.Red, QShColor.LightGray).qColorAndDecoDebug() shouldBe
+                """[LightGray_BG][Red]fg + bg[End][End]"""
+    }
+
+    // << Root of the CallChain >>
+    @QTest
+    fun underlineRed() {
+        // TODO
+//        """underline""".underline.red.qColorAndDecoDebug() shouldBe "[Underline][Red]underline[End][End]"
+        """underline""".red.underline.qColorAndDecoDebug() shouldBe "[Underline][Red]underline[End]"
+    }
+
+    // << Root of the CallChain >>
+    @QTest
+    fun underline() {
+        """underline""".underline.qColorAndDecoDebug() shouldBe "[Underline]underline[End]"
+    }
+
+    // << Root of the CallChain >>
+    @QTest
+    fun bold() {
+        """bold""".bold.qColorAndDecoDebug() shouldBe "[Bold]bold[End]"
+    }
+
+    // << Root of the CallChain >>
+    @QTest
+    fun italic() {
+        """italic""".italic.qColorAndDecoDebug() shouldBe "[Italic]italic[End]"
+    }
+
     // << Root of the CallChain >>
     @QTest
     fun colourful() {
-        ("c".yellow + "o".blue + "l".red + "o".magenta + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red).qColorDebug() shouldBe """
-            [YELLOW]c[END][BLUE]o[END][RED]l[END][MAGENTA]o[END][GREEN]u[END][CYAN]r[END][YELLOW]f[END][BLUE]u[END][RED]l[END]
+        ("c".yellow + "o".blue + "l".red + "o".magenta + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red).qColorAndDecoDebug() shouldBe """
+            [Yellow]c[End][Blue]o[End][Red]l[End][Magenta]o[End][Green]u[End][Cyan]r[End][Yellow]f[End][Blue]u[End][Red]l[End]
         """.trimIndent()
     }
 
     // << Root of the CallChain >>
     @QTest
     fun background() {
-        "GreenBG".qColor(fg = null, bg = QShColor.GREEN, false).qColorDebug() shouldBe """
-            [GREEN_BG]GreenBG[END]
+        "GreenBG".qColor(fg = null, bg = QShColor.Green, false).qColorAndDecoDebug() shouldBe """
+            [Green_BG]GreenBG[End]
         """.trimIndent()
     }
 
     // << Root of the CallChain >>
     @QTest
     fun foregroundAndBackground() {
-        "RedFG_YellowBG".qColor(fg = QShColor.RED, bg = QShColor.YELLOW, false).qColorDebug() shouldBe """
-            [YELLOW_BG][RED]RedFG_YellowBG[END][END]
+        "RedFG_YellowBG".qColor(fg = QShColor.Red, bg = QShColor.Yellow, false).qColorAndDecoDebug() shouldBe """
+            [Yellow_BG][Red]RedFG_YellowBG[End][End]
         """.trimIndent()
     }
 
     // << Root of the CallChain >>
     @QTest
     fun multiline() {
-        "abc\ndef\nhij".qColor(fg = QShColor.RED, bg = null).qColorDebug() shouldBe """
-            [RED]abc[END]
-            [RED]def[END]
-            [RED]hij[END]
+        "abc\ndef\nhij".qColor(fg = QShColor.Red, bg = null).qColorAndDecoDebug() shouldBe """
+            [Red]abc[End]
+            [Red]def[End]
+            [Red]hij[End]
         """.trimIndent()
 
-        "abc\ndef\nhij".qColor(fg = null, bg = QShColor.BLUE).qColorDebug() shouldBe """
-            [BLUE_BG]abc[END]
-            [BLUE_BG]def[END]
-            [BLUE_BG]hij[END]
+        "abc\ndef\nhij".qColor(fg = null, bg = QShColor.Blue).qColorAndDecoDebug() shouldBe """
+            [Blue_BG]abc[End]
+            [Blue_BG]def[End]
+            [Blue_BG]hij[End]
         """.trimIndent()
     }
 
     // << Root of the CallChain >>
     @QTest
     fun multiline_fg_bg() {
-        "abc\ndef\nhij".qColor(fg = QShColor.RED, bg = QShColor.BLUE).qColorDebug() shouldBe """
-            [BLUE_BG][RED]abc[END][END]
-            [BLUE_BG][RED]def[END][END]
-            [BLUE_BG][RED]hij[END][END]
+        "abc\ndef\nhij".qColor(fg = QShColor.Red, bg = QShColor.Blue).qColorAndDecoDebug() shouldBe """
+            [Blue_BG][Red]abc[End][End]
+            [Blue_BG][Red]def[End][End]
+            [Blue_BG][Red]hij[End][End]
         """.trimIndent()
     }
 
@@ -80,12 +121,12 @@ class QShColorTest {
     fun colorTarget() {
         """val color = "green"""".qColorTarget(
             ptn = """val""".toRegex(),
-            color = QShColor.MAGENTA
+            fg = QShColor.Magenta
         ).qColorTarget(
             ptn = """".*?"""".toRegex(),
-            color = QShColor.GREEN
-        ).qColorDebug() shouldBe """
-            [MAGENTA]val[END] color = [GREEN]"green"[END]
+            fg = QShColor.Green
+        ).qColorAndDecoDebug() shouldBe """
+            [Magenta]val[End] color = [Green]"green"[End]
         """.trimIndent()
     }
 
@@ -94,19 +135,26 @@ class QShColorTest {
     fun noColor() {
         """val color = "text"""".qColorTarget(
             ptn = """val""".toRegex(),
-            color = QShColor.MAGENTA
+            fg = QShColor.Magenta
         ).qColorTarget(
             ptn = """".*?"""".toRegex(),
-            color = QShColor.GREEN
-        ).noColor.qColorDebug() shouldBe """val color = "text""""
+            fg = QShColor.Green
+        ).noColor.qColorAndDecoDebug() shouldBe """val color = "text""""
     }
 
     // << Root of the CallChain >>
     @QTest
-    fun nestedColor() {
-        "${"🚀".red} Test Start ${"🚀".red}\nTestClass".blue.qColorDebug() shouldBe """
-            [RED]🚀[END][BLUE] Test Start [END][RED]🚀[END]
-            [BLUE]TestClass[END]
+    fun nest() {
+        "${"▧".red} Test Start ${"▧".red}\nTestClass".blue.qColorAndDecoDebug() shouldBe """
+            [Blue][Red]▧[End][Blue] Test Start [Red]▧[End]
+            [Blue]TestClass[End]
         """.trimIndent()
+    }
+
+    // << Root of the CallChain >>
+    @QTest
+    fun nest2() {
+        "a${"b".blue}c".red.qColorAndDecoDebug() shouldBe
+                "[Red]a[Blue]b[End][Red]c[End]"
     }
 }

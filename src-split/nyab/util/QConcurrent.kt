@@ -16,7 +16,7 @@ import kotlin.concurrent.withLock
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=7] = Lock.qWithLock() <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThread ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=7] = Lock.qWithLock() <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
 internal inline fun <T> Lock.qWithLock(threadSafe: Boolean, block: () -> T): T {
     return if (threadSafe) {
         withLock(block)

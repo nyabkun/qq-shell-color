@@ -42,7 +42,7 @@ private val qMASK_COLORED by lazy {
     QMaskBetween(
         qSTART,
         qEND,
-        qSTART,
+        null,
         escapeChar = '\\',
         targetNestDepth = 1,
         maskIncludeStartAndEndSequence = false
@@ -50,71 +50,64 @@ private val qMASK_COLORED by lazy {
 }
 
 // << Root of the CallChain >>
-enum class QBgOrFg {
-    // << Root of the CallChain >>
-    Foreground,
-    // << Root of the CallChain >>
-    Background
-}
+private fun String.qApplyEscapeNestable(start: String): String {
+    val lastEnd = this.endsWith(qEND)
 
-// << Root of the CallChain >>
-private fun String.qApplyColorNestable(colorStart: String): String {
-    val re = "(?s)(\\Q$qEND\\E)(.+?)(\\Q$qSTART\\E|$)".re
-    val replace = "$1$colorStart$2$qEND$3"
-    val re2 = "^(?s)(.*?)(\\Q$qSTART\\E)"
-    val replace2 = "$colorStart$1$qEND$2"
-
-    return this.qMaskAndReplace(
-        qMASK_COLORED,
-        re,
-        replace
-    ).qReplaceFirstIfNonEmptyStringGroup(re2, 1, replace2)
+    return if( lastEnd ) {
+            start + this.substring(0, this.length - 1).replace(qEND, qEND + start) + this[this.length - 1]
+        } else {
+            start + this.replace(qEND, qEND + start) + qEND
+        }
 }
 
 // << Root of the CallChain >>
 fun String.qColor(fg: QShColor? = null, bg: QShColor? = null, nestable: Boolean = this.contains(qSTART)): String {
     return if (this.qIsSingleLine()) {
-        this.qColorLine(fg, bg, nestable)
+        this.qApplyEscapeLine(fg, bg, nestable)
     } else {
         lineSequence().map { line ->
-            line.qColorLine(fg, bg, nestable)
+            line.qApplyEscapeLine(fg, bg, nestable)
         }.joinToString("\n")
     }
 }
 
 // << Root of the CallChain >>
-private fun String.qColorLine(
-    fg: QShColor? = null,
-    bg: QShColor? = null,
-    nestable: Boolean = true,
+fun String.qDeco(deco: QShDeco): String {
+    return if (this.qIsSingleLine()) {
+        this.qApplyEscapeLine(arrayOf(deco.start), nestable = this.contains(qSTART))
+    } else {
+        lineSequence().map { line ->
+            line.qApplyEscapeLine(arrayOf(deco.start), nestable = this.contains(qSTART))
+        }.joinToString("\n")
+    }
+}
+
+// << Root of the CallChain >>
+private fun String.qApplyEscapeLine(fg: QShColor?, bg: QShColor?, nestable: Boolean): String {
+    return this.qApplyEscapeLine(
+        listOfNotNull(fg?.fg, bg?.bg).toTypedArray(),
+        nestable
+    )
+}
+
+// << Root of the CallChain >>
+private fun String.qApplyEscapeLine(
+    startSequences: Array<String>,
+    nestable: Boolean
 ): String {
     val nest = nestable && this.contains(qEND)
 
-    val fgApplied = if (fg != null) {
-        val fgStart = fg.fg
+    var text = this
 
-        if (nest) {
-            this.qApplyColorNestable(fgStart)
+    for (start in startSequences) {
+        text = if (nest) {
+            text.qApplyEscapeNestable(start)
         } else {
-            "$fgStart$this$qEND"
+            "$start$text$qEND"
         }
-    } else {
-        this
     }
 
-    val bgApplied = if (bg != null) {
-        val bgStart = bg.bg
-
-        if (nest) {
-            fgApplied.qApplyColorNestable(bgStart)
-        } else {
-            "$bgStart$fgApplied$qEND"
-        }
-    } else {
-        fgApplied
-    }
-
-    return bgApplied
+    return text
 }
 
 // << Root of the CallChain >>
@@ -124,142 +117,190 @@ val String.noColor: String
     }
 
 // << Root of the CallChain >>
-enum class QShColor(val code: Int) {
+enum class QShDeco(val code: Int) {
     // << Root of the CallChain >>
-    BLACK(30),
+    // https://en.wikipedia.org/wiki/ANSI_escape_code
+    Bold(1),
     // << Root of the CallChain >>
-    RED(31),
+    Italic(3),
     // << Root of the CallChain >>
-    GREEN(32),
-    // << Root of the CallChain >>
-    YELLOW(33),
-    // << Root of the CallChain >>
-    BLUE(34),
-    // << Root of the CallChain >>
-    MAGENTA(35),
-    // << Root of the CallChain >>
-    CYAN(36),
-    // << Root of the CallChain >>
-    LIGHT_GRAY(37),
+    Underline(4);
 
     // << Root of the CallChain >>
-    DARK_GRAY(90),
-    // << Root of the CallChain >>
-    LIGHT_RED(91),
-    // << Root of the CallChain >>
-    LIGHT_GREEN(92),
-    // << Root of the CallChain >>
-    LIGHT_YELLOW(93),
-    // << Root of the CallChain >>
-    LIGHT_BLUE(94),
-    // << Root of the CallChain >>
-    LIGHT_MAGENTA(95),
-    // << Root of the CallChain >>
-    LIGHT_CYAN(96),
-    // << Root of the CallChain >>
-    WHITE(97);
-
-    // << Root of the CallChain >>
-    /** ANSI modifier string to apply the color to the text itself */
-    val fg: String = "$qSTART${code}m"
-
-    // << Root of the CallChain >>
-    /** ANSI modifier string to apply the color the text's background */
-    val bg: String = "$qSTART${code + qBG_JUMP}m"
+    val start: String = "$qSTART${code}m"
 
     companion object {
         // << Root of the CallChain >>
-        fun random(seed: String, colors: Array<QShColor> = arrayOf(YELLOW, GREEN, BLUE, MAGENTA, CYAN)): QShColor {
-            val idx = seed.hashCode().rem(colors.size).absoluteValue
-            return colors[idx]
+        internal fun get(code: Int): QShDeco {
+            return QShDeco.values().find {
+                it.code == code
+            }!!
         }
     }
 }
 
 // << Root of the CallChain >>
-fun String.qColorDebug(tagStart: String = "[", tagEnd: String = "]"): String {
+enum class QShColor(val code: Int) {
+    // << Root of the CallChain >>
+    Black(30),
+    // << Root of the CallChain >>
+    Red(31),
+    // << Root of the CallChain >>
+    Green(32),
+    // << Root of the CallChain >>
+    Yellow(33),
+    // << Root of the CallChain >>
+    Blue(34),
+    // << Root of the CallChain >>
+    Magenta(35),
+    // << Root of the CallChain >>
+    Cyan(36),
+    // << Root of the CallChain >>
+    LightGray(37),
+
+    // << Root of the CallChain >>
+    DarkGray(90),
+    // << Root of the CallChain >>
+    LightRed(91),
+    // << Root of the CallChain >>
+    LightGreen(92),
+    // << Root of the CallChain >>
+    LightYellow(93),
+    // << Root of the CallChain >>
+    LightBlue(94),
+    // << Root of the CallChain >>
+    LightMagenta(95),
+    // << Root of the CallChain >>
+    LightCyan(96),
+    // << Root of the CallChain >>
+    White(97);
+
+    // << Root of the CallChain >>
+    val fg: String = "$qSTART${code}m"
+
+    // << Root of the CallChain >>
+    val bg: String = "$qSTART${code + qBG_JUMP}m"
+
+    companion object {
+        // << Root of the CallChain >>
+        fun random(seed: String, colors: Array<QShColor> = arrayOf(Yellow, Green, Blue, Magenta, Cyan)): QShColor {
+            val idx = seed.hashCode().rem(colors.size).absoluteValue
+            return colors[idx]
+        }
+
+        // << Root of the CallChain >>
+        internal fun get(code: Int): QShColor {
+            return QShColor.values().find {
+                it.code == code
+            }!!
+        }
+    }
+}
+
+// << Root of the CallChain >>
+fun String.qColorAndDecoDebug(tagStart: String = "[", tagEnd: String = "]"): String {
     var txt = this
     for (color in QShColor.values()) {
         txt = txt.replace(color.fg, "$tagStart${color.name}$tagEnd", ignoreCase = false)
         txt = txt.replace(color.bg, "$tagStart${color.name}_BG$tagEnd", ignoreCase = false)
     }
+    for (deco in QShDeco.values()) {
+        txt = txt.replace(deco.start, "$tagStart${deco.name}$tagEnd", ignoreCase = false)
+    }
 
-    txt = txt.replace(qEND, "${tagStart}END$tagEnd")
+    txt = txt.replace(qEND, "${tagStart}End$tagEnd")
 
     return txt
 }
 
 // << Root of the CallChain >>
-fun String.qColorTarget(ptn: Regex, color: QShColor = QShColor.LIGHT_YELLOW): String {
-    return ptn.replace(this, "$0".qColor(color))
+fun String.qColorTarget(ptn: Regex, fg: QShColor? = null, bg: QShColor? = null): String {
+    return ptn.replace(this, "$0".qColor(fg, bg))
+}
+
+// << Root of the CallChain >>
+fun String.qDecoTarget(ptn: Regex, deco: QShDeco): String {
+    return ptn.replace(this, "$0".qDeco(deco))
 }
 
 // << Root of the CallChain >>
 fun String.qColorRandom(seed: String = qCallerSrcLineSignature()): String = this.qColor(QShColor.random(seed))
 
 // << Root of the CallChain >>
+val String?.bold: String
+    get() = this?.qDeco(QShDeco.Bold) ?: "null".qDeco(QShDeco.Bold)
+
+// << Root of the CallChain >>
+val String?.italic: String
+    get() = this?.qDeco(QShDeco.Italic) ?: "null".qDeco(QShDeco.Italic)
+
+// << Root of the CallChain >>
+val String?.underline: String
+    get() = this?.qDeco(QShDeco.Underline) ?: "null".qDeco(QShDeco.Underline)
+
+// << Root of the CallChain >>
 val String?.black: String
-    get() = this?.qColor(QShColor.BLACK) ?: "null".qColor(QShColor.BLACK)
+    get() = this?.qColor(QShColor.Black) ?: "null".qColor(QShColor.Black)
 
 // << Root of the CallChain >>
 val String?.red: String
-    get() = this?.qColor(QShColor.RED) ?: "null".qColor(QShColor.RED)
+    get() = this?.qColor(QShColor.Red) ?: "null".qColor(QShColor.Red)
 
 // << Root of the CallChain >>
 val String?.green: String
-    get() = this?.qColor(QShColor.GREEN) ?: "null".qColor(QShColor.GREEN)
+    get() = this?.qColor(QShColor.Green) ?: "null".qColor(QShColor.Green)
 
 // << Root of the CallChain >>
 val String?.yellow: String
-    get() = this?.qColor(QShColor.YELLOW) ?: "null".qColor(QShColor.YELLOW)
+    get() = this?.qColor(QShColor.Yellow) ?: "null".qColor(QShColor.Yellow)
 
 // << Root of the CallChain >>
 val String?.blue: String
-    get() = this?.qColor(QShColor.BLUE) ?: "null".qColor(QShColor.BLUE)
+    get() = this?.qColor(QShColor.Blue) ?: "null".qColor(QShColor.Blue)
 
 // << Root of the CallChain >>
 val String?.magenta: String
-    get() = this?.qColor(QShColor.MAGENTA) ?: "null".qColor(QShColor.CYAN)
+    get() = this?.qColor(QShColor.Magenta) ?: "null".qColor(QShColor.Cyan)
 
 // << Root of the CallChain >>
 val String?.cyan: String
-    get() = this?.qColor(QShColor.CYAN) ?: "null".qColor(QShColor.CYAN)
+    get() = this?.qColor(QShColor.Cyan) ?: "null".qColor(QShColor.Cyan)
 
 // << Root of the CallChain >>
 val String?.light_gray: String
-    get() = this?.qColor(QShColor.LIGHT_GRAY) ?: "null".qColor(QShColor.LIGHT_GRAY)
+    get() = this?.qColor(QShColor.LightGray) ?: "null".qColor(QShColor.LightGray)
 
 // << Root of the CallChain >>
 val String?.dark_gray: String
-    get() = this?.qColor(QShColor.DARK_GRAY) ?: "null".qColor(QShColor.DARK_GRAY)
+    get() = this?.qColor(QShColor.DarkGray) ?: "null".qColor(QShColor.DarkGray)
 
 // << Root of the CallChain >>
 val String?.light_red: String
-    get() = this?.qColor(QShColor.LIGHT_RED) ?: "null".qColor(QShColor.LIGHT_RED)
+    get() = this?.qColor(QShColor.LightRed) ?: "null".qColor(QShColor.LightRed)
 
 // << Root of the CallChain >>
 val String?.light_green: String
-    get() = this?.qColor(QShColor.LIGHT_GREEN) ?: "null".qColor(QShColor.LIGHT_GREEN)
+    get() = this?.qColor(QShColor.LightGreen) ?: "null".qColor(QShColor.LightGreen)
 
 // << Root of the CallChain >>
 val String?.light_yellow: String
-    get() = this?.qColor(QShColor.LIGHT_YELLOW) ?: "null".qColor(QShColor.LIGHT_YELLOW)
+    get() = this?.qColor(QShColor.LightYellow) ?: "null".qColor(QShColor.LightYellow)
 
 // << Root of the CallChain >>
 val String?.light_blue: String
-    get() = this?.qColor(QShColor.LIGHT_BLUE) ?: "null".qColor(QShColor.LIGHT_BLUE)
+    get() = this?.qColor(QShColor.LightBlue) ?: "null".qColor(QShColor.LightBlue)
 
 // << Root of the CallChain >>
 val String?.light_magenta: String
-    get() = this?.qColor(QShColor.LIGHT_MAGENTA) ?: "null".qColor(QShColor.LIGHT_MAGENTA)
+    get() = this?.qColor(QShColor.LightMagenta) ?: "null".qColor(QShColor.LightMagenta)
 
 // << Root of the CallChain >>
 val String?.light_cyan: String
-    get() = this?.qColor(QShColor.LIGHT_CYAN) ?: "null".qColor(QShColor.LIGHT_CYAN)
+    get() = this?.qColor(QShColor.LightCyan) ?: "null".qColor(QShColor.LightCyan)
 
 // << Root of the CallChain >>
 val String?.white: String
-    get() = this?.qColor(QShColor.WHITE) ?: "null".qColor(QShColor.WHITE)
+    get() = this?.qColor(QShColor.White) ?: "null".qColor(QShColor.White)
 
 
 // region Src from Non-Root API Files -- Auto Generated by nyab.conf.QCompactLib.kt
@@ -268,7 +309,178 @@ val String?.white: String
 
 // CallChain[size=5] = QMyException <-[Ref]- QE <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
 private enum class QMyException {
-    ;companion object {
+    // CallChain[size=5] = QMyException.Other <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    Other,
+
+    // CallChain[size=5] = QMyException.Unreachable <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    Unreachable,
+    // CallChain[size=5] = QMyException.Unsupported <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    Unsupported,
+
+    // CallChain[size=5] = QMyException.ShouldBeTrue <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeTrue,
+    // CallChain[size=5] = QMyException.ShouldBeFalse <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeFalse,
+    // CallChain[size=5] = QMyException.ShouldBeNull <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeNull,
+    // CallChain[size=5] = QMyException.ShouldNotBeNull <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotBeNull,
+    // CallChain[size=5] = QMyException.ShouldBeEmpty <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeEmpty,
+    // CallChain[size=5] = QMyException.ShouldBeEmptyDir <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeEmptyDir,
+    // CallChain[size=5] = QMyException.ShouldNotBeEmpty <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotBeEmpty,
+    // CallChain[size=5] = QMyException.ShouldBeZero <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeZero,
+    // CallChain[size=5] = QMyException.ShouldNotBeZero <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotBeZero,
+    // CallChain[size=5] = QMyException.ShouldBeOne <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeOne,
+    // CallChain[size=5] = QMyException.ShouldNotBeOne <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotBeOne,
+    // CallChain[size=5] = QMyException.ShouldNotBeNested <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotBeNested,
+    // CallChain[size=5] = QMyException.ShouldNotBeNumber <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotBeNumber,
+    // CallChain[size=5] = QMyException.ShouldThrow <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldThrow,
+    // CallChain[size=5] = QMyException.ShouldBeEqual <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeEqual,
+    // CallChain[size=5] = QMyException.ShouldNotBeEqual <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotBeEqual,
+    // CallChain[size=5] = QMyException.ShouldContain <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldContain,
+    // CallChain[size=5] = QMyException.ShouldBeDirectory <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeDirectory,
+    // CallChain[size=5] = QMyException.ShouldBeRegularFile <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeRegularFile,
+    // CallChain[size=5] = QMyException.ShouldBeRelativePath <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeRelativePath,
+    // CallChain[size=5] = QMyException.ShouldBeAbsolutePath <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeAbsolutePath,
+    // CallChain[size=5] = QMyException.ShouldNotContain <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotContain,
+    // CallChain[size=5] = QMyException.ShouldStartWith <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldStartWith,
+    // CallChain[size=5] = QMyException.ShouldEndWith <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldEndWith,
+    // CallChain[size=5] = QMyException.ShouldNotStartWith <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotStartWith,
+    // CallChain[size=5] = QMyException.ShouldNotEndWith <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotEndWith,
+    // CallChain[size=5] = QMyException.ShouldBeOddNumber <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeOddNumber,
+    // CallChain[size=5] = QMyException.ShouldBeEvenNumber <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeEvenNumber,
+    // CallChain[size=5] = QMyException.ShouldBeSubDirectory <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeSubDirectory,
+    // CallChain[size=5] = QMyException.ShouldNotBeSubDirectory <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotBeSubDirectory,
+
+    // CallChain[size=5] = QMyException.InvalidMainArguments <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    InvalidMainArguments,
+    // CallChain[size=5] = QMyException.CommandFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    CommandFail,
+    // CallChain[size=5] = QMyException.CatchException <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    CatchException,
+    // CallChain[size=5] = QMyException.FileNotFound <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    FileNotFound,
+    // CallChain[size=5] = QMyException.DirectoryNotFound <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    DirectoryNotFound,
+    // CallChain[size=5] = QMyException.QToJavaArgFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    QToJavaArgFail,
+    // CallChain[size=5] = QMyException.WinOpenProcessFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    WinOpenProcessFail,
+    // CallChain[size=5] = QMyException.WinOpenProcessTokenFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    WinOpenProcessTokenFail,
+    // CallChain[size=5] = QMyException.ExecExternalProcessFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ExecExternalProcessFail,
+    // CallChain[size=5] = QMyException.CompileFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    CompileFail,
+    // CallChain[size=5] = QMyException.EscapedNonSpecial <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    EscapedNonSpecial,
+    // CallChain[size=5] = QMyException.EndsWithEscapeChar <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    EndsWithEscapeChar,
+    // CallChain[size=5] = QMyException.TooManyBitFlags <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    TooManyBitFlags,
+    // CallChain[size=5] = QMyException.FileAlreadyExists <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    FileAlreadyExists,
+    // CallChain[size=5] = QMyException.DirectoryAlreadyExists <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    DirectoryAlreadyExists,
+    // CallChain[size=5] = QMyException.FetchLinesFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    FetchLinesFail,
+    // CallChain[size=5] = QMyException.LineNumberExceedsMaximum <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    LineNumberExceedsMaximum,
+    // CallChain[size=5] = QMyException.QTryFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    QTryFail,
+    // CallChain[size=5] = QMyException.TrySetAccessibleFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    TrySetAccessibleFail,
+    // CallChain[size=5] = QMyException.CreateZipFileFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    CreateZipFileFail,
+    // CallChain[size=5] = QMyException.SrcFileNotFound <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    SrcFileNotFound,
+    // CallChain[size=5] = QMyException.IllegalArgument <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    IllegalArgument,
+    // CallChain[size=5] = QMyException.RegexSearchNotFound <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    RegexSearchNotFound,
+    // CallChain[size=5] = QMyException.SplitSizeInvalid <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    SplitSizeInvalid,
+    // CallChain[size=5] = QMyException.PrimaryConstructorNotFound <-[Propag]- QMyException.STACK_FRAME_ ...  <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    PrimaryConstructorNotFound,
+    // CallChain[size=5] = QMyException.OpenBrowserFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    OpenBrowserFail,
+    // CallChain[size=5] = QMyException.FileOpenFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    FileOpenFail,
+    // CallChain[size=5] = QMyException.FunctionNotFound <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    FunctionNotFound,
+    // CallChain[size=5] = QMyException.PropertyNotFound <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    PropertyNotFound,
+    // CallChain[size=5] = QMyException.MethodNotFound <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    MethodNotFound,
+    // CallChain[size=5] = QMyException.FieldNotFound <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    FieldNotFound,
+    // CallChain[size=5] = QMyException.UrlNotFound <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    UrlNotFound,
+    // CallChain[size=5] = QMyException.ConstructorNotFound <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ConstructorNotFound,
+    // CallChain[size=5] = QMyException.ImportOffsetFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ImportOffsetFail,
+
+    // CallChain[size=5] = QMyException.SaveImageFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    SaveImageFail,
+    // CallChain[size=5] = QMyException.LoadImageFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    LoadImageFail,
+
+    // CallChain[size=5] = QMyException.CycleDetected <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    CycleDetected,
+
+    // CallChain[size=5] = QMyException.ShouldBeSquareMatrix <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeSquareMatrix,
+    // CallChain[size=5] = QMyException.ShouldBeInvertibleMatrix <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldBeInvertibleMatrix,
+    // CallChain[size=5] = QMyException.UnsupportedDifferentiation <-[Propag]- QMyException.STACK_FRAME_ ...  <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    UnsupportedDifferentiation,
+    // CallChain[size=5] = QMyException.ShouldNotContainImaginaryNumberOtherThanI <-[Propag]- QMyExcepti ...  <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ShouldNotContainImaginaryNumberOtherThanI,
+    // CallChain[size=5] = QMyException.DividedByZero <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    DividedByZero,
+
+    // CallChain[size=5] = QMyException.InvalidPhaseTransition <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    InvalidPhaseTransition,
+
+    // CallChain[size=5] = QMyException.ClassNotFound <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    ClassNotFound,
+    // CallChain[size=5] = QMyException.InstantiationFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    InstantiationFail,
+    // CallChain[size=5] = QMyException.GetEnvironmentVariableFail <-[Propag]- QMyException.STACK_FRAME_ ...  <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    GetEnvironmentVariableFail,
+
+    // CallChain[size=5] = QMyException.TestFail <-[Propag]- QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
+    TestFail
+    ;
+
+    companion object {
         // Required to implement extended functions.
 
         // CallChain[size=4] = QMyException.STACK_FRAME_FILTER <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
@@ -292,10 +504,10 @@ private enum class QMyException {
 // CallChain[size=4] = QE <-[Call]- qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
 private typealias QE = QMyException
 
-// CallChain[size=8] = qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL <-[Call]- QCacheMap.QCacheMap() < ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=8] = qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL <-[Call]- QCacheMap.QCacheMap() < ... Local() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
 private const val qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL = 1000L
 
-// CallChain[size=6] = qThreadLocalCache <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneS ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=6] = qThreadLocalCache <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
 private val qThreadLocalCache: ThreadLocal<QCacheMap> by lazy {
     ThreadLocal.withInitial {
         QCacheMap(
@@ -304,34 +516,34 @@ private val qThreadLocalCache: ThreadLocal<QCacheMap> by lazy {
     }
 }
 
-// CallChain[size=4] = qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=4] = qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
 private fun <K : Any, V : Any> qCacheItOneSecThreadLocal(key: K, block: () -> V): V =
     qCacheItTimedThreadLocal(key, 1000L, block)
 
-// CallChain[size=5] = qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=5] = qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
 private fun <K : Any, V : Any> qCacheItTimedThreadLocal(key: K, duration: Long, block: () -> V): V =
     qThreadLocalCache.get().getOrPut(key) { QCacheEntry(block(), duration, qNow) }.value as V
 
-// CallChain[size=7] = QCacheMap <-[Ref]- qThreadLocalCache <-[Call]- qCacheItTimedThreadLocal() <-[ ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=7] = QCacheMap <-[Ref]- qThreadLocalCache <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
 private class QCacheMap(
     val expirationCheckInterval: Long = qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL,
     val threadSafe: Boolean = false
 ) {
-    // CallChain[size=7] = QCacheMap.lastCheck <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThr ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+    // CallChain[size=7] = QCacheMap.lastCheck <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
     var lastCheck: Long = -1
-    // CallChain[size=7] = QCacheMap.lock <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLo ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+    // CallChain[size=7] = QCacheMap.lock <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
     val lock: ReentrantLock = ReentrantLock()
-    // CallChain[size=7] = QCacheMap.map <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLoc ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+    // CallChain[size=7] = QCacheMap.map <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
     val map: MutableMap<Any, QCacheEntry> = mutableMapOf()
 
-    // CallChain[size=7] = QCacheMap.clearExpired() <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTim ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+    // CallChain[size=7] = QCacheMap.clearExpired() <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTim ... Local() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
     fun clearExpired(): Int = lock.qWithLock(threadSafe) {
         val toRemove = map.filterValues { it.isExpired() }
         toRemove.forEach { map.remove(it.key) }
         return toRemove.count()
     }
 
-    // CallChain[size=6] = QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItO ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+    // CallChain[size=6] = QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
     fun getOrPut(key: Any, defaultValue: () -> QCacheEntry): QCacheEntry = lock.qWithLock(threadSafe) {
         val now = qNow
         if (now - lastCheck > expirationCheckInterval) {
@@ -343,13 +555,13 @@ private class QCacheMap(
     }
 }
 
-// CallChain[size=6] = QCacheEntry <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThre ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=6] = QCacheEntry <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
 private data class QCacheEntry(val value: Any?, val duration: Long, val creationTime: Long = qNow) {
-    // CallChain[size=8] = QCacheEntry.isExpired() <-[Call]- QCacheMap.clearExpired() <-[Call]- QCacheMa ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+    // CallChain[size=8] = QCacheEntry.isExpired() <-[Call]- QCacheMap.clearExpired() <-[Call]- QCacheMa ... Local() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
     fun isExpired() = (qNow - creationTime) > duration
 }
 
-// CallChain[size=7] = Lock.qWithLock() <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThread ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=7] = Lock.qWithLock() <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
 private inline fun <T> Lock.qWithLock(threadSafe: Boolean, block: () -> T): T {
     return if (threadSafe) {
         withLock(block)
@@ -396,31 +608,20 @@ private inline fun qStackFrame(
     return qStackFrames(stackDepth, 1, filter)[0]
 }
 
-// CallChain[size=3] = RO <-[Ref]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=4] = RO <-[Ref]- qRe() <-[Call]- re <-[Call]- noColor[Root]
 private typealias RO = RegexOption
 
-// CallChain[size=3] = qRe() <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=3] = qRe() <-[Call]- re <-[Call]- noColor[Root]
 private fun qRe(@Language("RegExp") regex: String, vararg opts: RO): Regex {
     return qCacheItOneSecThreadLocal(regex + opts.contentToString()) {
         Regex(regex, setOf(*opts))
     }
 }
 
-// CallChain[size=2] = re <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=2] = re <-[Call]- noColor[Root]
 // https://youtrack.jetbrains.com/issue/KTIJ-5643
 private val @receiver:Language("RegExp") String.re: Regex
     get() = qRe(this)
-
-// CallChain[size=2] = String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
-private fun String.qReplaceFirstIfNonEmptyStringGroup(@Language("RegExp") regex: String, nonEmptyGroupIdx: Int, replace: String = "$1", vararg opts: RO): String {
-    val re = qRe(regex, *opts)
-
-    return if (re.find(this)?.groups?.get(nonEmptyGroupIdx)?.value?.isNotEmpty() == true) {
-        re.replaceFirst(this, replace)
-    } else {
-        this
-    }
-}
 
 // CallChain[size=6] = QOnlyIfStr <-[Ref]- QMaskResult.toString() <-[Propag]- QMaskResult <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
 private enum class QOnlyIfStr(val matches: (String) -> Boolean) {
@@ -469,7 +670,7 @@ private fun String.qWithNewLineSurround(numNewLine: Int = 1, onlyIf: QOnlyIfStr 
     return qWithNewLinePrefix(numNewLine, QOnlyIfStr.Always).qWithNewLineSuffix(numNewLine, QOnlyIfStr.Always)
 }
 
-// CallChain[size=7] = String.qIsMultiLine() <-[Call]- QOnlyIfStr.Multiline <-[Call]- QMaskResult.to ... <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
+// CallChain[size=3] = String.qIsMultiLine() <-[Call]- String.qIsSingleLine() <-[Call]- String.qColor()[Root]
 private fun String.qIsMultiLine(): Boolean {
     return this.contains("\n") || this.contains("\r")
 }
@@ -663,9 +864,6 @@ private open class QRegion(open val start: Int, open val end: Int) {
     }
 }
 
-// CallChain[size=4] = QReplacer <-[Ref]- String.qMaskAndReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-private class QReplacer(start: Int, end: Int, val replacement: String) : QMutRegion(start, end)
-
 // CallChain[size=4] = QMaskResult <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
 private class QMaskResult(val maskedStr: String, val orgText: String, val maskChar: Char) {
     // CallChain[size=5] = QMaskResult.toString() <-[Propag]- QMaskResult <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
@@ -704,99 +902,13 @@ private fun String.qFindBetween(
     return finder.find(this)
 }
 
-// CallChain[size=3] = String.qMaskAndReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-private fun String.qMaskAndReplace(
-    maskedStr: String,
-    ptn: Regex,
-    replacement: String = "$1",
-    replaceAll: Boolean = true,
-): String {
-    // Apply Regex pattern to maskedStr
-    val findResults: Sequence<MatchResult> = if (replaceAll) {
-        ptn.findAll(maskedStr)
-    } else {
-        val result = ptn.find(maskedStr)
-        if (result == null) {
-            emptySequence()
-        } else {
-            sequenceOf(result)
-        }
-    }
-
-    val replacers: MutableList<QReplacer> = mutableListOf()
-
-    for (r in findResults) {
-        val g = r.qResolveReplacementGroup(replacement, this)
-        replacers += QReplacer(
-            r.range.first,
-            r.range.last + 1,
-            g
-        )
-    }
-
-    // Apply replacements to this String instead of maskedStr
-    return qMultiReplace(replacers)
-}
-
-// CallChain[size=2] = String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-private fun String.qMaskAndReplace(
-    mask: QMask,
-    ptn: Regex,
-    replacement: String = "$1",
-    replaceAll: Boolean = true,
-): String {
-    val maskResult = mask.apply(this)
-
-    return qMaskAndReplace(maskResult.maskedStr, ptn, replacement, replaceAll)
-}
-
-// CallChain[size=4] = CharSequence.qMultiReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-/**
- * currently does not support region overlap
- */
-private fun CharSequence.qMultiReplace(replacers: List<QReplacer>): String {
-    // TODO Use StringBuilder
-    val sb = StringBuilder(this)
-    var offset = 0
-    for (r in replacers) {
-        sb.replace(r.start + offset, r.end + offset, r.replacement)
-        offset += r.replacement.length - (r.end - r.start)
-    }
-
-    return sb.toString()
-}
-
-// CallChain[size=4] = MatchResult.qResolveReplacementGroup() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-private fun MatchResult.qResolveReplacementGroup(replacement: String, orgText: String): String {
-    var resolveGroup = replacement
-
-    for ((i, g) in groups.withIndex()) {
-        if (g == null) continue
-
-        val gValue = if (g.range.last - g.range.first == 0 || !resolveGroup.contains("$")) {
-            ""
-        } else {
-            orgText.substring(g.range)
-        }
-
-        resolveGroup = resolveGroup.qReplace("$$i", gValue, '\\')
-    }
-
-    return resolveGroup
-}
-
-// CallChain[size=5] = CharSequence.qReplace() <-[Call]- MatchResult.qResolveReplacementGroup() <-[C ... .qMaskAndReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-private fun CharSequence.qReplace(oldValue: String, newValue: String, escapeChar: Char): String {
-    return replace(Regex("""(?<!\Q$escapeChar\E)\Q$oldValue\E"""), newValue)
-}
-
 // CallChain[size=7] = QSequenceReader <-[Call]- QBetween.find() <-[Call]- String.qFindBetween() <-[ ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
 private class QSequenceReader(text: CharSequence) : QCharReader(text) {
     // CallChain[size=9] = QSequenceReader.sequenceOffset <-[Call]- QSequenceReader.offsetInSequence() < ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    var sequenceOffset = 0
+    private var sequenceOffset = 0
 
     // CallChain[size=9] = QSequenceReader.sequence <-[Call]- QSequenceReader.peekCurrentCharInSequence( ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    var sequence: CharArray? = null
+    private var sequence: CharArray? = null
 
     // CallChain[size=8] = QSequenceReader.startReadingSequence() <-[Call]- QSequenceReader.detectSequen ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
     private fun startReadingSequence(sequence: CharArray): Boolean {
@@ -822,12 +934,12 @@ private class QSequenceReader(text: CharSequence) : QCharReader(text) {
     }
 
     // CallChain[size=8] = QSequenceReader.hasNextCharInSequence() <-[Call]- QSequenceReader.detectSeque ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    fun hasNextCharInSequence(): Boolean {
+    private fun hasNextCharInSequence(): Boolean {
         return if (sequence == null) {
             false
         } else {
             (offsetInSequence() < sequence!!.size) &&
-                hasNextChar()
+                    hasNextChar()
         }
     }
 
@@ -836,7 +948,7 @@ private class QSequenceReader(text: CharSequence) : QCharReader(text) {
 //    }
 
     // CallChain[size=8] = QSequenceReader.peekCurrentCharInSequence() <-[Call]- QSequenceReader.detectS ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    fun peekCurrentCharInSequence(): Char {
+    private fun peekCurrentCharInSequence(): Char {
         return sequence!![offsetInSequence()]
     }
 
@@ -844,7 +956,7 @@ private class QSequenceReader(text: CharSequence) : QCharReader(text) {
     /**
      * 0 to sequence.size - 1
      */
-    fun offsetInSequence(): Int {
+    private fun offsetInSequence(): Int {
         return offset - sequenceOffset
     }
 
@@ -875,6 +987,8 @@ private class QSequenceReader(text: CharSequence) : QCharReader(text) {
             success
         }
     }
+
+    
 }
 
 // CallChain[size=8] = QCharReader <-[Call]- QSequenceReader <-[Call]- QBetween.find() <-[Call]- Str ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
@@ -887,8 +1001,8 @@ private open class QCharReader(val text: CharSequence) {
         // Consider caret to be between the character on the offset and the character preceding it
         //
         // ex. ( [ ] indicate offsets )
-        // [\n]abc\n --> 1
-        // \n[\n] --> 2
+        // [\n]abc\n --> lineNumber is 1 "First Line"
+        // \n[\n] --> lineNumber is 2 "Second Line"
 
         var lineBreakCount = 0
 
@@ -963,8 +1077,9 @@ private open class QCharReader(val text: CharSequence) {
     }
 
     // CallChain[size=9] = QCharReader.previousChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader  ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    inline fun previousChar(len: Int = 1) {
+    inline fun previousChar(len: Int = 1): Char {
         offset -= len
+        return text[offset]
     }
 
     // CallChain[size=9] = QCharReader.currentChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader < ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
@@ -973,7 +1088,7 @@ private open class QCharReader(val text: CharSequence) {
     }
 
     // CallChain[size=9] = QCharReader.peekNextChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader  ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    fun peekNextChar(): Char {
+    inline fun peekNextChar(): Char {
         return text[offset]
     }
 
@@ -988,6 +1103,20 @@ private open class QCharReader(val text: CharSequence) {
      */
     inline fun nextChar(): Char {
         return text[offset++]
+    }
+
+    // CallChain[size=9] = QCharReader.nextString() <-[Propag]- QCharReader <-[Call]- QSequenceReader <- ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
+    fun nextString(length: Int): String {
+        val str = text.substring(offset + 1, (offset + length).coerceAtMost(text.length))
+        offset += length
+        return str
+    }
+
+    // CallChain[size=9] = QCharReader.previousString() <-[Propag]- QCharReader <-[Call]- QSequenceReade ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
+    fun previousString(length: Int): String {
+        val str = text.substring(offset - length, offset)
+        offset -= length
+        return str
     }
 }
 
@@ -1065,7 +1194,7 @@ private class QBetween(
     }
 }
 
-// CallChain[size=6] = qNow <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal ... <-[Call]- String.qReplaceFirstIfNonEmptyStringGroup() <-[Call]- String.qApplyColorNestable()[Root]
+// CallChain[size=6] = qNow <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- re <-[Call]- noColor[Root]
 private val qNow: Long
     get() = System.currentTimeMillis()
 

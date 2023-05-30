@@ -12,30 +12,63 @@ package shcolor
 
 import nyab.util.QShColor
 import nyab.util.blue
+import nyab.util.bold
 import nyab.util.cyan
 import nyab.util.green
+import nyab.util.italic
 import nyab.util.magenta
 import nyab.util.qColor
 import nyab.util.qColorTarget
 import nyab.util.red
+import nyab.util.underline
 import nyab.util.yellow
 
 fun main() {
-    var txt = "c".yellow + "o".blue + "l".red + "o".magenta + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red
+    colorful()
+    background()
+    decorate()
+    nest()
+    regex()
 
-    println(txt)
+    println()
+    multiline()
+}
 
-    txt = "you can set background".qColor(fg = QShColor.RED, bg = QShColor.BLUE)
+fun colorful() {
+    println("c".yellow + "o".blue + "l".red + "o".magenta + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red)
+}
 
-    println(txt)
-
-    txt = """val color = "you can use regex to color targeted text"""".qColorTarget(
+fun regex() {
+    val txt = """val color = "you can use regex to color targeted text"""".qColorTarget(
         ptn = """val(?!\S)""".toRegex(),
-        color = QShColor.MAGENTA
+        fg = QShColor.Magenta
     ).qColorTarget(
         ptn = """".*?"""".toRegex(),
-        color = QShColor.GREEN
+        fg = QShColor.Green
     )
+
+    println(txt)
+}
+
+fun background() {
+    println("background".qColor(fg = QShColor.Red, bg = QShColor.Blue))
+}
+
+fun decorate() {
+    println("underlined".underline)
+    println("italic".italic)
+    println("bold".bold)
+}
+
+fun nest() {
+    println("ne${"stab".blue.underline}le".yellow)
+}
+
+fun multiline() {
+    val txt = """
+        ${"multiline".underline}
+        text
+    """.trimIndent().blue
 
     println(txt)
 }

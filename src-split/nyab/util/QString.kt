@@ -63,7 +63,7 @@ internal fun String.qWithNewLineSurround(numNewLine: Int = 1, onlyIf: QOnlyIfStr
     return qWithNewLinePrefix(numNewLine, QOnlyIfStr.Always).qWithNewLineSuffix(numNewLine, QOnlyIfStr.Always)
 }
 
-// CallChain[size=7] = String.qIsMultiLine() <-[Call]- QOnlyIfStr.Multiline <-[Call]- QMaskResult.to ... <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
+// CallChain[size=3] = String.qIsMultiLine() <-[Call]- String.qIsSingleLine() <-[Call]- String.qColor()[Root]
 internal fun String.qIsMultiLine(): Boolean {
     return this.contains("\n") || this.contains("\r")
 }

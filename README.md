@@ -108,10 +108,10 @@ dependencies {
 
 ## How did I create this library
 
-- This library was created using [qq-compact-lib](https://github.com/nyabkun/qq-compact-lib) to generates compact, self-contained libraries.
+- This library was created using [qq-compact-lib](https://github.com/nyabkun/qq-compact-lib) to generates a compact, self-contained library.
+- [qq-compact-lib](https://github.com/nyabkun/qq-compact-lib) is a Kotlin library that can extract code elements from your codebase and make a compact library.
 - It utilizes [PSI](https://plugins.jetbrains.com/docs/intellij/psi.html) to resolve function calls and class references.
 - The original repository is currently being organized, and I'm gradually extracting and publishing smaller libraries.
 
 ## References
-
 - [kolor](https://github.com/ziggy42/kolor)            

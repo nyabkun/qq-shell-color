@@ -15,11 +15,11 @@ import nyab.util.yellow
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=6] = QMyMark <-[Ref]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
+// CallChain[size=6] = QMyMark <-[Ref]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal object QMyMark {
     // CallChain[size=4] = QMyMark.TEST_METHOD <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
     val TEST_METHOD = "☕".yellow
-    // CallChain[size=6] = QMyMark.WARN <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
+    // CallChain[size=6] = QMyMark.WARN <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val WARN = "⚠".yellow
     // CallChain[size=3] = QMyMark.TEST_START <-[Call]- qTest() <-[Call]- main()[Root]
     val TEST_START = "☘".yellow

@@ -64,7 +64,7 @@ import nyab.util.yellow
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=2] = QTest <-[Call]- QShColorTest.nestedColor()[Root]
+// CallChain[size=2] = QTest <-[Call]- QShColorTest.nest2()[Root]
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FUNCTION)
 internal annotation class QTest(val testOnlyThis: Boolean = false)
@@ -151,7 +151,7 @@ internal class QTestResult(val elements: List<QTestResultElement>, val time: Lon
                         """(.*($ta|${ta}Kt).*?)\("""
                     }.re
 
-                    val stackStr = stackColoringRegex.replace(cause.mySrcAndStack, "$1".qColor(QShColor.BLUE) + "(")
+                    val stackStr = stackColoringRegex.replace(cause.mySrcAndStack, "$1".qColor(QShColor.Blue) + "(")
 
                     cause.message + "\n\n" + stackStr
                 } else {
@@ -333,13 +333,13 @@ internal fun qTest(
     }
 }
 
-// CallChain[size=3] = qFailMsg() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
+// CallChain[size=3] = qFailMsg() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qFailMsg(msg: String = "it is null"): String {
     val cMsg = "[$msg]".colorIt
     return "${QMyMark.WARN} $cMsg"
 }
 
-// CallChain[size=3] = qFailMsg() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
+// CallChain[size=3] = qFailMsg() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qFailMsg(actual: Any?, msg: String = "is not equals to", expected: Any?): String {
     val cMsg = "[$msg]".colorIt
     val actualStr = actual.qToLogString() + " " + "(actual)".light_green
@@ -349,16 +349,16 @@ private fun qFailMsg(actual: Any?, msg: String = "is not equals to", expected: A
     }"
 }
 
-// CallChain[size=4] = colorIt <-[Call]- qFailMsg() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
+// CallChain[size=4] = colorIt <-[Call]- qFailMsg() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val String.colorIt: String
     get() = this.light_yellow
 
-// CallChain[size=3] = qThrowIt() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
+// CallChain[size=3] = qThrowIt() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qThrowIt(msg: String, exception: QE) {
     throw QException(exception, msg, null, stackDepth = 2, srcCut = QSrcCut.MULTILINE_INFIX_NOCUT)
 }
 
-// CallChain[size=2] = Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
+// CallChain[size=2] = Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal infix fun Any?.shouldBe(expected: Any?) {
     if (!qOkToTest()) return
 
@@ -418,7 +418,7 @@ internal infix fun Any?.shouldBe(expected: Any?) {
     }
 }
 
-// CallChain[size=3] = qOkToTest() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nestedColor()[Root]
+// CallChain[size=3] = qOkToTest() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private inline fun qOkToTest(): Boolean {
     return QMyTest.forceTestMode || qIsTesting || qIsDebugging
 }

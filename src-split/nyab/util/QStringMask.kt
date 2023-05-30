@@ -188,9 +188,6 @@ internal open class QRegion(open val start: Int, open val end: Int) {
     }
 }
 
-// CallChain[size=4] = QReplacer <-[Ref]- String.qMaskAndReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-internal class QReplacer(start: Int, end: Int, val replacement: String) : QMutRegion(start, end)
-
 // CallChain[size=4] = QMaskResult <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
 internal class QMaskResult(val maskedStr: String, val orgText: String, val maskChar: Char) {
     // CallChain[size=5] = QMaskResult.toString() <-[Propag]- QMaskResult <-[Ref]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
@@ -229,99 +226,13 @@ internal fun String.qFindBetween(
     return finder.find(this)
 }
 
-// CallChain[size=3] = String.qMaskAndReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-private fun String.qMaskAndReplace(
-    maskedStr: String,
-    ptn: Regex,
-    replacement: String = "$1",
-    replaceAll: Boolean = true,
-): String {
-    // Apply Regex pattern to maskedStr
-    val findResults: Sequence<MatchResult> = if (replaceAll) {
-        ptn.findAll(maskedStr)
-    } else {
-        val result = ptn.find(maskedStr)
-        if (result == null) {
-            emptySequence()
-        } else {
-            sequenceOf(result)
-        }
-    }
-
-    val replacers: MutableList<QReplacer> = mutableListOf()
-
-    for (r in findResults) {
-        val g = r.qResolveReplacementGroup(replacement, this)
-        replacers += QReplacer(
-            r.range.first,
-            r.range.last + 1,
-            g
-        )
-    }
-
-    // Apply replacements to this String instead of maskedStr
-    return qMultiReplace(replacers)
-}
-
-// CallChain[size=2] = String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-internal fun String.qMaskAndReplace(
-    mask: QMask,
-    ptn: Regex,
-    replacement: String = "$1",
-    replaceAll: Boolean = true,
-): String {
-    val maskResult = mask.apply(this)
-
-    return qMaskAndReplace(maskResult.maskedStr, ptn, replacement, replaceAll)
-}
-
-// CallChain[size=4] = CharSequence.qMultiReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-/**
- * currently does not support region overlap
- */
-internal fun CharSequence.qMultiReplace(replacers: List<QReplacer>): String {
-    // TODO Use StringBuilder
-    val sb = StringBuilder(this)
-    var offset = 0
-    for (r in replacers) {
-        sb.replace(r.start + offset, r.end + offset, r.replacement)
-        offset += r.replacement.length - (r.end - r.start)
-    }
-
-    return sb.toString()
-}
-
-// CallChain[size=4] = MatchResult.qResolveReplacementGroup() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-internal fun MatchResult.qResolveReplacementGroup(replacement: String, orgText: String): String {
-    var resolveGroup = replacement
-
-    for ((i, g) in groups.withIndex()) {
-        if (g == null) continue
-
-        val gValue = if (g.range.last - g.range.first == 0 || !resolveGroup.contains("$")) {
-            ""
-        } else {
-            orgText.substring(g.range)
-        }
-
-        resolveGroup = resolveGroup.qReplace("$$i", gValue, '\\')
-    }
-
-    return resolveGroup
-}
-
-// CallChain[size=5] = CharSequence.qReplace() <-[Call]- MatchResult.qResolveReplacementGroup() <-[C ... .qMaskAndReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- String.qApplyColorNestable()[Root]
-internal fun CharSequence.qReplace(oldValue: String, newValue: String, escapeChar: Char): String {
-    return replace(Regex("""(?<!\Q$escapeChar\E)\Q$oldValue\E"""), newValue)
-}
-
 // CallChain[size=7] = QSequenceReader <-[Call]- QBetween.find() <-[Call]- String.qFindBetween() <-[ ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
 internal class QSequenceReader(text: CharSequence) : QCharReader(text) {
     // CallChain[size=9] = QSequenceReader.sequenceOffset <-[Call]- QSequenceReader.offsetInSequence() < ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    var sequenceOffset = 0
+    private var sequenceOffset = 0
 
     // CallChain[size=9] = QSequenceReader.sequence <-[Call]- QSequenceReader.peekCurrentCharInSequence( ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    var sequence: CharArray? = null
+    private var sequence: CharArray? = null
 
     // CallChain[size=8] = QSequenceReader.startReadingSequence() <-[Call]- QSequenceReader.detectSequen ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
     private fun startReadingSequence(sequence: CharArray): Boolean {
@@ -347,12 +258,12 @@ internal class QSequenceReader(text: CharSequence) : QCharReader(text) {
     }
 
     // CallChain[size=8] = QSequenceReader.hasNextCharInSequence() <-[Call]- QSequenceReader.detectSeque ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    fun hasNextCharInSequence(): Boolean {
+    private fun hasNextCharInSequence(): Boolean {
         return if (sequence == null) {
             false
         } else {
             (offsetInSequence() < sequence!!.size) &&
-                hasNextChar()
+                    hasNextChar()
         }
     }
 
@@ -361,7 +272,7 @@ internal class QSequenceReader(text: CharSequence) : QCharReader(text) {
 //    }
 
     // CallChain[size=8] = QSequenceReader.peekCurrentCharInSequence() <-[Call]- QSequenceReader.detectS ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    fun peekCurrentCharInSequence(): Char {
+    private fun peekCurrentCharInSequence(): Char {
         return sequence!![offsetInSequence()]
     }
 
@@ -369,7 +280,7 @@ internal class QSequenceReader(text: CharSequence) : QCharReader(text) {
     /**
      * 0 to sequence.size - 1
      */
-    fun offsetInSequence(): Int {
+    private fun offsetInSequence(): Int {
         return offset - sequenceOffset
     }
 
@@ -400,6 +311,8 @@ internal class QSequenceReader(text: CharSequence) : QCharReader(text) {
             success
         }
     }
+
+    
 }
 
 // CallChain[size=8] = QCharReader <-[Call]- QSequenceReader <-[Call]- QBetween.find() <-[Call]- Str ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
@@ -412,8 +325,8 @@ internal open class QCharReader(val text: CharSequence) {
         // Consider caret to be between the character on the offset and the character preceding it
         //
         // ex. ( [ ] indicate offsets )
-        // [\n]abc\n --> 1
-        // \n[\n] --> 2
+        // [\n]abc\n --> lineNumber is 1 "First Line"
+        // \n[\n] --> lineNumber is 2 "Second Line"
 
         var lineBreakCount = 0
 
@@ -488,8 +401,9 @@ internal open class QCharReader(val text: CharSequence) {
     }
 
     // CallChain[size=9] = QCharReader.previousChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader  ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    inline fun previousChar(len: Int = 1) {
+    inline fun previousChar(len: Int = 1): Char {
         offset -= len
+        return text[offset]
     }
 
     // CallChain[size=9] = QCharReader.currentChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader < ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
@@ -498,7 +412,7 @@ internal open class QCharReader(val text: CharSequence) {
     }
 
     // CallChain[size=9] = QCharReader.peekNextChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader  ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
-    fun peekNextChar(): Char {
+    inline fun peekNextChar(): Char {
         return text[offset]
     }
 
@@ -513,6 +427,20 @@ internal open class QCharReader(val text: CharSequence) {
      */
     inline fun nextChar(): Char {
         return text[offset++]
+    }
+
+    // CallChain[size=9] = QCharReader.nextString() <-[Propag]- QCharReader <-[Call]- QSequenceReader <- ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
+    fun nextString(length: Int): String {
+        val str = text.substring(offset + 1, (offset + length).coerceAtMost(text.length))
+        offset += length
+        return str
+    }
+
+    // CallChain[size=9] = QCharReader.previousString() <-[Propag]- QCharReader <-[Call]- QSequenceReade ... -[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- qMASK_COLORED[Root]
+    fun previousString(length: Int): String {
+        val str = text.substring(offset - length, offset)
+        offset -= length
+        return str
     }
 }
 
