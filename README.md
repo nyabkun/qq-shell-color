@@ -13,7 +13,7 @@
     
 </p>
 <p align="center">
-    <img src="img/result.png" width="611" alt="result.png">
+    <img src="img/result.png" width="617" alt="result.png">
 </p>
 
 ### code
