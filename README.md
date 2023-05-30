@@ -9,9 +9,7 @@
 ## Example
 
 ### output
-<p align="center">
-    
-</p>
+
 <p align="center">
     <img src="img/result.png" width="617" alt="result.png">
 </p>
