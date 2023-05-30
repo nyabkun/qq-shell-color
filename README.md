@@ -20,23 +20,44 @@
 Full Source  [QShColorExample.kt](src-example/QShColorExample.kt)
 
 ```kotlin
-var txt = "c".yellow + "o".blue + "l".red + "o".magenta + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red
+fun colorful() {
+    println("c".yellow + "o".blue + "l".red + "o".magenta + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red)
+}
 
-println(txt)
+fun background() {
+    println("background".qColor(fg = QShColor.Red, bg = QShColor.Blue))
+}
 
-txt = "you can set background".qColor(fg = QShColor.RED, bg = QShColor.BLUE)
+fun decorate() {
+    println("underlined".underline)
+    println("italic".italic)
+    println("bold".bold)
+}
 
-println(txt)
+fun nest() {
+    println("ne${"stab".blue.underline}le".yellow)
+}
 
-txt = """val color = "you can use regex to color targeted text"""".qColorTarget(
-    ptn = """val(?!\S)""".toRegex(),
-    color = QShColor.MAGENTA
-).qColorTarget(
-    ptn = """".*?"""".toRegex(),
-    color = QShColor.GREEN
-)
+fun regex() {
+    val txt = """val color = "you can use regex to color targeted text"""".qColorTarget(
+        ptn = """val(?!\S)""".toRegex(),
+        fg = QShColor.Magenta
+    ).qColorTarget(
+        ptn = """".*?"""".toRegex(),
+        fg = QShColor.Green
+    )
 
-println(txt)
+    println(txt)
+}
+
+fun multiline() {
+    val txt = """
+        ${"multiline".underline}
+        text
+    """.trimIndent().blue
+
+    println(txt)
+}
 ```
 
 Please see [QShColorTest.kt](src-test-split/nyab/util/QShColorTest.kt) for more code examples.
