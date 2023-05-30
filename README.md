@@ -2,7 +2,8 @@
 
 **qq-shell-color** is a Kotlin library that can color your console output.
 
-- Just copy and paste 🟦 Single-File version [QShColor.kt](src-single/QShColor.kt) into your project.- Or you can use 🟩 Split-File Jar version. See [Maven Dependency Section](#-split-file-jar-version-maven-dependency).
+- Just copy and paste 🟦 Single-File version [QShColor.kt](src-single/QShColor.kt) into your project.
+- Or you can use 🟩 Split-File Jar version. See [Maven Dependency Section](#-split-file-jar-version-maven-dependency).
 - Feel free to fork or copy to your own codebase.
 
 ## Example
