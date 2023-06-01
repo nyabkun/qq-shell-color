@@ -102,7 +102,7 @@ You can easily copy and paste it into your codebase.
 ## Single-File version Dependency
 
 If you copy & paste [QShColor.kt](src-single/QShColor.kt),
-Refer to [build.gradle.kts](build.gradle.kts) to directly check project settings.
+fefer to [build.gradle.kts](build.gradle.kts) to directly check project settings.
 
 
 
@@ -116,7 +116,7 @@ dependencies {
 ## Jar version Maven Dependency
 
 If you prefer a jar library,
-add [jitpack.io](https://jitpack.io/#nyabkun/qq-shell-color) repository to your build settings.
+you can use [jitpack.io](https://jitpack.io/#nyabkun/qq-shell-color) repository.
 
 ### build.gradle ( Groovy )
 ```groovy
