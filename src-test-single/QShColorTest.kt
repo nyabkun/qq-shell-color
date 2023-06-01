@@ -228,30 +228,30 @@ class QShColorTest {
 // ================================================================================
 
 
-// CallChain[size=4] = QMyException <-[Ref]- QE <-[Ref]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = QMyException <-[Ref]- QE <-[Ref]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private enum class QMyException {
-    // CallChain[size=6] = QMyException.Other <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QMyException.Other <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Other,
 
-    // CallChain[size=12] = QMyException.Unreachable <-[Call]- qUnreachable() <-[Call]- QFetchRule.SINGL ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QMyException.Unreachable <-[Call]- qUnreachable() <-[Call]- QFetchRule.SINGL ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Unreachable,
-    // CallChain[size=3] = QMyException.ShouldBeTrue <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=3] = QMyException.ShouldBeTrue <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldBeTrue,
-    // CallChain[size=3] = QMyException.ShouldBeFalse <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=3] = QMyException.ShouldBeFalse <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldBeFalse,
-    // CallChain[size=13] = QMyException.ShouldNotBeNull <-[Call]- T?.qaNotNull() <-[Call]- qSrcFileAtFr ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QMyException.ShouldNotBeNull <-[Call]- T.qaNotNull() <-[Call]- qSrcFileAtFra ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldNotBeNull,
-    // CallChain[size=6] = QMyException.ShouldNotBeZero <-[Call]- Int?.qaNotZero() <-[Call]- CharSequence.qMask() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QMyException.ShouldNotBeZero <-[Call]- Int.qaNotZero() <-[Call]- CharSequence.qMask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldNotBeZero,
-    // CallChain[size=3] = QMyException.ShouldBeEqual <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=3] = QMyException.ShouldBeEqual <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldBeEqual,
-    // CallChain[size=4] = QMyException.ShouldBeEvenNumber <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=4] = QMyException.ShouldBeEvenNumber <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldBeEvenNumber,
-    // CallChain[size=12] = QMyException.FileNotFound <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLine ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QMyException.FileNotFound <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLine ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     FileNotFound,
-    // CallChain[size=12] = QMyException.FetchLinesFail <-[Call]- Path.qFetchLinesAround() <-[Call]- qSr ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QMyException.FetchLinesFail <-[Call]- Path.qFetchLinesAround() <-[Call]- qSr ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     FetchLinesFail,
-    // CallChain[size=13] = QMyException.LineNumberExceedsMaximum <-[Call]- Path.qLineAt() <-[Call]- Pat ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QMyException.LineNumberExceedsMaximum <-[Call]- Path.qLineAt() <-[Call]- Pat ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LineNumberExceedsMaximum,
     // CallChain[size=5] = QMyException.TrySetAccessibleFail <-[Call]- AccessibleObject.qTrySetAccessible() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
     TrySetAccessibleFail,
@@ -265,49 +265,50 @@ private enum class QMyException {
     
 }
 
-// CallChain[size=10] = QMyLog <-[Ref]- QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- QExcept ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = QMyLog <-[Ref]- QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- QExcept ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private object QMyLog {
-    // CallChain[size=10] = QMyLog.out <-[Call]- QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- QE ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QMyLog.out <-[Call]- QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- QE ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     /**
      * Default output stream
      */
     val out: QOut = QOut.CONSOLE
 
-    // CallChain[size=4] = QMyLog.no_format <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=4] = QMyLog.no_format <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     var no_format: Boolean = false
 }
 
-// CallChain[size=6] = QMyMark <-[Ref]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = QMyMark <-[Ref]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+@Suppress("MayBeConstant")
 private object QMyMark {
-    // CallChain[size=4] = QMyMark.TEST_METHOD <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
-    val TEST_METHOD = "☕".yellow
-    // CallChain[size=6] = QMyMark.WARN <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
-    val WARN = "⚠".yellow
-    // CallChain[size=3] = QMyMark.TEST_START <-[Call]- qTest() <-[Call]- main()[Root]
-    val TEST_START = "☘".yellow
+    // CallChain[size=4] = QMyMark.test_method <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
+    val test_method = "☕".yellow
+    // CallChain[size=6] = QMyMark.warn <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    val warn = "⚠".yellow
+    // CallChain[size=3] = QMyMark.test_start <-[Call]- qTest() <-[Call]- main()[Root]
+    val test_start = "☘".yellow
     
 }
 
-// CallChain[size=9] = QMyPath <-[Ref]- qLogStackFrames() <-[Call]- QException.mySrcAndStack <-[Call ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=9] = QMyPath <-[Ref]- qLogStackFrames() <-[Call]- QException.mySrcAndStack <-[Call ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private object QMyPath {
     // -- dirs
 
-    // CallChain[size=10] = QMyPath.src <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[Call]- ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QMyPath.src <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[Call]- ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val src = "src".path
-    // CallChain[size=10] = QMyPath.src_java <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[C ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QMyPath.src_java <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[C ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val src_java = "src-java".path
-    // CallChain[size=10] = QMyPath.src_build <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[ ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QMyPath.src_build <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[ ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val src_build = "src-build".path
-    // CallChain[size=10] = QMyPath.src_experiment <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames( ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QMyPath.src_experiment <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames( ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val src_experiment = "src-experiment".path
-    // CallChain[size=10] = QMyPath.src_plugin <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <- ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QMyPath.src_plugin <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <- ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val src_plugin = "src-plugin".path
-    // CallChain[size=10] = QMyPath.src_config <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <- ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QMyPath.src_config <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <- ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val src_config = "src-config".path
-    // CallChain[size=10] = QMyPath.src_test <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[C ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QMyPath.src_test <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[C ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val src_test = "src-test".path
     // --- dir list
-    // CallChain[size=9] = QMyPath.src_root <-[Call]- qLogStackFrames() <-[Call]- QException.mySrcAndSta ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=9] = QMyPath.src_root <-[Call]- qLogStackFrames() <-[Call]- QException.mySrcAndSta ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val src_root: List<Path> by lazy {
         val base = listOf(
             src,
@@ -334,22 +335,22 @@ private object QMyPath {
     // -- files
 }
 
-// CallChain[size=4] = QMyTest <-[Ref]- qOkToTest() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = QMyTest <-[Ref]- qOkToTest() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private object QMyTest {
-    // CallChain[size=4] = QMyTest.forceTestMode <-[Call]- qOkToTest() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=4] = QMyTest.forceTestMode <-[Call]- qOkToTest() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     const val forceTestMode = true
     
 }
 
-// CallChain[size=6] = QMyToString <-[Call]- qToStringRegistry <-[Call]- Any?.qToString() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = QMyToString <-[Call]- qToStringRegistry <-[Call]- Any.qToString() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private object QMyToString {
     
 }
 
-// CallChain[size=3] = QE <-[Ref]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = QE <-[Ref]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private typealias QE = QMyException
 
-// CallChain[size=6] = qSTACK_FRAME_FILTER <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = qSTACK_FRAME_FILTER <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val qSTACK_FRAME_FILTER: (StackWalker.StackFrame) -> Boolean = {
     !it.className.startsWith("org.gradle") &&
             !it.className.startsWith("org.testng") &&
@@ -363,105 +364,105 @@ private val qSTACK_FRAME_FILTER: (StackWalker.StackFrame) -> Boolean = {
 //            && !it.declaringClass.canonicalName.startsWith("kotlinx.coroutines")
 }
 
-// CallChain[size=14] = String.qMatches() <-[Call]- Path.qFind() <-[Call]- Collection<Path>.qFind()  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = String.qMatches() <-[Call]- Path.qFind() <-[Call]- Collection<Path>.qFind()  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qMatches(matcher: QM): Boolean = matcher.matches(this)
 
-// CallChain[size=5] = not <-[Call]- QM.notExact() <-[Call]- QMMethod.nameNotExact() <-[Call]- qTest() <-[Call]- main()[Root]
+// CallChain[size=5] = QM.not <-[Call]- QM.notExact() <-[Call]- QMMethod.nameNotExact() <-[Call]- qTest() <-[Call]- main()[Root]
 private val QM.not: QM
     get() = QMatchNot(this)
 
-// CallChain[size=6] = QMatchNot <-[Call]- not <-[Call]- QM.notExact() <-[Call]- QMMethod.nameNotExact() <-[Call]- qTest() <-[Call]- main()[Root]
+// CallChain[size=6] = QMatchNot <-[Call]- QM.not <-[Call]- QM.notExact() <-[Call]- QMMethod.nameNotExact() <-[Call]- qTest() <-[Call]- main()[Root]
 private class QMatchNot(val matcher: QM) : QM {
-    // CallChain[size=7] = QMatchNot.matches() <-[Propag]- QMatchNot <-[Call]- not <-[Call]- QM.notExact() <-[Call]- QMMethod.nameNotExact() <-[Call]- qTest() <-[Call]- main()[Root]
+    // CallChain[size=7] = QMatchNot.matches() <-[Propag]- QMatchNot <-[Call]- QM.not <-[Call]- QM.notExact() <-[Call]- QMMethod.nameNotExact() <-[Call]- qTest() <-[Call]- main()[Root]
     override fun matches(text: String): Boolean = !matcher.matches(text)
 
-    // CallChain[size=7] = QMatchNot.toString() <-[Propag]- QMatchNot <-[Call]- not <-[Call]- QM.notExact() <-[Call]- QMMethod.nameNotExact() <-[Call]- qTest() <-[Call]- main()[Root]
+    // CallChain[size=7] = QMatchNot.toString() <-[Propag]- QMatchNot <-[Call]- QM.not <-[Call]- QM.notExact() <-[Call]- QMMethod.nameNotExact() <-[Call]- qTest() <-[Call]- main()[Root]
     override fun toString(): String {
         return this::class.simpleName.toString() + "(matcher=$matcher)"
     }
 }
 
-// CallChain[size=14] = QMatchAny <-[Call]- QM.isAny() <-[Propag]- QM.exact() <-[Call]- qSrcFileAtFr ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = QMatchAny <-[Call]- QM.isAny() <-[Propag]- QM.exact() <-[Call]- qSrcFileAtFr ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private object QMatchAny : QM {
-    // CallChain[size=15] = QMatchAny.matches() <-[Propag]- QMatchAny <-[Call]- QM.isAny() <-[Propag]- Q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QMatchAny.matches() <-[Propag]- QMatchAny <-[Call]- QM.isAny() <-[Propag]- Q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun matches(text: String): Boolean {
         return true
     }
 
-    // CallChain[size=15] = QMatchAny.toString() <-[Propag]- QMatchAny <-[Call]- QM.isAny() <-[Propag]-  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QMatchAny.toString() <-[Propag]- QMatchAny <-[Call]- QM.isAny() <-[Propag]-  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun toString(): String {
         return this::class.simpleName.toString()
     }
 }
 
-// CallChain[size=14] = QMatchNone <-[Call]- QM.isNone() <-[Propag]- QM.exact() <-[Call]- qSrcFileAt ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = QMatchNone <-[Call]- QM.isNone() <-[Propag]- QM.exact() <-[Call]- qSrcFileAt ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private object QMatchNone : QM {
-    // CallChain[size=15] = QMatchNone.matches() <-[Propag]- QMatchNone <-[Call]- QM.isNone() <-[Propag] ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QMatchNone.matches() <-[Propag]- QMatchNone <-[Call]- QM.isNone() <-[Propag] ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun matches(text: String): Boolean {
         return false
     }
 
-    // CallChain[size=15] = QMatchNone.toString() <-[Propag]- QMatchNone <-[Call]- QM.isNone() <-[Propag ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QMatchNone.toString() <-[Propag]- QMatchNone <-[Call]- QM.isNone() <-[Propag ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun toString(): String {
         return this::class.simpleName.toString()
     }
 }
 
-// CallChain[size=13] = QM <-[Ref]- QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLinesAt ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = QM <-[Ref]- QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLinesAt ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private interface QM {
-    // CallChain[size=13] = QM.matches() <-[Propag]- QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qS ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QM.matches() <-[Propag]- QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qS ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun matches(text: String): Boolean
 
-    // CallChain[size=13] = QM.isAny() <-[Propag]- QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrc ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QM.isAny() <-[Propag]- QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrc ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun isAny(): Boolean = this == QMatchAny
 
-    // CallChain[size=13] = QM.isNone() <-[Propag]- QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qSr ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QM.isNone() <-[Propag]- QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qSr ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun isNone(): Boolean = this == QMatchNone
 
     companion object {
-        // CallChain[size=12] = QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLinesAtFrame() <-[C ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=12] = QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLinesAtFrame() <-[C ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         fun exact(text: String, ignoreCase: Boolean = false): QM = QExactMatch(text, ignoreCase)
 
         // CallChain[size=4] = QM.notExact() <-[Call]- QMMethod.nameNotExact() <-[Call]- qTest() <-[Call]- main()[Root]
         fun notExact(text: String, ignoreCase: Boolean = false): QM = QExactMatch(text, ignoreCase).not
 
-        // CallChain[size=10] = QM.startsWith() <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[Ca ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=10] = QM.startsWith() <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[Ca ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         fun startsWith(text: String, ignoreCase: Boolean = false): QM = QStartsWithMatch(text, ignoreCase)
 
         
     }
 }
 
-// CallChain[size=13] = QExactMatch <-[Call]- QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcF ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = QExactMatch <-[Call]- QM.exact() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcF ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QExactMatch(val textExact: String, val ignoreCase: Boolean = false) : QM {
-    // CallChain[size=14] = QExactMatch.matches() <-[Propag]- QExactMatch <-[Call]- QM.exact() <-[Call]- ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=14] = QExactMatch.matches() <-[Propag]- QExactMatch <-[Call]- QM.exact() <-[Call]- ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun matches(text: String): Boolean {
         return text.equals(textExact, ignoreCase)
     }
 
-    // CallChain[size=14] = QExactMatch.toString() <-[Propag]- QExactMatch <-[Call]- QM.exact() <-[Call] ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=14] = QExactMatch.toString() <-[Propag]- QExactMatch <-[Call]- QM.exact() <-[Call] ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun toString(): String {
         return this::class.simpleName + "(textExact=$textExact, ignoreCase=$ignoreCase)"
     }
 }
 
-// CallChain[size=11] = QStartsWithMatch <-[Call]- QM.startsWith() <-[Call]- QMyPath.src_root <-[Cal ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = QStartsWithMatch <-[Call]- QM.startsWith() <-[Call]- QMyPath.src_root <-[Cal ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QStartsWithMatch(val textStartsWith: String, val ignoreCase: Boolean = false) : QM {
-    // CallChain[size=12] = QStartsWithMatch.matches() <-[Propag]- QStartsWithMatch <-[Call]- QM.startsW ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QStartsWithMatch.matches() <-[Propag]- QStartsWithMatch <-[Call]- QM.startsW ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun matches(text: String): Boolean {
         return text.startsWith(textStartsWith, ignoreCase)
     }
 
-    // CallChain[size=12] = QStartsWithMatch.toString() <-[Propag]- QStartsWithMatch <-[Call]- QM.starts ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QStartsWithMatch.toString() <-[Propag]- QStartsWithMatch <-[Call]- QM.starts ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun toString(): String {
         return this::class.simpleName + "(textStartsWith=$textStartsWith, ignoreCase=$ignoreCase)"
     }
 }
 
-// CallChain[size=7] = qAnd() <-[Call]- QMFunc.and() <-[Call]- qToStringRegistry <-[Call]- Any?.qToString() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = qAnd() <-[Call]- QMFunc.and() <-[Call]- qToStringRegistry <-[Call]- Any.qToString() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qAnd(vararg matches: QMFunc): QMFunc = QMatchFuncAnd(*matches)
 
-// CallChain[size=6] = QMFunc.and() <-[Call]- qToStringRegistry <-[Call]- Any?.qToString() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = QMFunc.and() <-[Call]- qToStringRegistry <-[Call]- Any.qToString() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private infix fun QMFunc.and(match: QMFunc): QMFunc {
     return if (this is QMatchFuncAnd) {
         QMatchFuncAnd(*matchList, match)
@@ -470,91 +471,91 @@ private infix fun QMFunc.and(match: QMFunc): QMFunc {
     }
 }
 
-// CallChain[size=8] = QMatchFuncAny <-[Call]- QMFunc.isAny() <-[Propag]- QMFunc.IncludeExtensionsIn ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=8] = QMatchFuncAny <-[Call]- QMFunc.isAny() <-[Propag]- QMFunc.IncludeExtensionsIn ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private object QMatchFuncAny : QMFuncA() {
-    // CallChain[size=9] = QMatchFuncAny.matches() <-[Propag]- QMatchFuncAny <-[Call]- QMFunc.isAny() <- ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=9] = QMatchFuncAny.matches() <-[Propag]- QMatchFuncAny <-[Call]- QMFunc.isAny() <- ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun matches(value: KFunction<*>): Boolean {
         return true
     }
 }
 
-// CallChain[size=8] = QMatchFuncNone <-[Call]- QMFunc.isNone() <-[Propag]- QMFunc.IncludeExtensions ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=8] = QMatchFuncNone <-[Call]- QMFunc.isNone() <-[Propag]- QMFunc.IncludeExtensions ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private object QMatchFuncNone : QMFuncA() {
-    // CallChain[size=9] = QMatchFuncNone.matches() <-[Propag]- QMatchFuncNone <-[Call]- QMFunc.isNone() ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=9] = QMatchFuncNone.matches() <-[Propag]- QMatchFuncNone <-[Call]- QMFunc.isNone() ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun matches(value: KFunction<*>): Boolean {
         return false
     }
 }
 
-// CallChain[size=7] = QMatchFuncDeclaredOnly <-[Call]- QMFunc.DeclaredOnly <-[Call]- qToStringRegis ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = QMatchFuncDeclaredOnly <-[Call]- QMFunc.DeclaredOnly <-[Call]- qToStringRegis ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private object QMatchFuncDeclaredOnly : QMFuncA() {
-    // CallChain[size=8] = QMatchFuncDeclaredOnly.declaredOnly <-[Propag]- QMatchFuncDeclaredOnly <-[Cal ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QMatchFuncDeclaredOnly.declaredOnly <-[Propag]- QMatchFuncDeclaredOnly <-[Cal ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override val declaredOnly = true
 
-    // CallChain[size=8] = QMatchFuncDeclaredOnly.matches() <-[Propag]- QMatchFuncDeclaredOnly <-[Call]- ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QMatchFuncDeclaredOnly.matches() <-[Propag]- QMatchFuncDeclaredOnly <-[Call]- ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun matches(value: KFunction<*>): Boolean {
         return true
     }
 }
 
-// CallChain[size=7] = QMatchFuncIncludeExtensionsInClass <-[Call]- QMFunc.IncludeExtensionsInClass  ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = QMatchFuncIncludeExtensionsInClass <-[Call]- QMFunc.IncludeExtensionsInClass  ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private object QMatchFuncIncludeExtensionsInClass : QMFuncA() {
-    // CallChain[size=8] = QMatchFuncIncludeExtensionsInClass.includeExtensionsInClass <-[Propag]- QMatc ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QMatchFuncIncludeExtensionsInClass.includeExtensionsInClass <-[Propag]- QMatc ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override val includeExtensionsInClass = true
 
-    // CallChain[size=8] = QMatchFuncIncludeExtensionsInClass.matches() <-[Propag]- QMatchFuncIncludeExt ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QMatchFuncIncludeExtensionsInClass.matches() <-[Propag]- QMatchFuncIncludeExt ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun matches(value: KFunction<*>): Boolean {
         return true
     }
 }
 
-// CallChain[size=7] = QMatchFuncAnd <-[Ref]- QMFunc.and() <-[Call]- qToStringRegistry <-[Call]- Any ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = QMatchFuncAnd <-[Ref]- QMFunc.and() <-[Call]- qToStringRegistry <-[Call]- Any ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QMatchFuncAnd(vararg match: QMFunc) : QMFuncA() {
-    // CallChain[size=7] = QMatchFuncAnd.matchList <-[Call]- QMFunc.and() <-[Call]- qToStringRegistry <- ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QMatchFuncAnd.matchList <-[Call]- QMFunc.and() <-[Call]- qToStringRegistry <- ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val matchList = match
 
-    // CallChain[size=8] = QMatchFuncAnd.declaredOnly <-[Propag]- QMatchFuncAnd.matchList <-[Call]- QMFu ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QMatchFuncAnd.declaredOnly <-[Propag]- QMatchFuncAnd.matchList <-[Call]- QMFu ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override val declaredOnly = matchList.any { it.declaredOnly }
 
-    // CallChain[size=8] = QMatchFuncAnd.includeExtensionsInClass <-[Propag]- QMatchFuncAnd.matchList <- ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QMatchFuncAnd.includeExtensionsInClass <-[Propag]- QMatchFuncAnd.matchList <- ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override val includeExtensionsInClass: Boolean = matchList.any { it.includeExtensionsInClass }
 
-    // CallChain[size=8] = QMatchFuncAnd.matches() <-[Propag]- QMatchFuncAnd.matchList <-[Call]- QMFunc. ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QMatchFuncAnd.matches() <-[Propag]- QMatchFuncAnd.matchList <-[Call]- QMFunc. ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun matches(value: KFunction<*>): Boolean {
         return matchList.all { it.matches(value) }
     }
 }
 
-// CallChain[size=9] = QMFuncA <-[Call]- QMatchFuncNone <-[Call]- QMFunc.isNone() <-[Propag]- QMFunc ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=9] = QMFuncA <-[Call]- QMatchFuncNone <-[Call]- QMFunc.isNone() <-[Propag]- QMFunc ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private abstract class QMFuncA : QMFunc {
-    // CallChain[size=10] = QMFuncA.declaredOnly <-[Propag]- QMFuncA <-[Call]- QMatchFuncNone <-[Call]-  ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QMFuncA.declaredOnly <-[Propag]- QMFuncA <-[Call]- QMatchFuncNone <-[Call]-  ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override val declaredOnly: Boolean = false
-    // CallChain[size=10] = QMFuncA.includeExtensionsInClass <-[Propag]- QMFuncA <-[Call]- QMatchFuncNon ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QMFuncA.includeExtensionsInClass <-[Propag]- QMFuncA <-[Call]- QMatchFuncNon ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override val includeExtensionsInClass: Boolean = false
 }
 
-// CallChain[size=7] = QMFunc <-[Ref]- QMFunc.IncludeExtensionsInClass <-[Call]- qToStringRegistry < ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = QMFunc <-[Ref]- QMFunc.IncludeExtensionsInClass <-[Call]- qToStringRegistry < ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private interface QMFunc {
-    // CallChain[size=7] = QMFunc.declaredOnly <-[Propag]- QMFunc.IncludeExtensionsInClass <-[Call]- qTo ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QMFunc.declaredOnly <-[Propag]- QMFunc.IncludeExtensionsInClass <-[Call]- qTo ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val declaredOnly: Boolean
 
-    // CallChain[size=7] = QMFunc.includeExtensionsInClass <-[Propag]- QMFunc.IncludeExtensionsInClass < ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QMFunc.includeExtensionsInClass <-[Propag]- QMFunc.IncludeExtensionsInClass < ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val includeExtensionsInClass: Boolean
 
-    // CallChain[size=7] = QMFunc.matches() <-[Propag]- QMFunc.IncludeExtensionsInClass <-[Call]- qToStr ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QMFunc.matches() <-[Propag]- QMFunc.IncludeExtensionsInClass <-[Call]- qToStr ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun matches(value: KFunction<*>): Boolean
 
-    // CallChain[size=7] = QMFunc.isAny() <-[Propag]- QMFunc.IncludeExtensionsInClass <-[Call]- qToStrin ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QMFunc.isAny() <-[Propag]- QMFunc.IncludeExtensionsInClass <-[Call]- qToStrin ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun isAny(): Boolean = this == QMatchFuncAny
 
-    // CallChain[size=7] = QMFunc.isNone() <-[Propag]- QMFunc.IncludeExtensionsInClass <-[Call]- qToStri ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QMFunc.isNone() <-[Propag]- QMFunc.IncludeExtensionsInClass <-[Call]- qToStri ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun isNone(): Boolean = this == QMatchFuncNone
 
     companion object {
-        // CallChain[size=6] = QMFunc.DeclaredOnly <-[Call]- qToStringRegistry <-[Call]- Any?.qToString() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=6] = QMFunc.DeclaredOnly <-[Call]- qToStringRegistry <-[Call]- Any.qToString() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val DeclaredOnly: QMFunc = QMatchFuncDeclaredOnly
 
-        // CallChain[size=6] = QMFunc.IncludeExtensionsInClass <-[Call]- qToStringRegistry <-[Call]- Any?.qToString() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=6] = QMFunc.IncludeExtensionsInClass <-[Call]- qToStringRegistry <-[Call]- Any.qToString() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         // TODO OnlyExtensionsInClass
         val IncludeExtensionsInClass: QMFunc = QMatchFuncIncludeExtensionsInClass
 
@@ -563,7 +564,7 @@ private interface QMFunc {
         // TODO vararg, nullability, param names, type parameter
         // TODO handle createType() more carefully
 
-        // CallChain[size=6] = QMFunc.nameExact() <-[Call]- qToStringRegistry <-[Call]- Any?.qToString() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=6] = QMFunc.nameExact() <-[Call]- qToStringRegistry <-[Call]- Any.qToString() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         fun nameExact(text: String, ignoreCase: Boolean = false): QMFunc {
             return QMatchFuncName(QM.exact(text, ignoreCase = ignoreCase))
         }
@@ -572,20 +573,20 @@ private interface QMFunc {
     }
 }
 
-// CallChain[size=7] = QMatchFuncName <-[Call]- QMFunc.nameExact() <-[Call]- qToStringRegistry <-[Ca ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = QMatchFuncName <-[Call]- QMFunc.nameExact() <-[Call]- qToStringRegistry <-[Ca ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QMatchFuncName(val nameMatcher: QM) : QMFuncA() {
-    // CallChain[size=8] = QMatchFuncName.matches() <-[Propag]- QMatchFuncName <-[Call]- QMFunc.nameExac ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QMatchFuncName.matches() <-[Propag]- QMatchFuncName <-[Call]- QMFunc.nameExac ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun matches(value: KFunction<*>): Boolean {
         return nameMatcher.matches(value.name)
     }
 
-    // CallChain[size=8] = QMatchFuncName.toString() <-[Propag]- QMatchFuncName <-[Call]- QMFunc.nameExa ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QMatchFuncName.toString() <-[Propag]- QMatchFuncName <-[Call]- QMFunc.nameExa ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun toString(): String {
         return this::class.simpleName + ":" + nameMatcher.toString()
     }
 }
 
-// CallChain[size=4] = not <-[Call]- QMMethod.notAnnotation() <-[Call]- qTest() <-[Call]- main()[Root]
+// CallChain[size=4] = QMMethod.not <-[Call]- QMMethod.notAnnotation() <-[Call]- qTest() <-[Call]- main()[Root]
 private val QMMethod.not: QMMethod
     get() = QMatchMethodNot(this)
 
@@ -613,9 +614,9 @@ private infix fun QMMethod.or(match: QMMethod): QMMethod {
     }
 }
 
-// CallChain[size=5] = QMatchMethodNot <-[Call]- not <-[Call]- QMMethod.notAnnotation() <-[Call]- qTest() <-[Call]- main()[Root]
+// CallChain[size=5] = QMatchMethodNot <-[Call]- QMMethod.not <-[Call]- QMMethod.notAnnotation() <-[Call]- qTest() <-[Call]- main()[Root]
 private class QMatchMethodNot(val matcher: QMMethod) : QMMethodA() {
-    // CallChain[size=6] = QMatchMethodNot.matches() <-[Propag]- QMatchMethodNot <-[Call]- not <-[Call]- QMMethod.notAnnotation() <-[Call]- qTest() <-[Call]- main()[Root]
+    // CallChain[size=6] = QMatchMethodNot.matches() <-[Propag]- QMatchMethodNot <-[Call]- QMMethod.not <-[Call]- QMMethod.notAnnotation() <-[Call]- qTest() <-[Call]- main()[Root]
     override fun matches(value: Method): Boolean = !matcher.matches(value)
 }
 
@@ -810,7 +811,7 @@ private data class QTestResultElement(val method: Method, val cause: Throwable?)
         get() = cause == null
 }
 
-// CallChain[size=5] = allTestedMethods <-[Call]- QTestResult.printIt() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
+// CallChain[size=5] = List<QTestResultElement>.allTestedMethods <-[Call]- QTestResult.printIt() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
 private val List<QTestResultElement>.allTestedMethods: String
     get() =
         "\n[${"Tested".light_blue}]\n" +
@@ -906,7 +907,7 @@ private fun qTestMethods(
     val timeItResult = qTimeIt(quiet = true) {
         for (method in methodsToTest) {
             // "⭐"
-            out.println(qSeparatorWithLabel("${QMyMark.TEST_METHOD} " + method.qName(true)))
+            out.println(qSeparatorWithLabel("${QMyMark.test_method} " + method.qName(true)))
 
             method.qTrySetAccessible()
 
@@ -1022,7 +1023,7 @@ private fun qTest(
 
     qLogStackFrames(
         // "🚀"
-        msg = "${QMyMark.TEST_START} Test Start ${QMyMark.TEST_START}\n$targets".light_blue,
+        msg = "${QMyMark.test_start} Test Start ${QMyMark.test_start}\n$targets".light_blue,
         style = QLogStyle.MSG_AND_STACK,
         frames = listOf(
             qStackFrameEntryMethod { frame ->
@@ -1052,32 +1053,32 @@ private fun qTest(
     }
 }
 
-// CallChain[size=3] = qFailMsg() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = qFailMsg() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qFailMsg(msg: String = "it is null"): String {
     val cMsg = "[$msg]".colorIt
-    return "${QMyMark.WARN} $cMsg"
+    return "${QMyMark.warn} $cMsg"
 }
 
-// CallChain[size=3] = qFailMsg() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = qFailMsg() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qFailMsg(actual: Any?, msg: String = "is not equals to", expected: Any?): String {
     val cMsg = "[$msg]".colorIt
     val actualStr = actual.qToLogString() + " " + "(actual)".light_green
     val expectedStr = expected.qToLogString() + " " + "(expected)".blue
-    return "${QMyMark.WARN} ${actualStr.qWithNewLineSurround(onlyIf = QOnlyIfStr.Always)}$cMsg${
+    return "${QMyMark.warn} ${actualStr.qWithNewLineSurround(onlyIf = QOnlyIfStr.Always)}$cMsg${
         expectedStr.qWithNewLinePrefix(onlyIf = QOnlyIfStr.Always)
     }"
 }
 
-// CallChain[size=4] = colorIt <-[Call]- qFailMsg() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = String.colorIt <-[Call]- qFailMsg() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val String.colorIt: String
     get() = this.light_yellow
 
-// CallChain[size=3] = qThrowIt() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = qThrowIt() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qThrowIt(msg: String, exception: QE) {
     throw QException(exception, msg, null, stackDepth = 2, srcCut = QSrcCut.MULTILINE_INFIX_NOCUT)
 }
 
-// CallChain[size=2] = Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=2] = Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private infix fun Any?.shouldBe(expected: Any?) {
     if (!qOkToTest()) return
 
@@ -1137,18 +1138,18 @@ private infix fun Any?.shouldBe(expected: Any?) {
     }
 }
 
-// CallChain[size=3] = qOkToTest() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = qOkToTest() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private inline fun qOkToTest(): Boolean {
     return QMyTest.forceTestMode || qIsTesting || qIsDebugging
 }
 
-// CallChain[size=3] = Char.qToHex() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = Char.qToHex() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Char.qToHex(): String = String.format("%02X", code)
 
-// CallChain[size=13] = qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL <-[Call]- QCacheMap.QCacheMap()  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL <-[Call]- QCacheMap.QCacheMap()  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private const val qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL = 1000L
 
-// CallChain[size=11] = qThreadLocalCache <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOne ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = qThreadLocalCache <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOne ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val qThreadLocalCache: ThreadLocal<QCacheMap> by lazy {
     ThreadLocal.withInitial {
         QCacheMap(
@@ -1157,44 +1158,44 @@ private val qThreadLocalCache: ThreadLocal<QCacheMap> by lazy {
     }
 }
 
-// CallChain[size=12] = qCacheThreadSafe <-[Call]- qCacheItTimed() <-[Call]- qCacheItOneSec() <-[Cal ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = qCacheThreadSafe <-[Call]- qCacheItTimed() <-[Call]- qCacheItOneSec() <-[Cal ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val qCacheThreadSafe: QCacheMap by lazy { QCacheMap(qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL, true) }
 
-// CallChain[size=10] = qCacheItOneSec() <-[Call]- qMySrcLinesAtFrame() <-[Call]- qLogStackFrames()  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = qCacheItOneSec() <-[Call]- qMySrcLinesAtFrame() <-[Call]- qLogStackFrames()  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun <K : Any, V : Any?> qCacheItOneSec(key: K, block: () -> V): V = qCacheItTimed(key, 1000L, block)
 
-// CallChain[size=11] = qCacheItTimed() <-[Call]- qCacheItOneSec() <-[Call]- qMySrcLinesAtFrame() <- ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = qCacheItTimed() <-[Call]- qCacheItOneSec() <-[Call]- qMySrcLinesAtFrame() <- ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun <K : Any, V : Any?> qCacheItTimed(key: K, duration: Long, block: () -> V): V =
     qCacheThreadSafe.getOrPut(key) { QCacheEntry(block(), duration, qNow) }.value as V
 
-// CallChain[size=9] = qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- QException.mySrcAndStac ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=9] = qCacheItOneSecThreadLocal() <-[Call]- qRe() <-[Call]- QException.mySrcAndStac ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun <K : Any, V : Any> qCacheItOneSecThreadLocal(key: K, block: () -> V): V =
     qCacheItTimedThreadLocal(key, 1000L, block)
 
-// CallChain[size=10] = qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLocal() <-[Call]- q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun <K : Any, V : Any> qCacheItTimedThreadLocal(key: K, duration: Long, block: () -> V): V =
     qThreadLocalCache.get().getOrPut(key) { QCacheEntry(block(), duration, qNow) }.value as V
 
-// CallChain[size=12] = QCacheMap <-[Ref]- qThreadLocalCache <-[Call]- qCacheItTimedThreadLocal() <- ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = QCacheMap <-[Ref]- qThreadLocalCache <-[Call]- qCacheItTimedThreadLocal() <- ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QCacheMap(
     val expirationCheckInterval: Long = qDEFAULT_CACHE_IT_EXPIRATION_CHECK_INTERVAL,
     val threadSafe: Boolean = false
 ) {
-    // CallChain[size=12] = QCacheMap.lastCheck <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedTh ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QCacheMap.lastCheck <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedTh ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     var lastCheck: Long = -1
-    // CallChain[size=12] = QCacheMap.lock <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadL ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QCacheMap.lock <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadL ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val lock: ReentrantLock = ReentrantLock()
-    // CallChain[size=12] = QCacheMap.map <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLo ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QCacheMap.map <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLo ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val map: MutableMap<Any, QCacheEntry> = mutableMapOf()
 
-    // CallChain[size=12] = QCacheMap.clearExpired() <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTi ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QCacheMap.clearExpired() <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTi ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun clearExpired(): Int = lock.qWithLock(threadSafe) {
         val toRemove = map.filterValues { it.isExpired() }
         toRemove.forEach { map.remove(it.key) }
         return toRemove.count()
     }
 
-    // CallChain[size=11] = QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheIt ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QCacheMap.getOrPut() <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheIt ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun getOrPut(key: Any, defaultValue: () -> QCacheEntry): QCacheEntry = lock.qWithLock(threadSafe) {
         val now = qNow
         if (now - lastCheck > expirationCheckInterval) {
@@ -1206,13 +1207,13 @@ private class QCacheMap(
     }
 }
 
-// CallChain[size=11] = QCacheEntry <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThr ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = QCacheEntry <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThr ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private data class QCacheEntry(val value: Any?, val duration: Long, val creationTime: Long = qNow) {
-    // CallChain[size=13] = QCacheEntry.isExpired() <-[Call]- QCacheMap.clearExpired() <-[Call]- QCacheM ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCacheEntry.isExpired() <-[Call]- QCacheMap.clearExpired() <-[Call]- QCacheM ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun isExpired() = (qNow - creationTime) > duration
 }
 
-// CallChain[size=12] = Lock.qWithLock() <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThrea ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = Lock.qWithLock() <-[Call]- QCacheMap.getOrPut() <-[Call]- qCacheItTimedThrea ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private inline fun <T> Lock.qWithLock(threadSafe: Boolean, block: () -> T): T {
     return if (threadSafe) {
         withLock(block)
@@ -1221,7 +1222,7 @@ private inline fun <T> Lock.qWithLock(threadSafe: Boolean, block: () -> T): T {
     }
 }
 
-// CallChain[size=12] = QE.throwIt() <-[Call]- qUnreachable() <-[Call]- QFetchRule.SINGLE_LINE <-[Ca ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = QE.throwIt() <-[Call]- qUnreachable() <-[Call]- QFetchRule.SINGLE_LINE <-[Ca ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun QE.throwIt(msg: Any? = "", e: Throwable? = null, stackDepth: Int = 0): Nothing {
     throw QException(
         this,
@@ -1234,25 +1235,25 @@ private fun QE.throwIt(msg: Any? = "", e: Throwable? = null, stackDepth: Int = 0
     )
 }
 
-// CallChain[size=13] = QE.throwItFile() <-[Call]- LineNumberReader.qFetchLinesAround() <-[Call]- Pa ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = QE.throwItFile() <-[Call]- LineNumberReader.qFetchLinesAround() <-[Call]- Pa ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun QE.throwItFile(path: Path, e: Throwable? = null, stackDepth: Int = 0): Nothing {
     throw QException(this, qBrackets("File", path.absolutePathString()), e, stackDepth = stackDepth + 1)
 }
 
-// CallChain[size=4] = QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun QE.throwItBrackets(vararg keysAndValues: Any?, e: Throwable? = null, stackDepth: Int = 0): Nothing {
     throw QException(this, qBrackets(*keysAndValues), e, stackDepth = stackDepth + 1)
 }
 
-// CallChain[size=11] = qUnreachable() <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut()  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = qUnreachable() <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut()  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qUnreachable(msg: Any? = ""): Nothing {
     QE.Unreachable.throwIt(msg)
 }
 
-// CallChain[size=5] = QException <-[Call]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = QException <-[Call]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QException(
     val type: QE = QE.Other,
-    msg: String = QMyMark.WARN,
+    msg: String = QMyMark.warn,
     e: Throwable? = null,
     val stackDepth: Int = 0,
     stackSize: Int = 20,
@@ -1260,28 +1261,28 @@ private class QException(
     private val srcCut: QSrcCut = QSrcCut.MULTILINE_NOCUT,
 ) : RuntimeException(msg, e) {
 
-    // CallChain[size=6] = QException.printStackTrace() <-[Propag]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QException.printStackTrace() <-[Propag]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun printStackTrace(s: PrintStream) {
         s.println("\n" + qToString() + "\n" + mySrcAndStack)
     }
 
-    // CallChain[size=7] = QException.stackFrames <-[Call]- QException.getStackTrace() <-[Propag]- QExce ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QException.stackFrames <-[Call]- QException.getStackTrace() <-[Propag]- QExce ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val stackFrames = qStackFrames(stackDepth + 2, size = stackSize, filter = stackFilter)
 
-    // CallChain[size=7] = QException.mySrcAndStack <-[Call]- QException.printStackTrace() <-[Propag]- Q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QException.mySrcAndStack <-[Call]- QException.printStackTrace() <-[Propag]- Q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val mySrcAndStack: String by lazy {
         qLogStackFrames(frames = stackFrames, style = QLogStyle.SRC_AND_STACK, srcCut = srcCut, quiet = true)
             .qColorTarget(qRe("""\sshould[a-zA-Z]+"""), QShColor.LightYellow)
     }
 
-    // CallChain[size=6] = QException.getStackTrace() <-[Propag]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QException.getStackTrace() <-[Propag]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun getStackTrace(): Array<StackTraceElement> {
         return stackFrames.map {
             it.toStackTraceElement()
         }.toTypedArray()
     }
 
-    // CallChain[size=7] = QException.qToString() <-[Call]- QException.toString() <-[Propag]- QException ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QException.qToString() <-[Call]- QException.toString() <-[Propag]- QException ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun qToString(): String {
         val msg = message
 
@@ -1294,7 +1295,7 @@ private class QException(
         }
     }
 
-    // CallChain[size=6] = QException.toString() <-[Propag]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QException.toString() <-[Propag]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun toString(): String {
         return qToString()
 //         used by @Test
@@ -1309,7 +1310,7 @@ private fun Boolean.qaTrue(exceptionType: QE = QE.ShouldBeTrue, msg: Any? = "") 
     }
 }
 
-// CallChain[size=12] = T?.qaNotNull() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLinesAtFrame()  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = T.qaNotNull() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLinesAtFrame() < ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun <T : Any> T?.qaNotNull(exceptionType: QE = QE.ShouldNotBeNull, msg: Any? = ""): T {
     if (this != null) {
         return this
@@ -1318,7 +1319,7 @@ private fun <T : Any> T?.qaNotNull(exceptionType: QE = QE.ShouldNotBeNull, msg: 
     }
 }
 
-// CallChain[size=5] = Int?.qaNotZero() <-[Call]- CharSequence.qMask() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = Int.qaNotZero() <-[Call]- CharSequence.qMask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Int?.qaNotZero(exceptionType: QE = QE.ShouldNotBeZero, msg: Any? = ""): Int {
     if (this == null) {
         QE.ShouldNotBeNull.throwIt(stackDepth = 1, msg = msg)
@@ -1329,41 +1330,41 @@ private fun Int?.qaNotZero(exceptionType: QE = QE.ShouldNotBeZero, msg: Any? = "
     }
 }
 
-// CallChain[size=13] = qBUFFER_SIZE <-[Call]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[ ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = qBUFFER_SIZE <-[Call]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[ ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private const val qBUFFER_SIZE = DEFAULT_BUFFER_SIZE
 
-// CallChain[size=13] = QOpenOpt <-[Ref]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[Call] ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = QOpenOpt <-[Ref]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[Call] ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 // @formatter:off
 private enum class QOpenOpt(val opt: OpenOption) : QFlagEnum<QOpenOpt> {
-    // CallChain[size=15] = QOpenOpt.TRUNCATE_EXISTING <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.TRUNCATE_EXISTING <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     TRUNCATE_EXISTING(StandardOpenOption.TRUNCATE_EXISTING),
-    // CallChain[size=15] = QOpenOpt.CREATE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.CREATE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     CREATE(StandardOpenOption.CREATE),
-    // CallChain[size=15] = QOpenOpt.CREATE_NEW <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.CREATE_NEW <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     CREATE_NEW(StandardOpenOption.CREATE_NEW),
-    // CallChain[size=15] = QOpenOpt.WRITE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toO ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.WRITE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toO ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     WRITE(StandardOpenOption.WRITE),
-    // CallChain[size=15] = QOpenOpt.READ <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toOp ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.READ <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toOp ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     READ(StandardOpenOption.READ),
-    // CallChain[size=15] = QOpenOpt.APPEND <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.APPEND <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     APPEND(StandardOpenOption.APPEND),
-    // CallChain[size=15] = QOpenOpt.DELETE_ON_CLOSE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOp ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.DELETE_ON_CLOSE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOp ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     DELETE_ON_CLOSE(StandardOpenOption.DELETE_ON_CLOSE),
-    // CallChain[size=15] = QOpenOpt.DSYNC <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toO ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.DSYNC <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toO ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     DSYNC(StandardOpenOption.DSYNC),
-    // CallChain[size=15] = QOpenOpt.SYNC <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toOp ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.SYNC <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toOp ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     SYNC(StandardOpenOption.SYNC),
-    // CallChain[size=15] = QOpenOpt.SPARSE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.SPARSE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     SPARSE(StandardOpenOption.SPARSE),
-    // CallChain[size=15] = QOpenOpt.EX_DIRECT <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt> ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.EX_DIRECT <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt> ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     EX_DIRECT(ExtendedOpenOption.DIRECT),
-    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_DELETE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_DELETE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     EX_NOSHARE_DELETE(ExtendedOpenOption.NOSHARE_DELETE),
-    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_READ <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOp ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_READ <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOp ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     EX_NOSHARE_READ(ExtendedOpenOption.NOSHARE_READ),
-    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_WRITE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QO ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_WRITE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QO ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     EX_NOSHARE_WRITE(ExtendedOpenOption.NOSHARE_WRITE),
-    // CallChain[size=15] = QOpenOpt.LN_NOFOLLOW_LINKS <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.LN_NOFOLLOW_LINKS <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LN_NOFOLLOW_LINKS(LinkOption.NOFOLLOW_LINKS);
 
     companion object {
@@ -1371,12 +1372,12 @@ private enum class QOpenOpt(val opt: OpenOption) : QFlagEnum<QOpenOpt> {
     }
 }
 
-// CallChain[size=13] = QFlag<QOpenOpt>.toOptEnums() <-[Call]- Path.qReader() <-[Call]- Path.qFetchL ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = QFlag<QOpenOpt>.toOptEnums() <-[Call]- Path.qReader() <-[Call]- Path.qFetchL ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun QFlag<QOpenOpt>.toOptEnums(): Array<OpenOption> {
     return toEnumValues().map { it.opt }.toTypedArray()
 }
 
-// CallChain[size=12] = Path.qLineSeparator() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileL ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = Path.qLineSeparator() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileL ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Path.qLineSeparator(charset: Charset = Charsets.UTF_8): QLineSeparator {
     this.bufferedReader(charset).use { reader ->
         var ch: Char
@@ -1400,44 +1401,44 @@ private fun Path.qLineSeparator(charset: Charset = Charsets.UTF_8): QLineSeparat
     }
 }
 
-// CallChain[size=11] = QFetchEnd <-[Ref]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[Cal ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = QFetchEnd <-[Ref]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[Cal ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private enum class QFetchEnd {
-    // CallChain[size=12] = QFetchEnd.FETCH_THIS_LINE_AND_GO_TO_NEXT_LINE <-[Propag]- QFetchEnd.END_WITH ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QFetchEnd.FETCH_THIS_LINE_AND_GO_TO_NEXT_LINE <-[Propag]- QFetchEnd.END_WITH ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     FETCH_THIS_LINE_AND_GO_TO_NEXT_LINE,
-    // CallChain[size=11] = QFetchEnd.END_WITH_THIS_LINE <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrc ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchEnd.END_WITH_THIS_LINE <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrc ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     END_WITH_THIS_LINE,
-    // CallChain[size=12] = QFetchEnd.END_WITH_NEXT_LINE <-[Propag]- QFetchEnd.END_WITH_THIS_LINE <-[Cal ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QFetchEnd.END_WITH_NEXT_LINE <-[Propag]- QFetchEnd.END_WITH_THIS_LINE <-[Cal ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     END_WITH_NEXT_LINE,
-    // CallChain[size=12] = QFetchEnd.END_WITH_PREVIOUS_LINE <-[Propag]- QFetchEnd.END_WITH_THIS_LINE <- ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QFetchEnd.END_WITH_PREVIOUS_LINE <-[Propag]- QFetchEnd.END_WITH_THIS_LINE <- ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     END_WITH_PREVIOUS_LINE
 }
 
-// CallChain[size=11] = QFetchStart <-[Ref]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[C ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = QFetchStart <-[Ref]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[C ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private enum class QFetchStart {
-    // CallChain[size=11] = QFetchStart.FETCH_THIS_LINE_AND_GO_TO_PREVIOUS_LINE <-[Call]- QFetchRule.SIN ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchStart.FETCH_THIS_LINE_AND_GO_TO_PREVIOUS_LINE <-[Call]- QFetchRule.SIN ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     FETCH_THIS_LINE_AND_GO_TO_PREVIOUS_LINE,
-    // CallChain[size=11] = QFetchStart.START_FROM_THIS_LINE <-[Call]- QFetchRule.SINGLE_LINE <-[Call]-  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchStart.START_FROM_THIS_LINE <-[Call]- QFetchRule.SINGLE_LINE <-[Call]-  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     START_FROM_THIS_LINE,
-    // CallChain[size=12] = QFetchStart.START_FROM_NEXT_LINE <-[Propag]- QFetchStart.FETCH_THIS_LINE_AND ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QFetchStart.START_FROM_NEXT_LINE <-[Propag]- QFetchStart.FETCH_THIS_LINE_AND ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     START_FROM_NEXT_LINE,
-    // CallChain[size=12] = QFetchStart.START_FROM_PREVIOUS_LINE <-[Propag]- QFetchStart.FETCH_THIS_LINE ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QFetchStart.START_FROM_PREVIOUS_LINE <-[Propag]- QFetchStart.FETCH_THIS_LINE ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     START_FROM_PREVIOUS_LINE
 }
 
-// CallChain[size=11] = QFetchRuleA <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[ ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = QFetchRuleA <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[ ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private abstract class QFetchRuleA(
     override val numLinesBeforeTargetLine: Int = 10,
     override val numLinesAfterTargetLine: Int = 10,
 ) : QFetchRule
 
-// CallChain[size=10] = QFetchRule <-[Ref]- QSrcCut.QSrcCut() <-[Call]- qLogStackFrames() <-[Call]-  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = QFetchRule <-[Ref]- QSrcCut.QSrcCut() <-[Call]- qLogStackFrames() <-[Call]-  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private interface QFetchRule {
-    // CallChain[size=11] = QFetchRule.numLinesBeforeTargetLine <-[Propag]- QFetchRule.SINGLE_LINE <-[Ca ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchRule.numLinesBeforeTargetLine <-[Propag]- QFetchRule.SINGLE_LINE <-[Ca ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val numLinesBeforeTargetLine: Int
-    // CallChain[size=11] = QFetchRule.numLinesAfterTargetLine <-[Propag]- QFetchRule.SINGLE_LINE <-[Cal ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchRule.numLinesAfterTargetLine <-[Propag]- QFetchRule.SINGLE_LINE <-[Cal ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val numLinesAfterTargetLine: Int
 
-    // CallChain[size=11] = QFetchRule.fetchStartCheck() <-[Propag]- QFetchRule.SINGLE_LINE <-[Call]- QS ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchRule.fetchStartCheck() <-[Propag]- QFetchRule.SINGLE_LINE <-[Call]- QS ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun fetchStartCheck(
         line: String,
         currentLineNumber: Int,
@@ -1446,7 +1447,7 @@ private interface QFetchRule {
         context: MutableSet<String>,
     ): QFetchStart
 
-    // CallChain[size=11] = QFetchRule.fetchEndCheck() <-[Propag]- QFetchRule.SINGLE_LINE <-[Call]- QSrc ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchRule.fetchEndCheck() <-[Propag]- QFetchRule.SINGLE_LINE <-[Call]- QSrc ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun fetchEndCheck(
         line: String,
         currentLineNumber: Int,
@@ -1456,7 +1457,7 @@ private interface QFetchRule {
     ): QFetchEnd
 
     companion object {
-        // CallChain[size=10] = QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[Call]- qLogStackFrames ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=10] = QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[Call]- qLogStackFrames ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val SINGLE_LINE = object : QFetchRuleA(0, 0) {
             override fun fetchStartCheck(
                 line: String,
@@ -1483,7 +1484,7 @@ private interface QFetchRule {
             }
         }
 
-        // CallChain[size=5] = QFetchRule.SMART_FETCH_INFIX <-[Call]- QSrcCut.MULTILINE_INFIX_NOCUT <-[Call]- qThrowIt() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=5] = QFetchRule.SMART_FETCH_INFIX <-[Call]- QSrcCut.MULTILINE_INFIX_NOCUT <-[Call]- qThrowIt() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val SMART_FETCH_INFIX = object : QFetchRuleA(10, 10) {
             // """               <<< targetLine
             // some text
@@ -1532,7 +1533,7 @@ private interface QFetchRule {
             }
         }
 
-        // CallChain[size=9] = QFetchRule.SMART_FETCH <-[Call]- qLogStackFrames() <-[Call]- QException.mySrc ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=9] = QFetchRule.SMART_FETCH <-[Call]- qLogStackFrames() <-[Call]- QException.mySrc ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val SMART_FETCH = object : QFetchRuleA(10, 10) {
             override fun fetchStartCheck(
                 line: String,
@@ -1604,7 +1605,7 @@ private interface QFetchRule {
     }
 }
 
-// CallChain[size=14] = LineNumberReader.qFetchLinesBetween() <-[Call]- LineNumberReader.qFetchTarge ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = LineNumberReader.qFetchLinesBetween() <-[Call]- LineNumberReader.qFetchTarge ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun LineNumberReader.qFetchLinesBetween(
     lineNumberStartInclusive: Int,
     lineNumberEndInclusive: Int,
@@ -1631,7 +1632,7 @@ private fun LineNumberReader.qFetchLinesBetween(
     return lines
 }
 
-// CallChain[size=14] = TargetSurroundingLines <-[Ref]- LineNumberReader.qFetchTargetSurroundingLine ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = TargetSurroundingLines <-[Ref]- LineNumberReader.qFetchTargetSurroundingLine ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class TargetSurroundingLines(
     val targetLineNumber: Int,
     val startLineNumber: Int,
@@ -1640,7 +1641,7 @@ private class TargetSurroundingLines(
     val linesBeforeTargetLine: List<String>,
     val linesAfterTargetLine: List<String>,
 ) {
-    // CallChain[size=13] = TargetSurroundingLines.linesBetween() <-[Call]- LineNumberReader.qFetchLines ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = TargetSurroundingLines.linesBetween() <-[Call]- LineNumberReader.qFetchLines ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun linesBetween(lineNumberStartInclusive: Int, lineNumberEndInclusive: Int): List<String> {
         val lines = mutableListOf<String>()
 
@@ -1655,7 +1656,7 @@ private class TargetSurroundingLines(
     }
 }
 
-// CallChain[size=13] = LineNumberReader.qFetchTargetSurroundingLines() <-[Call]- LineNumberReader.q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = LineNumberReader.qFetchTargetSurroundingLines() <-[Call]- LineNumberReader.q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun LineNumberReader.qFetchTargetSurroundingLines(
     targetLineNumber: Int,
     numLinesBeforeTargetLine: Int = 10,
@@ -1676,7 +1677,7 @@ private fun LineNumberReader.qFetchTargetSurroundingLines(
     )
 }
 
-// CallChain[size=12] = LineNumberReader.qFetchLinesAround() <-[Call]- Path.qFetchLinesAround() <-[C ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = LineNumberReader.qFetchLinesAround() <-[Call]- Path.qFetchLinesAround() <-[C ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun LineNumberReader.qFetchLinesAround(
     file: Path,
     targetLineNumber: Int,
@@ -1781,7 +1782,7 @@ private fun LineNumberReader.qFetchLinesAround(
     }
 }
 
-// CallChain[size=12] = Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtF ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtF ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Path.qReader(
     charset: Charset = Charsets.UTF_8,
     buffSize: Int = qBUFFER_SIZE,
@@ -1790,7 +1791,7 @@ private fun Path.qReader(
     return LineNumberReader(reader(charset, *opts.toOptEnums()), buffSize)
 }
 
-// CallChain[size=11] = Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtFrame() <-[Call]- qMySrcLi ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtFrame() <-[Call]- qMySrcLi ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Path.qFetchLinesAround(
     lineNumber: Int,
     fetchRule: QFetchRule = QFetchRule.SMART_FETCH,
@@ -1815,7 +1816,7 @@ private fun Path.qFetchLinesAround(
     }
 }
 
-// CallChain[size=12] = Path.qLineAt() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtF ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = Path.qLineAt() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtF ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Path.qLineAt(
     lineNumber: Int,
     charset: Charset = Charsets.UTF_8,
@@ -1838,20 +1839,20 @@ private fun Path.qLineAt(
     }
 }
 
-// CallChain[size=13] = QFType <-[Ref]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() <-[Call ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = QFType <-[Ref]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() <-[Call ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private enum class QFType {
-    // CallChain[size=17] = QFType.Any <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=17] = QFType.Any <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Any,
-    // CallChain[size=13] = QFType.File <-[Call]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() < ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QFType.File <-[Call]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() < ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     File,
-    // CallChain[size=17] = QFType.Dir <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=17] = QFType.Dir <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Dir,
-    // CallChain[size=17] = QFType.SymLink <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Pa ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=17] = QFType.SymLink <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Pa ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     SymLink,
-    // CallChain[size=17] = QFType.FileOrDir <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]-  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=17] = QFType.FileOrDir <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]-  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     FileOrDir;
 
-    // CallChain[size=16] = QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.qList() <-[Call]- Path ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=16] = QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.qList() <-[Call]- Path ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun matches(path: Path?, followSymLink: Boolean = true): Boolean {
         if (path == null) return false
 
@@ -1870,7 +1871,7 @@ private enum class QFType {
     }
 }
 
-// CallChain[size=12] = Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLines ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLines ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Collection<Path>.qFind(nameMatcher: QM, type: QFType = QFType.File, maxDepth: Int = 1): Path? {
     for (path in this) {
         val found = path.qFind(nameMatcher, type, maxDepth)
@@ -1880,7 +1881,7 @@ private fun Collection<Path>.qFind(nameMatcher: QM, type: QFType = QFType.File, 
     return null
 }
 
-// CallChain[size=13] = Path.qFind() <-[Call]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame()  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = Path.qFind() <-[Call]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame()  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Path.qFind(nameMatcher: QM, type: QFType = QFType.File, maxDepth: Int = 1): Path? {
     return try {
         qList(type, maxDepth = maxDepth) {
@@ -1891,7 +1892,7 @@ private fun Path.qFind(nameMatcher: QM, type: QFType = QFType.File, maxDepth: In
     }
 }
 
-// CallChain[size=10] = Path.qListByMatch() <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() < ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = Path.qListByMatch() <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() < ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Path.qListByMatch(
     nameMatch: QM,
     type: QFType = QFType.File,
@@ -1905,7 +1906,7 @@ private fun Path.qListByMatch(
     }
 }
 
-// CallChain[size=14] = Path.qList() <-[Call]- Path.qFind() <-[Call]- Collection<Path>.qFind() <-[Ca ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = Path.qList() <-[Call]- Path.qFind() <-[Call]- Collection<Path>.qFind() <-[Ca ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Path.qList(
     type: QFType = QFType.File,
     maxDepth: Int = 1,
@@ -1924,7 +1925,7 @@ private fun Path.qList(
     ).toList()
 }
 
-// CallChain[size=15] = Path.qSeq() <-[Call]- Path.qList() <-[Call]- Path.qFind() <-[Call]- Collecti ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=15] = Path.qSeq() <-[Call]- Path.qList() <-[Call]- Path.qFind() <-[Call]- Collecti ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Path.qSeq(
     type: QFType = QFType.File,
     maxDepth: Int = 1,
@@ -1952,23 +1953,23 @@ private fun Path.qSeq(
     }
 }
 
-// CallChain[size=13] = QFlag <-[Ref]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[Call]- q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = QFlag <-[Ref]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[Call]- q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 /**
  * Only Enum or QFlag can implement this interface.
  */
 private sealed interface QFlag<T> where T : QFlag<T>, T : Enum<T> {
-    // CallChain[size=15] = QFlag.bits <-[Propag]- QFlag.toEnumValues() <-[Call]- QFlag<QOpenOpt>.toOptE ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QFlag.bits <-[Propag]- QFlag.toEnumValues() <-[Call]- QFlag<QOpenOpt>.toOptE ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val bits: Int
 
-    // CallChain[size=15] = QFlag.contains() <-[Propag]- QFlag.toEnumValues() <-[Call]- QFlag<QOpenOpt>. ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QFlag.contains() <-[Propag]- QFlag.toEnumValues() <-[Call]- QFlag<QOpenOpt>. ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun contains(flags: QFlag<T>): Boolean {
         return (bits and flags.bits) == flags.bits
     }
 
-    // CallChain[size=14] = QFlag.toEnumValues() <-[Call]- QFlag<QOpenOpt>.toOptEnums() <-[Call]- Path.q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=14] = QFlag.toEnumValues() <-[Call]- QFlag<QOpenOpt>.toOptEnums() <-[Call]- Path.q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun toEnumValues(): List<T>
 
-    // CallChain[size=15] = QFlag.str() <-[Propag]- QFlag.toEnumValues() <-[Call]- QFlag<QOpenOpt>.toOpt ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QFlag.str() <-[Propag]- QFlag.toEnumValues() <-[Call]- QFlag<QOpenOpt>.toOpt ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun str(): String {
         return toEnumValues().joinToString(", ") { it.name }
     }
@@ -1977,7 +1978,7 @@ private sealed interface QFlag<T> where T : QFlag<T>, T : Enum<T> {
         // https://discuss.kotlinlang.org/t/reified-generics-on-class-level/16711/2
         // But, can't make constructor private ...
 
-        // CallChain[size=13] = QFlag.none() <-[Call]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[ ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=13] = QFlag.none() <-[Call]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[ ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         inline fun <reified T>
         none(): QFlag<T> where T : QFlag<T>, T : Enum<T> {
             return QFlagSet<T>(T::class, 0)
@@ -1985,24 +1986,24 @@ private sealed interface QFlag<T> where T : QFlag<T>, T : Enum<T> {
     }
 }
 
-// CallChain[size=14] = QFlagEnum <-[Ref]- QOpenOpt <-[Ref]- Path.qReader() <-[Call]- Path.qFetchLin ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = QFlagEnum <-[Ref]- QOpenOpt <-[Ref]- Path.qReader() <-[Call]- Path.qFetchLin ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private interface QFlagEnum<T> : QFlag<T> where T : QFlag<T>, T : Enum<T> {
-    // CallChain[size=15] = QFlagEnum.bits <-[Propag]- QFlagEnum <-[Ref]- QOpenOpt <-[Ref]- Path.qReader ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QFlagEnum.bits <-[Propag]- QFlagEnum <-[Ref]- QOpenOpt <-[Ref]- Path.qReader ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override val bits: Int
         get() = 1 shl (this as T).ordinal
-    // CallChain[size=15] = QFlagEnum.toEnumValues() <-[Propag]- QFlagEnum <-[Ref]- QOpenOpt <-[Ref]- Pa ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QFlagEnum.toEnumValues() <-[Propag]- QFlagEnum <-[Ref]- QOpenOpt <-[Ref]- Pa ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun toEnumValues(): List<T> = listOf(this) as List<T>
 }
 
-// CallChain[size=14] = QFlagSet <-[Call]- QFlag.none() <-[Call]- Path.qReader() <-[Call]- Path.qFet ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = QFlagSet <-[Call]- QFlag.none() <-[Call]- Path.qReader() <-[Call]- Path.qFet ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 /**
  * Mutable bit flag
  */
 private class QFlagSet<T>(val enumClass: KClass<T>, override var bits: Int) : QFlag<T> where T : QFlag<T>, T : Enum<T> {
-    // CallChain[size=16] = QFlagSet.enumValues <-[Call]- QFlagSet.toEnumValues() <-[Propag]- QFlagSet < ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=16] = QFlagSet.enumValues <-[Call]- QFlagSet.toEnumValues() <-[Propag]- QFlagSet < ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val enumValues: Array<T> by lazy { enumClass.qEnumValues() }
 
-    // CallChain[size=15] = QFlagSet.toEnumValues() <-[Propag]- QFlagSet <-[Call]- QFlag.none() <-[Call] ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QFlagSet.toEnumValues() <-[Propag]- QFlagSet <-[Call]- QFlag.none() <-[Call] ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun toEnumValues(): List<T> =
         enumValues.filter { contains(it) }
 }
@@ -2031,7 +2032,7 @@ private fun Long.qFormatDuration(unit: QUnit = QUnit.Nano): String {
         QUnit.Milli ->
             Duration.ofMillis(this).qFormat()
         QUnit.Micro ->
-            Duration.ofNanos(this).qFormat()
+            Duration.ofNanos(this * 1000).qFormat()
         QUnit.Nano ->
             Duration.ofNanos(this).qFormat()
         QUnit.Second ->
@@ -2057,6 +2058,10 @@ private fun Duration.qToNanoOnlyPart(): Int {
 
 // CallChain[size=7] = Duration.qFormat() <-[Call]- Long.qFormatDuration() <-[Call]- QTestResult.str <-[Call]- QTestResult.printIt() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
 private fun Duration.qFormat(detail: Boolean = false): String {
+    if(this.isZero) {
+        return "0"
+    }
+
     val du = abs()
 
     val maxUnit: QUnit = du.let {
@@ -2132,16 +2137,16 @@ private fun Duration.qFormat(detail: Boolean = false): String {
     return parts.joinToString(" ")
 }
 
-// CallChain[size=12] = qARROW <-[Call]- qArrow() <-[Call]- QLogStyle.qLogArrow() <-[Call]- QLogStyl ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = qARROW <-[Call]- qArrow() <-[Call]- QLogStyle.qLogArrow() <-[Call]- QLogStyl ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val qARROW = "===>".light_cyan
 
-// CallChain[size=4] = qIsDebugging <-[Call]- qOkToTest() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = qIsDebugging <-[Call]- qOkToTest() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 // https://stackoverflow.com/a/28754689/5570400
 private val qIsDebugging by lazy {
     java.lang.management.ManagementFactory.getRuntimeMXBean().inputArguments.toString().indexOf("jdwp") >= 0
 }
 
-// CallChain[size=4] = qIsTesting <-[Call]- qOkToTest() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = qIsTesting <-[Call]- qOkToTest() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 // https://stackoverflow.com/a/12717377/5570400
 private val qIsTesting by lazy {
     qStackFrames(size = Int.MAX_VALUE).any {
@@ -2150,30 +2155,30 @@ private val qIsTesting by lazy {
     }
 }
 
-// CallChain[size=6] = QSrcCut <-[Ref]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = QSrcCut <-[Ref]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QSrcCut(
         val fetchRule: QFetchRule = QFetchRule.SINGLE_LINE,
         val cut: (srcLines: String) -> String,
 ) {
     companion object {
-        // CallChain[size=10] = QSrcCut.CUT_PARAM_qLog <-[Call]- QSrcCut.SINGLE_qLog_PARAM <-[Call]- qLogSta ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=10] = QSrcCut.CUT_PARAM_qLog <-[Call]- QSrcCut.SINGLE_qLog_PARAM <-[Call]- qLogSta ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         private val CUT_PARAM_qLog = { mySrc: String ->
             mySrc.replaceFirst("""(?s)^\s*(\S.+)\.qLog[a-zA-Z]{0,10}.*$""".re, "$1")
         }
 
-        // CallChain[size=9] = QSrcCut.SINGLE_qLog_PARAM <-[Call]- qLogStackFrames() <-[Call]- QException.my ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=9] = QSrcCut.SINGLE_qLog_PARAM <-[Call]- qLogStackFrames() <-[Call]- QException.my ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val SINGLE_qLog_PARAM = QSrcCut(QFetchRule.SINGLE_LINE, CUT_PARAM_qLog)
-        // CallChain[size=6] = QSrcCut.MULTILINE_NOCUT <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=6] = QSrcCut.MULTILINE_NOCUT <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val MULTILINE_NOCUT = QSrcCut(QFetchRule.SMART_FETCH) { it }
-        // CallChain[size=4] = QSrcCut.MULTILINE_INFIX_NOCUT <-[Call]- qThrowIt() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=4] = QSrcCut.MULTILINE_INFIX_NOCUT <-[Call]- qThrowIt() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val MULTILINE_INFIX_NOCUT = QSrcCut(QFetchRule.SMART_FETCH_INFIX) { it }
-        // CallChain[size=10] = QSrcCut.NOCUT_JUST_SINGLE_LINE <-[Call]- qMySrcLinesAtFrame() <-[Call]- qLog ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=10] = QSrcCut.NOCUT_JUST_SINGLE_LINE <-[Call]- qMySrcLinesAtFrame() <-[Call]- qLog ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val NOCUT_JUST_SINGLE_LINE = QSrcCut(QFetchRule.SINGLE_LINE) { it }
         
     }
 }
 
-// CallChain[size=9] = QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- QException.mySrcAndStack ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=9] = QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- QException.mySrcAndStack ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QLogStyle(
         val stackSize: Int,
         val out: QOut = QMyLog.out,
@@ -2184,7 +2189,7 @@ private class QLogStyle(
 ) {
     @Suppress("UNUSED_PARAMETER")
     companion object {
-        // CallChain[size=9] = QLogStyle.String.clarifySrcRegion() <-[Call]- QLogStyle.SRC_AND_STACK <-[Call ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=9] = QLogStyle.String.clarifySrcRegion() <-[Call]- QLogStyle.SRC_AND_STACK <-[Call ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         fun String.clarifySrcRegion(onlyIf: QOnlyIfStr = QOnlyIfStr.Multiline): String {
             if (!onlyIf.matches(this))
                 return this
@@ -2194,7 +2199,7 @@ ${this.trim()}
 ${"SRC END   ―――――――――――".qColor(QShColor.Cyan)}"""
         }
 
-        // CallChain[size=10] = QLogStyle.qLogArrow() <-[Call]- QLogStyle.S <-[Call]- qLogStackFrames() <-[C ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=10] = QLogStyle.qLogArrow() <-[Call]- QLogStyle.S <-[Call]- qLogStackFrames() <-[C ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         fun qLogArrow(mySrc: String, msg: String): String {
             return if (mySrc.startsWith("\"") && mySrc.endsWith("\"") && mySrc.substring(1, mySrc.length - 1)
                             .matches("""[\w\s]+""".re)
@@ -2207,7 +2212,7 @@ ${"SRC END   ―――――――――――".qColor(QShColor.Cyan)}"""
             }
         }
 
-        // CallChain[size=8] = QLogStyle.SRC_AND_STACK <-[Call]- QException.mySrcAndStack <-[Call]- QExcepti ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=8] = QLogStyle.SRC_AND_STACK <-[Call]- QException.mySrcAndStack <-[Call]- QExcepti ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val SRC_AND_STACK: QLogStyle
             get() = QLogStyle(1) { _, mySrc, _, stackTrace ->
                 """
@@ -2224,7 +2229,7 @@ $stackTrace
 """.trim()
             }
 
-        // CallChain[size=9] = QLogStyle.S <-[Call]- qLogStackFrames() <-[Call]- QException.mySrcAndStack <- ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=9] = QLogStyle.S <-[Call]- qLogStackFrames() <-[Call]- QException.mySrcAndStack <- ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val S: QLogStyle
             get() = QLogStyle(1) { msg, mySrc, _, stackTrace ->
                 """
@@ -2237,7 +2242,7 @@ $stackTrace
     }
 }
 
-// CallChain[size=9] = qMySrcLinesAtFrame() <-[Call]- qLogStackFrames() <-[Call]- QException.mySrcAn ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=9] = qMySrcLinesAtFrame() <-[Call]- qLogStackFrames() <-[Call]- QException.mySrcAn ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qMySrcLinesAtFrame(
         frame: StackFrame,
         srcCut: QSrcCut = QSrcCut.NOCUT_JUST_SINGLE_LINE,
@@ -2255,11 +2260,11 @@ private fun qMySrcLinesAtFrame(
         src2
     } catch (e: Exception) {
 //        e.message
-        "${QMyMark.WARN} Couldn't cut src lines : ${qBrackets("FileName", frame.fileName, "LineNo", frame.lineNumber, "SrcRoots", srcRoots)}"
+        "${QMyMark.warn} Couldn't cut src lines : ${qBrackets("FileName", frame.fileName, "LineNo", frame.lineNumber, "SrcRoots", srcRoots)}"
     }
 }
 
-// CallChain[size=8] = qLogStackFrames() <-[Call]- QException.mySrcAndStack <-[Call]- QException.pri ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=8] = qLogStackFrames() <-[Call]- QException.mySrcAndStack <-[Call]- QException.pri ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qLogStackFrames(
         frames: List<StackFrame>,
         msg: Any? = "",
@@ -2305,7 +2310,7 @@ private fun qLogStackFrames(
     return if (noColor) output.noStyle else output
 }
 
-// CallChain[size=10] = qSrcFileLinesAtFrame() <-[Call]- qMySrcLinesAtFrame() <-[Call]- qLogStackFra ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = qSrcFileLinesAtFrame() <-[Call]- qMySrcLinesAtFrame() <-[Call]- qLogStackFra ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qSrcFileLinesAtFrame(
         srcRoots: List<Path> = QMyPath.src_root,
         pkgDirHint: String? = null,
@@ -2319,7 +2324,7 @@ private fun qSrcFileLinesAtFrame(
     return srcFile.qFetchLinesAround(frame.lineNumber, fetchRule, charset, lineSeparator)
 }
 
-// CallChain[size=11] = qArrow() <-[Call]- QLogStyle.qLogArrow() <-[Call]- QLogStyle.S <-[Call]- qLo ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = qArrow() <-[Call]- QLogStyle.qLogArrow() <-[Call]- QLogStyle.S <-[Call]- qLo ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qArrow(key: Any?, value: Any?): String {
     val keyStr = key.qToLogString()
             .qWithNewLinePrefix(onlyIf = QOnlyIfStr.Multiline)
@@ -2331,7 +2336,7 @@ private fun qArrow(key: Any?, value: Any?): String {
     return "$keyStr$qARROW$valStr"
 }
 
-// CallChain[size=4] = String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 /**
  * ```
  * [key1]  value1   [key2]  value2
@@ -2345,7 +2350,7 @@ private fun String.qBracketEnd(value: Any?): String {
     return "[$this]$valStr"
 }
 
-// CallChain[size=4] = String.qBracketStartOrMiddle() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = String.qBracketStartOrMiddle() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 /**
  * ```
  * [key1]  value1   [key2]  value2
@@ -2358,7 +2363,7 @@ private fun String.qBracketStartOrMiddle(value: Any?): String {
     return "[$this]$valStr"
 }
 
-// CallChain[size=3] = qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qBrackets(vararg keysAndValues: Any?): String {
     if (keysAndValues.size % 2 != 0) {
         QE.ShouldBeEvenNumber.throwItBrackets("KeysAndValues.size", keysAndValues.size)
@@ -2373,22 +2378,22 @@ private fun qBrackets(vararg keysAndValues: Any?): String {
     }.joinToString("")
 }
 
-// CallChain[size=10] = QOut <-[Ref]- QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- QExceptio ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = QOut <-[Ref]- QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- QExceptio ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private interface QOut {
-    // CallChain[size=12] = QOut.isAcceptColoredText <-[Propag]- QOut.CONSOLE <-[Call]- QMyLog.out <-[Ca ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QOut.isAcceptColoredText <-[Propag]- QOut.CONSOLE <-[Call]- QMyLog.out <-[Ca ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val isAcceptColoredText: Boolean
 
-    // CallChain[size=12] = QOut.print() <-[Propag]- QOut.CONSOLE <-[Call]- QMyLog.out <-[Call]- QLogSty ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QOut.print() <-[Propag]- QOut.CONSOLE <-[Call]- QMyLog.out <-[Call]- QLogSty ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun print(msg: Any? = "")
 
-    // CallChain[size=12] = QOut.println() <-[Propag]- QOut.CONSOLE <-[Call]- QMyLog.out <-[Call]- QLogS ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QOut.println() <-[Propag]- QOut.CONSOLE <-[Call]- QMyLog.out <-[Call]- QLogS ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun println(msg: Any? = "")
 
-    // CallChain[size=12] = QOut.close() <-[Propag]- QOut.CONSOLE <-[Call]- QMyLog.out <-[Call]- QLogSty ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QOut.close() <-[Propag]- QOut.CONSOLE <-[Call]- QMyLog.out <-[Call]- QLogSty ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun close()
 
     companion object {
-        // CallChain[size=11] = QOut.CONSOLE <-[Call]- QMyLog.out <-[Call]- QLogStyle <-[Ref]- QLogStyle.SRC ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=11] = QOut.CONSOLE <-[Call]- QMyLog.out <-[Call]- QLogStyle <-[Ref]- QLogStyle.SRC ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val CONSOLE: QOut = QConsole(true)
 
         
@@ -2400,9 +2405,9 @@ private fun QOut.separator(start: String = "\n", end: String = "\n") {
     this.println(qSeparator(start = start, end = end))
 }
 
-// CallChain[size=12] = QConsole <-[Call]- QOut.CONSOLE <-[Call]- QMyLog.out <-[Call]- QLogStyle <-[ ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = QConsole <-[Call]- QOut.CONSOLE <-[Call]- QMyLog.out <-[Call]- QLogStyle <-[ ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QConsole(override val isAcceptColoredText: Boolean) : QOut {
-    // CallChain[size=13] = QConsole.print() <-[Propag]- QConsole <-[Call]- QOut.CONSOLE <-[Call]- QMyLo ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QConsole.print() <-[Propag]- QConsole <-[Call]- QOut.CONSOLE <-[Call]- QMyLo ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun print(msg: Any?) {
         if (isAcceptColoredText) {
             kotlin.io.print(msg.toString())
@@ -2411,12 +2416,12 @@ private class QConsole(override val isAcceptColoredText: Boolean) : QOut {
         }
     }
 
-    // CallChain[size=13] = QConsole.println() <-[Propag]- QConsole <-[Call]- QOut.CONSOLE <-[Call]- QMy ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QConsole.println() <-[Propag]- QConsole <-[Call]- QOut.CONSOLE <-[Call]- QMy ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun println(msg: Any?) {
         kotlin.io.println(msg.toString())
     }
 
-    // CallChain[size=13] = QConsole.close() <-[Propag]- QConsole <-[Call]- QOut.CONSOLE <-[Call]- QMyLo ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QConsole.close() <-[Propag]- QConsole <-[Call]- QOut.CONSOLE <-[Call]- QMyLo ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun close() {
         // Do nothing
     }
@@ -2439,7 +2444,7 @@ private fun Method.qName(withParenthesis: Boolean = false): String {
     }
 }
 
-// CallChain[size=6] = KClass<*>.qFunctions() <-[Call]- qToStringRegistry <-[Call]- Any?.qToString() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = KClass<*>.qFunctions() <-[Call]- qToStringRegistry <-[Call]- Any.qToString() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun KClass<*>.qFunctions(matcher: QMFunc = QMFunc.DeclaredOnly and QMFunc.IncludeExtensionsInClass): List<KFunction<*>> {
     val list = mutableListOf<KFunction<*>>()
 
@@ -2464,7 +2469,7 @@ private fun KClass<*>.qFunctions(matcher: QMFunc = QMFunc.DeclaredOnly and QMFun
     return list
 }
 
-// CallChain[size=17] = KClass<E>.qEnumValues() <-[Call]- QFlagSet.enumValues <-[Call]- QFlagSet.toE ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=17] = KClass<E>.qEnumValues() <-[Call]- QFlagSet.enumValues <-[Call]- QFlagSet.toE ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun <E : Enum<E>> KClass<E>.qEnumValues(): Array<E> {
     return java.enumConstants as Array<E>
 }
@@ -2473,7 +2478,7 @@ private fun <E : Enum<E>> KClass<E>.qEnumValues(): Array<E> {
 private val qThisSrcLineSignature: String
     get() = qCallerSrcLineSignature()
 
-// CallChain[size=11] = qSrcFileAtFrame() <-[Call]- qSrcFileLinesAtFrame() <-[Call]- qMySrcLinesAtFr ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = qSrcFileAtFrame() <-[Call]- qSrcFileLinesAtFrame() <-[Call]- qMySrcLinesAtFr ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qSrcFileAtFrame(frame: StackFrame, srcRoots: List<Path> = QMyPath.src_root, pkgDirHint: String? = null): Path = qCacheItOneSec(
         frame.fileName + frame.lineNumber + srcRoots.map { it }.joinToString() + pkgDirHint
 ) {
@@ -2526,7 +2531,7 @@ private fun qCallerSrcLineSignature(stackDepth: Int = 0): String {
     }
 }
 
-// CallChain[size=8] = qStackFrames() <-[Call]- QException.stackFrames <-[Call]- QException.getStack ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=8] = qStackFrames() <-[Call]- QException.stackFrames <-[Call]- QException.getStack ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private inline fun qStackFrames(
         stackDepth: Int = 0,
         size: Int = 1,
@@ -2537,7 +2542,7 @@ private inline fun qStackFrames(
     }
 }
 
-// CallChain[size=11] = qStackFrame() <-[Call]- qSrcFileLinesAtFrame() <-[Call]- qMySrcLinesAtFrame( ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = qStackFrame() <-[Call]- qSrcFileLinesAtFrame() <-[Call]- qMySrcLinesAtFrame( ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private inline fun qStackFrame(
         stackDepth: Int = 0,
         noinline filter: (StackFrame) -> Boolean = qSTACK_FRAME_FILTER,
@@ -2554,7 +2559,7 @@ private fun qStackFrameEntryMethod(filter: (StackFrame) -> Boolean): StackFrame 
             }.qaNotNull()
 }
 
-// CallChain[size=7] = KType.qToClass() <-[Call]- KType.qIsSuperclassOf() <-[Call]- qToStringRegistr ... ing() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = KType.qToClass() <-[Call]- KType.qIsSuperclassOf() <-[Call]- qToStringRegistr ... tring() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun KType.qToClass(): KClass<*>? {
     return if (this.classifier != null && this.classifier is KClass<*>) {
         this.classifier as KClass<*>
@@ -2563,7 +2568,7 @@ private fun KType.qToClass(): KClass<*>? {
     }
 }
 
-// CallChain[size=6] = KType.qIsSuperclassOf() <-[Call]- qToStringRegistry <-[Call]- Any?.qToString() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = KType.qIsSuperclassOf() <-[Call]- qToStringRegistry <-[Call]- Any.qToString() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun KType.qIsSuperclassOf(cls: KClass<*>): Boolean {
     return try {
         val thisClass = qToClass()
@@ -2670,31 +2675,31 @@ private fun qCallerFileMainClass(stackDepth: Int = 0): Class<*> {
     return Class.forName(clsName)
 }
 
-// CallChain[size=9] = RO <-[Ref]- qRe() <-[Call]- QException.mySrcAndStack <-[Call]- QException.pri ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=9] = RO <-[Ref]- qRe() <-[Call]- QException.mySrcAndStack <-[Call]- QException.pri ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private typealias RO = RegexOption
 
-// CallChain[size=8] = qRe() <-[Call]- QException.mySrcAndStack <-[Call]- QException.printStackTrace ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=8] = qRe() <-[Call]- QException.mySrcAndStack <-[Call]- QException.printStackTrace ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun qRe(@Language("RegExp") regex: String, vararg opts: RO): Regex {
     return qCacheItOneSecThreadLocal(regex + opts.contentToString()) {
         Regex(regex, setOf(*opts))
     }
 }
 
-// CallChain[size=10] = re <-[Call]- QFetchRule.SMART_FETCH <-[Call]- qLogStackFrames() <-[Call]- QE ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = @receiver:Language("RegExp") String.re <-[Call]- QFetchRule.SMART_FETCH <-[C ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 // https://youtrack.jetbrains.com/issue/KTIJ-5643
 private val @receiver:Language("RegExp") String.re: Regex
     get() = qRe(this)
 
-// CallChain[size=6] = qBG_JUMP <-[Call]- QShColor.bg <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = qBG_JUMP <-[Call]- QShColor.bg <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private const val qBG_JUMP = 10
 
-// CallChain[size=6] = qSTART <-[Call]- QShColor.bg <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = qSTART <-[Call]- QShColor.bg <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private const val qSTART = "\u001B["
 
-// CallChain[size=7] = qEND <-[Call]- String.qApplyEscapeLine() <-[Call]- String.qApplyEscapeLine()  ... ring.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = qEND <-[Call]- String.qApplyEscapeLine() <-[Call]- String.qApplyEscapeLine()  ... Color() <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private const val qEND = "${qSTART}0m"
 
-// CallChain[size=7] = String.qApplyEscapeNestable() <-[Call]- String.qApplyEscapeLine() <-[Call]- S ... ring.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = String.qApplyEscapeNestable() <-[Call]- String.qApplyEscapeLine() <-[Call]- S ... Color() <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qApplyEscapeNestable(start: String): String {
     val lastEnd = this.endsWith(qEND)
 
@@ -2705,7 +2710,7 @@ private fun String.qApplyEscapeNestable(start: String): String {
         }
 }
 
-// CallChain[size=4] = String.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = String.qColor() <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qColor(fg: QShColor? = null, bg: QShColor? = null, nestable: Boolean = this.contains(qSTART)): String {
     return if (this.qIsSingleLine()) {
         this.qApplyEscapeLine(fg, bg, nestable)
@@ -2716,7 +2721,7 @@ private fun String.qColor(fg: QShColor? = null, bg: QShColor? = null, nestable: 
     }
 }
 
-// CallChain[size=3] = String.qDeco() <-[Call]- italic <-[Call]- QShColorTest.italic()[Root]
+// CallChain[size=3] = String.qDeco() <-[Call]- String.italic <-[Call]- QShColorTest.italic()[Root]
 private fun String.qDeco(deco: QShDeco): String {
     return if (this.qIsSingleLine()) {
         this.qApplyEscapeLine(arrayOf(deco.start), nestable = this.contains(qSTART))
@@ -2727,7 +2732,7 @@ private fun String.qDeco(deco: QShDeco): String {
     }
 }
 
-// CallChain[size=5] = String.qApplyEscapeLine() <-[Call]- String.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = String.qApplyEscapeLine() <-[Call]- String.qColor() <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qApplyEscapeLine(fg: QShColor?, bg: QShColor?, nestable: Boolean): String {
     return this.qApplyEscapeLine(
         listOfNotNull(fg?.fg, bg?.bg).toTypedArray(),
@@ -2735,7 +2740,7 @@ private fun String.qApplyEscapeLine(fg: QShColor?, bg: QShColor?, nestable: Bool
     )
 }
 
-// CallChain[size=6] = String.qApplyEscapeLine() <-[Call]- String.qApplyEscapeLine() <-[Call]- String.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = String.qApplyEscapeLine() <-[Call]- String.qApplyEscapeLine() <-[Call]- String.qColor() <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qApplyEscapeLine(
     startSequences: Array<String>,
     nestable: Boolean
@@ -2755,12 +2760,6 @@ private fun String.qApplyEscapeLine(
     return text
 }
 
-// CallChain[size=3] = noStyle <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
-private val String.noStyle: String
-    get() {
-        return this.replace("""\Q$qSTART\E\d{1,2}m""".re, "")
-    }
-
 // CallChain[size=3] = QShDeco <-[Ref]- String.qColorAndDecoDebug() <-[Call]- QShColorTest.nest2()[Root]
 private enum class QShDeco(val code: Int) {
     // CallChain[size=4] = QShDeco.Bold <-[Propag]- QShDeco.start <-[Call]- String.qColorAndDecoDebug() <-[Call]- QShColorTest.nest2()[Root]
@@ -2779,61 +2778,61 @@ private enum class QShDeco(val code: Int) {
     }
 }
 
-// CallChain[size=4] = QShColor <-[Ref]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = QShColor <-[Ref]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private enum class QShColor(val code: Int) {
-    // CallChain[size=5] = QShColor.Black <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.Black <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Black(30),
-    // CallChain[size=5] = QShColor.Red <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.Red <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Red(31),
-    // CallChain[size=5] = QShColor.Green <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.Green <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Green(32),
-    // CallChain[size=5] = QShColor.Yellow <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.Yellow <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Yellow(33),
-    // CallChain[size=5] = QShColor.Blue <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.Blue <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Blue(34),
-    // CallChain[size=5] = QShColor.Purple <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.Purple <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Purple(35),
-    // CallChain[size=5] = QShColor.Cyan <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.Cyan <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Cyan(36),
-    // CallChain[size=5] = QShColor.LightGray <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.LightGray <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LightGray(37),
 
-    // CallChain[size=5] = QShColor.DefaultFG <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.DefaultFG <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     DefaultFG(39),
-    // CallChain[size=5] = QShColor.DefaultBG <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.DefaultBG <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     DefaultBG(49),
 
-    // CallChain[size=5] = QShColor.DarkGray <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.DarkGray <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     DarkGray(90),
-    // CallChain[size=5] = QShColor.LightRed <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.LightRed <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LightRed(91),
-    // CallChain[size=4] = QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=4] = QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LightGreen(92),
-    // CallChain[size=5] = QShColor.LightYellow <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.LightYellow <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LightYellow(93),
-    // CallChain[size=5] = QShColor.LightBlue <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.LightBlue <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LightBlue(94),
-    // CallChain[size=5] = QShColor.LightPurple <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.LightPurple <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LightPurple(95),
-    // CallChain[size=5] = QShColor.LightCyan <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.LightCyan <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LightCyan(96),
-    // CallChain[size=5] = QShColor.White <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.White <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     White(97);
 
-    // CallChain[size=5] = QShColor.fg <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.fg <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val fg: String = "$qSTART${code}m"
 
-    // CallChain[size=5] = QShColor.bg <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.bg <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val bg: String = "$qSTART${code + qBG_JUMP}m"
 
     companion object {
-        // CallChain[size=5] = QShColor.random() <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=5] = QShColor.random() <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         fun random(seed: String, colors: Array<QShColor> = arrayOf(Yellow, Green, Blue, Purple, Cyan)): QShColor {
             val idx = seed.hashCode().rem(colors.size).absoluteValue
             return colors[idx]
         }
 
-        // CallChain[size=5] = QShColor.get() <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=5] = QShColor.get() <-[Propag]- QShColor.LightGreen <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         fun get(ansiEscapeCode: Int): QShColor {
             return QShColor.values().find {
                 it.code == ansiEscapeCode
@@ -2858,7 +2857,7 @@ private fun String.qColorAndDecoDebug(tagStart: String = "[", tagEnd: String = "
     return txt
 }
 
-// CallChain[size=8] = String.qColorTarget() <-[Call]- QException.mySrcAndStack <-[Call]- QException ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=8] = String.qColorTarget() <-[Call]- QException.mySrcAndStack <-[Call]- QException ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qColorTarget(ptn: Regex, fg: QShColor? = null, bg: QShColor? = null): String {
     return ptn.replace(this, "$0".qColor(fg, bg))
 }
@@ -2866,67 +2865,73 @@ private fun String.qColorTarget(ptn: Regex, fg: QShColor? = null, bg: QShColor? 
 // CallChain[size=2] = String.qColorRandom() <-[Call]- QShColorTest.randomColor()[Root]
 private fun String.qColorRandom(seed: String = qCallerSrcLineSignature()): String = this.qColor(QShColor.random(seed))
 
-// CallChain[size=2] = bold <-[Call]- QShColorTest.bold()[Root]
+// CallChain[size=2] = String.bold <-[Call]- QShColorTest.bold()[Root]
 private val String?.bold: String
     get() = this?.qDeco(QShDeco.Bold) ?: "null".qDeco(QShDeco.Bold)
 
-// CallChain[size=2] = italic <-[Call]- QShColorTest.italic()[Root]
+// CallChain[size=2] = String.italic <-[Call]- QShColorTest.italic()[Root]
 private val String?.italic: String
     get() = this?.qDeco(QShDeco.Italic) ?: "null".qDeco(QShDeco.Italic)
 
-// CallChain[size=2] = underline <-[Call]- QShColorTest.underline()[Root]
+// CallChain[size=2] = String.underline <-[Call]- QShColorTest.underline()[Root]
 private val String?.underline: String
     get() = this?.qDeco(QShDeco.Underline) ?: "null".qDeco(QShDeco.Underline)
 
-// CallChain[size=2] = red <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=2] = String.red <-[Call]- QShColorTest.nest2()[Root]
 private val String?.red: String
     get() = this?.qColor(QShColor.Red) ?: "null".qColor(QShColor.Red)
 
-// CallChain[size=2] = green <-[Call]- QShColorTest.colourful()[Root]
+// CallChain[size=2] = String.green <-[Call]- QShColorTest.colourful()[Root]
 private val String?.green: String
     get() = this?.qColor(QShColor.Green) ?: "null".qColor(QShColor.Green)
 
-// CallChain[size=8] = yellow <-[Call]- QException.qToString() <-[Call]- QException.toString() <-[Pr ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=8] = String.yellow <-[Call]- QException.qToString() <-[Call]- QException.toString( ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val String?.yellow: String
     get() = this?.qColor(QShColor.Yellow) ?: "null".qColor(QShColor.Yellow)
 
-// CallChain[size=2] = blue <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=2] = String.blue <-[Call]- QShColorTest.nest2()[Root]
 private val String?.blue: String
     get() = this?.qColor(QShColor.Blue) ?: "null".qColor(QShColor.Blue)
 
-// CallChain[size=2] = purple <-[Call]- QShColorTest.colourful()[Root]
+// CallChain[size=2] = String.purple <-[Call]- QShColorTest.colourful()[Root]
 private val String?.purple: String
     get() = this?.qColor(QShColor.Purple) ?: "null".qColor(QShColor.Cyan)
 
-// CallChain[size=10] = cyan <-[Call]- QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- QExcepti ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = String.cyan <-[Call]- QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- Q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val String?.cyan: String
     get() = this?.qColor(QShColor.Cyan) ?: "null".qColor(QShColor.Cyan)
 
-// CallChain[size=3] = light_gray <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = String.light_gray <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val String?.light_gray: String
     get() = this?.qColor(QShColor.LightGray) ?: "null".qColor(QShColor.LightGray)
 
-// CallChain[size=6] = light_red <-[Call]- allTestedMethods <-[Call]- QTestResult.printIt() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
+// CallChain[size=6] = String.light_red <-[Call]- List<QTestResultElement>.allTestedMethods <-[Call]- QTestResult.printIt() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
 private val String?.light_red: String
     get() = this?.qColor(QShColor.LightRed) ?: "null".qColor(QShColor.LightRed)
 
-// CallChain[size=3] = light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val String?.light_green: String
     get() = this?.qColor(QShColor.LightGreen) ?: "null".qColor(QShColor.LightGreen)
 
-// CallChain[size=5] = light_yellow <-[Call]- colorIt <-[Call]- qFailMsg() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = String.light_yellow <-[Call]- String.colorIt <-[Call]- qFailMsg() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val String?.light_yellow: String
     get() = this?.qColor(QShColor.LightYellow) ?: "null".qColor(QShColor.LightYellow)
 
-// CallChain[size=3] = light_blue <-[Call]- qTest() <-[Call]- main()[Root]
+// CallChain[size=3] = String.light_blue <-[Call]- qTest() <-[Call]- main()[Root]
 private val String?.light_blue: String
     get() = this?.qColor(QShColor.LightBlue) ?: "null".qColor(QShColor.LightBlue)
 
-// CallChain[size=13] = light_cyan <-[Call]- qARROW <-[Call]- qArrow() <-[Call]- QLogStyle.qLogArrow ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = String.light_cyan <-[Call]- qARROW <-[Call]- qArrow() <-[Call]- QLogStyle.qL ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val String?.light_cyan: String
     get() = this?.qColor(QShColor.LightCyan) ?: "null".qColor(QShColor.LightCyan)
 
-// CallChain[size=10] = path <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[Call]- QExcep ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = String.noStyle <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+private val String.noStyle: String
+    get() {
+        return this.replace("""\Q$qSTART\E\d{1,2}m""".re, "")
+    }
+
+// CallChain[size=10] = String.path <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[Call]- ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val String.path: Path
     get() = Paths.get(this.trim()).toAbsolutePath().normalize()
 
@@ -3001,25 +3006,25 @@ private fun String.qWithMaxLength(maxLength: Int, endDots: String = " ..."): Str
     return substring(0, length.coerceAtMost(maxLength - endDots.length)) + endDots
 }
 
-// CallChain[size=5] = QOnlyIfStr <-[Ref]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = QOnlyIfStr <-[Ref]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private enum class QOnlyIfStr(val matches: (String) -> Boolean) {
-    // CallChain[size=5] = QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Multiline({ it.qIsMultiLine() }),
-    // CallChain[size=5] = QOnlyIfStr.SingleLine <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QOnlyIfStr.SingleLine <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     SingleLine({ it.qIsSingleLine() }),
-    // CallChain[size=6] = QOnlyIfStr.Empty <-[Propag]- QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QOnlyIfStr.Empty <-[Propag]- QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Empty({ it.isEmpty() }),
-    // CallChain[size=6] = QOnlyIfStr.Blank <-[Propag]- QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QOnlyIfStr.Blank <-[Propag]- QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Blank({ it.isBlank() }),
-    // CallChain[size=6] = QOnlyIfStr.NotEmpty <-[Propag]- QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QOnlyIfStr.NotEmpty <-[Propag]- QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     NotEmpty({ it.isNotEmpty() }),
-    // CallChain[size=6] = QOnlyIfStr.NotBlank <-[Propag]- QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QOnlyIfStr.NotBlank <-[Propag]- QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     NotBlank({ it.isNotBlank() }),
-    // CallChain[size=6] = QOnlyIfStr.Always <-[Propag]- QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QOnlyIfStr.Always <-[Propag]- QOnlyIfStr.Multiline <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Always({ true })
 }
 
-// CallChain[size=6] = String.qWithNewLinePrefix() <-[Call]- String.qWithNewLineSurround() <-[Call]- ... qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = String.qWithNewLinePrefix() <-[Call]- String.qWithNewLineSurround() <-[Call]- ... .qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qWithNewLinePrefix(
         numNewLine: Int = 1,
         onlyIf: QOnlyIfStr = QOnlyIfStr.Multiline,
@@ -3032,7 +3037,7 @@ private fun String.qWithNewLinePrefix(
     return lineSeparator.value.repeat(numNewLine) + substring(nCount)
 }
 
-// CallChain[size=6] = String.qWithNewLineSuffix() <-[Call]- String.qWithNewLineSurround() <-[Call]- ... qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = String.qWithNewLineSuffix() <-[Call]- String.qWithNewLineSurround() <-[Call]- ... .qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qWithNewLineSuffix(numNewLine: Int = 1, onlyIf: QOnlyIfStr = QOnlyIfStr.Multiline): String {
     if (!onlyIf.matches(this)) return this
 
@@ -3041,53 +3046,53 @@ private fun String.qWithNewLineSuffix(numNewLine: Int = 1, onlyIf: QOnlyIfStr = 
     return substring(0, length - nCount) + "\n".repeat(numNewLine)
 }
 
-// CallChain[size=5] = String.qWithNewLineSurround() <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = String.qWithNewLineSurround() <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qWithNewLineSurround(numNewLine: Int = 1, onlyIf: QOnlyIfStr = QOnlyIfStr.Multiline): String {
     if (!onlyIf.matches(this)) return this
 
     return qWithNewLinePrefix(numNewLine, QOnlyIfStr.Always).qWithNewLineSuffix(numNewLine, QOnlyIfStr.Always)
 }
 
-// CallChain[size=5] = String.qWithSpacePrefix() <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = String.qWithSpacePrefix() <-[Call]- String.qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qWithSpacePrefix(numSpace: Int = 1, onlyIf: QOnlyIfStr = QOnlyIfStr.SingleLine): String {
     if (!onlyIf.matches(this)) return this
 
     return " ".repeat(numSpace) + this.trimStart()
 }
 
-// CallChain[size=5] = String.qWithSpaceSuffix() <-[Call]- String.qBracketStartOrMiddle() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = String.qWithSpaceSuffix() <-[Call]- String.qBracketStartOrMiddle() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qWithSpaceSuffix(numSpace: Int = 1, onlyIf: QOnlyIfStr = QOnlyIfStr.SingleLine): String {
     if (!onlyIf.matches(this)) return this
 
     return this.trimEnd() + " ".repeat(numSpace)
 }
 
-// CallChain[size=10] = CharSequence.qEndsWith() <-[Call]- QFetchRule.SMART_FETCH <-[Call]- qLogStac ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = CharSequence.qEndsWith() <-[Call]- QFetchRule.SMART_FETCH <-[Call]- qLogStac ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun CharSequence.qEndsWith(suffix: Regex, length: Int = 100): Boolean {
     return takeLast(min(length, this.length)).matches(suffix)
 }
 
-// CallChain[size=6] = String.qIsMultiLine() <-[Call]- String.qIsSingleLine() <-[Call]- String.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = String.qIsMultiLine() <-[Call]- String.qIsSingleLine() <-[Call]- String.qColor() <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qIsMultiLine(): Boolean {
     return this.contains("\n") || this.contains("\r")
 }
 
-// CallChain[size=5] = String.qIsSingleLine() <-[Call]- String.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = String.qIsSingleLine() <-[Call]- String.qColor() <-[Call]- String.light_green <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qIsSingleLine(): Boolean {
     return !this.qIsMultiLine()
 }
 
-// CallChain[size=7] = QLineSeparator <-[Ref]- String.qWithNewLinePrefix() <-[Call]- String.qWithNew ... qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = QLineSeparator <-[Ref]- String.qWithNewLinePrefix() <-[Call]- String.qWithNew ... .qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private enum class QLineSeparator(val value: String) {
-    // CallChain[size=7] = QLineSeparator.LF <-[Call]- String.qWithNewLinePrefix() <-[Call]- String.qWit ... qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QLineSeparator.LF <-[Call]- String.qWithNewLinePrefix() <-[Call]- String.qWit ... .qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LF("\n"),
-    // CallChain[size=8] = QLineSeparator.CRLF <-[Propag]- QLineSeparator.QLineSeparator() <-[Call]- Str ... qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QLineSeparator.CRLF <-[Propag]- QLineSeparator.QLineSeparator() <-[Call]- Str ... .qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     CRLF("\r\n"),
-    // CallChain[size=8] = QLineSeparator.CR <-[Propag]- QLineSeparator.QLineSeparator() <-[Call]- Strin ... qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QLineSeparator.CR <-[Propag]- QLineSeparator.QLineSeparator() <-[Call]- Strin ... .qBracketEnd() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     CR("\r");
 
     companion object {
-        // CallChain[size=13] = QLineSeparator.DEFAULT <-[Call]- Path.qLineSeparator() <-[Call]- Path.qFetch ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=13] = QLineSeparator.DEFAULT <-[Call]- Path.qLineSeparator() <-[Call]- Path.qFetch ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val DEFAULT = QLineSeparator.LF
     }
 }
@@ -3096,19 +3101,19 @@ private enum class QLineSeparator(val value: String) {
 private fun String.qSubstring(rangeBothInclusive: IntRange): String =
         substring(rangeBothInclusive.first, rangeBothInclusive.last + 1)
 
-// CallChain[size=10] = String.qCountLeftSpace() <-[Call]- QFetchRule.SMART_FETCH <-[Call]- qLogStac ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = String.qCountLeftSpace() <-[Call]- QFetchRule.SMART_FETCH <-[Call]- qLogStac ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qCountLeftSpace(): Int = takeWhile { it == ' ' }.count()
 
 // CallChain[size=11] = String.qCountRightSpace() <-[Call]- String.qMoveCenter() <-[Call]- QLineMatc ...  <-[Call]- qSeparatorWithLabel() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
 private fun String.qCountRightSpace(): Int = takeLastWhile { it == ' ' }.count()
 
-// CallChain[size=4] = qMASK_LENGTH_LIMIT <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = qMASK_LENGTH_LIMIT <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private const val qMASK_LENGTH_LIMIT: Int = 100_000
 
-// CallChain[size=6] = QToString <-[Ref]- qToStringRegistry <-[Call]- Any?.qToString() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = QToString <-[Ref]- qToStringRegistry <-[Call]- Any.qToString() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QToString(val okToApply: (Any) -> Boolean, val toString: (Any) -> String)
 
-// CallChain[size=5] = qToStringRegistry <-[Call]- Any?.qToString() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = qToStringRegistry <-[Call]- Any.qToString() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val qToStringRegistry: MutableList<QToString> by lazy {
     val toStrings =
             QMyToString::class.qFunctions(
@@ -3131,7 +3136,7 @@ private val qToStringRegistry: MutableList<QToString> by lazy {
     }.toMutableList()
 }
 
-// CallChain[size=4] = Any?.qToString() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = Any.qToString() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Any?.qToString(): String {
     if (this == null)
         return "null".light_gray
@@ -3145,7 +3150,7 @@ private fun Any?.qToString(): String {
     return toString()
 }
 
-// CallChain[size=3] = Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun Any?.qToLogString(maxLineLength: Int = 80): String {
     if (QMyLog.no_format) {
         return this.toString()
@@ -3188,7 +3193,7 @@ private fun Any?.qToLogString(maxLineLength: Int = 80): String {
     }.qClarifyEmptyOrBlank()
 }
 
-// CallChain[size=4] = String.qClarifyEmptyOrBlank() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = String.qClarifyEmptyOrBlank() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qClarifyEmptyOrBlank(): String {
     return if (this.isEmpty()) {
         "(EMPTY STRING)".qColor(QShColor.LightGray)
@@ -3370,7 +3375,7 @@ private class QLineMatchResult(
     }
 }
 
-// CallChain[size=10] = qSize <-[Call]- QLineMatchResult.align() <-[Call]- String.qAlign() <-[Call]- ...  <-[Call]- qSeparatorWithLabel() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
+// CallChain[size=10] = IntRange.qSize <-[Call]- QLineMatchResult.align() <-[Call]- String.qAlign()  ...  <-[Call]- qSeparatorWithLabel() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
 private val IntRange.qSize: Int
     get() = abs(last - first) + 1
 
@@ -3508,7 +3513,7 @@ private fun String.qMoveRight(range: IntRange, destRangeLeft: Int, keepLength: B
     }
 }
 
-// CallChain[size=10] = String.qCountOccurrence() <-[Call]- QFetchRule.SMART_FETCH <-[Call]- qLogSta ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = String.qCountOccurrence() <-[Call]- QFetchRule.SMART_FETCH <-[Call]- qLogSta ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qCountOccurrence(word: String): Int {
     return windowed(word.length) {
         if (it == word)
@@ -3518,13 +3523,13 @@ private fun String.qCountOccurrence(word: String): Int {
     }.sum()
 }
 
-// CallChain[size=7] = QMask <-[Ref]- QMaskBetween <-[Call]- QMask.DOUBLE_QUOTE <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = QMask <-[Ref]- QMaskBetween <-[Call]- QMask.DOUBLE_QUOTE <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private interface QMask {
-    // CallChain[size=5] = QMask.apply() <-[Propag]- QMask.KOTLIN_STRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QMask.apply() <-[Propag]- QMask.KOTLIN_STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun apply(text: String): QMaskResult
 
     companion object {
-        // CallChain[size=5] = QMask.THREE_DOUBLE_QUOTES <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=5] = QMask.THREE_DOUBLE_QUOTES <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val THREE_DOUBLE_QUOTES by lazy {
             QMaskBetween(
                 "\"\"\"", "\"\"\"",
@@ -3533,7 +3538,7 @@ private interface QMask {
                 maskIncludeStartAndEndSequence = false,
             )
         }
-        // CallChain[size=5] = QMask.DOUBLE_QUOTE <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=5] = QMask.DOUBLE_QUOTE <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val DOUBLE_QUOTE by lazy {
             QMaskBetween(
                 "\"", "\"",
@@ -3542,21 +3547,21 @@ private interface QMask {
                 maskIncludeStartAndEndSequence = false,
             )
         }
-        // CallChain[size=4] = QMask.KOTLIN_STRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=4] = QMask.KOTLIN_STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val KOTLIN_STRING by lazy {
             QMultiMask(
                 THREE_DOUBLE_QUOTES,
                 DOUBLE_QUOTE
             )
         }
-        // CallChain[size=4] = QMask.PARENS <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=4] = QMask.PARENS <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val PARENS by lazy {
             QMaskBetween(
                 "(", ")",
                 nestStartSequence = "(", escapeChar = '\\'
             )
         }
-        // CallChain[size=4] = QMask.INNER_BRACKETS <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=4] = QMask.INNER_BRACKETS <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val INNER_BRACKETS by lazy {
             QMaskBetween(
                 "[", "]",
@@ -3570,17 +3575,17 @@ private interface QMask {
     }
 }
 
-// CallChain[size=5] = QMultiMask <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = QMultiMask <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QMultiMask(vararg mask: QMaskBetween) : QMask {
-    // CallChain[size=7] = QMultiMask.masks <-[Call]- QMultiMask.apply() <-[Propag]- QMultiMask <-[Call] ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QMultiMask.masks <-[Call]- QMultiMask.apply() <-[Propag]- QMultiMask <-[Call] ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val masks: Array<QMaskBetween>
 
-    // CallChain[size=6] = QMultiMask.init { <-[Propag]- QMultiMask <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QMultiMask.init { <-[Propag]- QMultiMask <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     init {
         masks = arrayOf(*mask)
     }
 
-    // CallChain[size=6] = QMultiMask.apply() <-[Propag]- QMultiMask <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QMultiMask.apply() <-[Propag]- QMultiMask <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun apply(text: String): QMaskResult {
         var result: QMaskResult? = null
         for (mask in masks) {
@@ -3591,7 +3596,7 @@ private class QMultiMask(vararg mask: QMaskBetween) : QMask {
     }
 }
 
-// CallChain[size=6] = QMaskBetween <-[Call]- QMask.DOUBLE_QUOTE <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = QMaskBetween <-[Call]- QMask.DOUBLE_QUOTE <-[Call]- QMask.KOTLIN_STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QMaskBetween(
     val startSequence: String,
     val endSequence: String,
@@ -3610,12 +3615,12 @@ private class QMaskBetween(
     val maskChar: Char = '\uee31',
 ) : QMask {
 
-    // CallChain[size=7] = QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- QMask.D ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QMaskBetween.apply() <-[Propag]- QMaskBetween.QMaskBetween() <-[Ref]- QMask.D ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun apply(text: String): QMaskResult {
         return applyMore(text, null)
     }
 
-    // CallChain[size=8] = QMaskBetween.applyMore() <-[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetw ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QMaskBetween.applyMore() <-[Call]- QMaskBetween.apply() <-[Propag]- QMaskBetw ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun applyMore(text: String, orgText: String? = null): QMaskResult {
         val regions = text.qFindBetween(
             startSequence,
@@ -3668,9 +3673,9 @@ private class QMaskBetween(
     }
 }
 
-// CallChain[size=11] = QMutRegion <-[Ref]- QRegion.toMutRegion() <-[Propag]- QRegion.contains() <-[ ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = QMutRegion <-[Ref]- QRegion.toMutRegion() <-[Propag]- QRegion.contains() <-[ ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private open class QMutRegion(override var start: Int, override var end: Int) : QRegion(start, end) {
-    // CallChain[size=12] = QMutRegion.intersectMut() <-[Propag]- QMutRegion <-[Ref]- QRegion.toMutRegio ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QMutRegion.intersectMut() <-[Propag]- QMutRegion <-[Ref]- QRegion.toMutRegio ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun intersectMut(region: QRegion) {
         val start = max(this.start, region.start)
         val end = min(this.end, region.end)
@@ -3681,39 +3686,39 @@ private open class QMutRegion(override var start: Int, override var end: Int) : 
         }
     }
 
-    // CallChain[size=12] = QMutRegion.addOffset() <-[Propag]- QMutRegion <-[Ref]- QRegion.toMutRegion() ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QMutRegion.addOffset() <-[Propag]- QMutRegion <-[Ref]- QRegion.toMutRegion() ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun addOffset(offset: Int) {
         start += offset
         end += offset
     }
 
-    // CallChain[size=12] = QMutRegion.shift() <-[Propag]- QMutRegion <-[Ref]- QRegion.toMutRegion() <-[ ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QMutRegion.shift() <-[Propag]- QMutRegion <-[Ref]- QRegion.toMutRegion() <-[ ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun shift(length: Int) {
         this.start += length
         this.end += length
     }
 }
 
-// CallChain[size=11] = QRegion <-[Ref]- QRegion.intersect() <-[Propag]- QRegion.contains() <-[Call] ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = QRegion <-[Ref]- QRegion.intersect() <-[Propag]- QRegion.contains() <-[Call] ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 /**
  * [start] inclusive, [end] exclusive
  */
 private open class QRegion(open val start: Int, open val end: Int) {
-    // CallChain[size=10] = QRegion.toMutRegion() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween. ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QRegion.toMutRegion() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween. ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun toMutRegion(): QMutRegion {
         return QMutRegion(start, end)
     }
 
-    // CallChain[size=10] = QRegion.toRange() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.appl ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QRegion.toRange() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.appl ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun toRange(): IntRange {
         return IntRange(start, end + 1)
     }
 
-    // CallChain[size=10] = QRegion.length <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.applyMo ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QRegion.length <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.applyMo ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val length: Int
         get() = end - start
 
-    // CallChain[size=10] = QRegion.intersect() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.ap ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QRegion.intersect() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.ap ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun intersect(region: QRegion): QRegion? {
         val start = max(this.start, region.start)
         val end = min(this.end, region.end)
@@ -3725,38 +3730,38 @@ private open class QRegion(open val start: Int, open val end: Int) {
         }
     }
 
-    // CallChain[size=9] = QRegion.contains() <-[Call]- QMaskBetween.applyMore() <-[Call]- QMaskBetween. ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=9] = QRegion.contains() <-[Call]- QMaskBetween.applyMore() <-[Call]- QMaskBetween. ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun contains(idx: Int): Boolean {
         return idx in start until end
     }
 
-    // CallChain[size=10] = QRegion.cut() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.applyMor ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QRegion.cut() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.applyMor ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun cut(text: String): String {
         return text.substring(start, end)
     }
 
-    // CallChain[size=10] = QRegion.remove() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.apply ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QRegion.remove() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.apply ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun remove(text: String): String {
         return text.removeRange(start, end)
     }
 
-    // CallChain[size=10] = QRegion.replace() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.appl ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QRegion.replace() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.appl ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun replace(text: String, replacement: String): String {
         return text.replaceRange(start, end, replacement)
     }
 
-    // CallChain[size=10] = QRegion.mask() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.applyMo ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QRegion.mask() <-[Propag]- QRegion.contains() <-[Call]- QMaskBetween.applyMo ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun mask(text: String, maskChar: Char = '*'): String {
         return text.replaceRange(this.toRange(), maskChar.toString().repeat(end - start))
     }
 }
 
-// CallChain[size=6] = QReplacer <-[Ref]- String.qMaskAndReplace() <-[Call]- QMaskResult.replaceAndUnmask() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = QReplacer <-[Ref]- String.qMaskAndReplace() <-[Call]- QMaskResult.replaceAndUnmask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QReplacer(start: Int, end: Int, val replacement: String) : QMutRegion(start, end)
 
-// CallChain[size=6] = QMaskResult <-[Ref]- QMask.apply() <-[Propag]- QMask.KOTLIN_STRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = QMaskResult <-[Ref]- QMask.apply() <-[Propag]- QMask.KOTLIN_STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QMaskResult(val maskedStr: String, val orgText: String, val maskChar: Char) {
-    // CallChain[size=4] = QMaskResult.replaceAndUnmask() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=4] = QMaskResult.replaceAndUnmask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     /**
      * Apply regex to masked string.
      * Apply replacement to original text.
@@ -3765,12 +3770,12 @@ private class QMaskResult(val maskedStr: String, val orgText: String, val maskCh
         return orgText.qMaskAndReplace(maskedStr, ptn, replacement, findAll)
     }
 
-    // CallChain[size=7] = QMaskResult.applyMoreMask() <-[Call]- QMultiMask.apply() <-[Propag]- QMultiMa ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QMaskResult.applyMoreMask() <-[Call]- QMultiMask.apply() <-[Propag]- QMultiMa ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun applyMoreMask(mask: QMaskBetween): QMaskResult {
         return mask.applyMore(maskedStr, orgText)
     }
 
-    // CallChain[size=7] = QMaskResult.toString() <-[Propag]- QMaskResult <-[Ref]- QMask.apply() <-[Prop ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QMaskResult.toString() <-[Propag]- QMaskResult <-[Ref]- QMask.apply() <-[Prop ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     override fun toString(): String {
         val original = orgText.qWithNewLineSurround(onlyIf = QOnlyIfStr.Multiline)
         val masked = maskedStr.replace(maskChar, '*').qWithNewLineSurround(onlyIf = QOnlyIfStr.Multiline)
@@ -3779,7 +3784,7 @@ private class QMaskResult(val maskedStr: String, val orgText: String, val maskCh
     }
 }
 
-// CallChain[size=4] = CharSequence.qMask() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = CharSequence.qMask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun CharSequence.qMask(vararg mask: QMask): QMaskResult {
     mask.size.qaNotZero()
 
@@ -3799,7 +3804,7 @@ private fun CharSequence.qMask(vararg mask: QMask): QMaskResult {
     }
 }
 
-// CallChain[size=9] = String.qFindBetween() <-[Call]- QMaskBetween.applyMore() <-[Call]- QMaskBetwe ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=9] = String.qFindBetween() <-[Call]- QMaskBetween.applyMore() <-[Call]- QMaskBetwe ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qFindBetween(
     startSequence: String,
     endSequence: String,
@@ -3826,7 +3831,7 @@ private fun String.qFindBetween(
     return finder.find(this)
 }
 
-// CallChain[size=5] = String.qMaskAndReplace() <-[Call]- QMaskResult.replaceAndUnmask() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = String.qMaskAndReplace() <-[Call]- QMaskResult.replaceAndUnmask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun String.qMaskAndReplace(
     maskedStr: String,
     ptn: Regex,
@@ -3860,7 +3865,7 @@ private fun String.qMaskAndReplace(
     return qMultiReplace(replacers)
 }
 
-// CallChain[size=6] = CharSequence.qMultiReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- QMa ... ask() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = CharSequence.qMultiReplace() <-[Call]- String.qMaskAndReplace() <-[Call]- QMa ... nmask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 /**
  * currently does not support region overlap
  */
@@ -3876,7 +3881,7 @@ private fun CharSequence.qMultiReplace(replacers: List<QReplacer>): String {
     return sb.toString()
 }
 
-// CallChain[size=6] = MatchResult.qResolveReplacementGroup() <-[Call]- String.qMaskAndReplace() <-[ ... ask() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = MatchResult.qResolveReplacementGroup() <-[Call]- String.qMaskAndReplace() <-[ ... nmask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun MatchResult.qResolveReplacementGroup(replacement: String, orgText: String): String {
     var resolveGroup = replacement
 
@@ -3895,20 +3900,20 @@ private fun MatchResult.qResolveReplacementGroup(replacement: String, orgText: S
     return resolveGroup
 }
 
-// CallChain[size=7] = CharSequence.qReplace() <-[Call]- MatchResult.qResolveReplacementGroup() <-[C ... ask() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=7] = CharSequence.qReplace() <-[Call]- MatchResult.qResolveReplacementGroup() <-[C ... nmask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun CharSequence.qReplace(oldValue: String, newValue: String, escapeChar: Char): String {
     return replace(Regex("""(?<!\Q$escapeChar\E)\Q$oldValue\E"""), newValue)
 }
 
-// CallChain[size=11] = QSequenceReader <-[Call]- QBetween.find() <-[Call]- String.qFindBetween() <- ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = QSequenceReader <-[Call]- QBetween.find() <-[Call]- String.qFindBetween() <- ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QSequenceReader(text: CharSequence) : QCharReader(text) {
-    // CallChain[size=13] = QSequenceReader.sequenceOffset <-[Call]- QSequenceReader.offsetInSequence()  ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QSequenceReader.sequenceOffset <-[Call]- QSequenceReader.offsetInSequence()  ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     private var sequenceOffset = 0
 
-    // CallChain[size=13] = QSequenceReader.sequence <-[Call]- QSequenceReader.peekCurrentCharInSequence ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QSequenceReader.sequence <-[Call]- QSequenceReader.peekCurrentCharInSequence ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     private var sequence: CharArray? = null
 
-    // CallChain[size=12] = QSequenceReader.startReadingSequence() <-[Call]- QSequenceReader.detectSeque ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QSequenceReader.startReadingSequence() <-[Call]- QSequenceReader.detectSeque ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     private fun startReadingSequence(sequence: CharArray): Boolean {
         return if (!hasNextChar(sequence.size)) {
             false
@@ -3919,7 +3924,7 @@ private class QSequenceReader(text: CharSequence) : QCharReader(text) {
         }
     }
 
-    // CallChain[size=12] = QSequenceReader.endReadingSequence() <-[Call]- QSequenceReader.detectSequenc ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QSequenceReader.endReadingSequence() <-[Call]- QSequenceReader.detectSequenc ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     private fun endReadingSequence(success: Boolean): Boolean {
 
         if (!success) {
@@ -3931,7 +3936,7 @@ private class QSequenceReader(text: CharSequence) : QCharReader(text) {
         return success
     }
 
-    // CallChain[size=12] = QSequenceReader.hasNextCharInSequence() <-[Call]- QSequenceReader.detectSequ ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QSequenceReader.hasNextCharInSequence() <-[Call]- QSequenceReader.detectSequ ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     private fun hasNextCharInSequence(): Boolean {
         return if (sequence == null) {
             false
@@ -3945,12 +3950,12 @@ private class QSequenceReader(text: CharSequence) : QCharReader(text) {
 //        return sequence!![offset - sequenceOffset]
 //    }
 
-    // CallChain[size=12] = QSequenceReader.peekCurrentCharInSequence() <-[Call]- QSequenceReader.detect ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QSequenceReader.peekCurrentCharInSequence() <-[Call]- QSequenceReader.detect ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     private fun peekCurrentCharInSequence(): Char {
         return sequence!![offsetInSequence()]
     }
 
-    // CallChain[size=12] = QSequenceReader.offsetInSequence() <-[Call]- QSequenceReader.detectSequence( ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QSequenceReader.offsetInSequence() <-[Call]- QSequenceReader.detectSequence( ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     /**
      * 0 to sequence.size - 1
      */
@@ -3958,7 +3963,7 @@ private class QSequenceReader(text: CharSequence) : QCharReader(text) {
         return offset - sequenceOffset
     }
 
-    // CallChain[size=11] = QSequenceReader.detectSequence() <-[Call]- QBetween.find() <-[Call]- String. ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QSequenceReader.detectSequence() <-[Call]- QBetween.find() <-[Call]- String. ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     /**
      * If sequence is detected, move offset by the length of the sequence.
      * If no sequence is found, offset remains unchanged.
@@ -3989,12 +3994,12 @@ private class QSequenceReader(text: CharSequence) : QCharReader(text) {
     
 }
 
-// CallChain[size=12] = QCharReader <-[Call]- QSequenceReader <-[Call]- QBetween.find() <-[Call]- St ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = QCharReader <-[Call]- QSequenceReader <-[Call]- QBetween.find() <-[Call]- St ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private open class QCharReader(val text: CharSequence) {
-    // CallChain[size=13] = QCharReader.offset <-[Propag]- QCharReader <-[Call]- QSequenceReader <-[Call ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.offset <-[Propag]- QCharReader <-[Call]- QSequenceReader <-[Call ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     var offset = 0
 
-    // CallChain[size=13] = QCharReader.lineNumber() <-[Propag]- QCharReader <-[Call]- QSequenceReader < ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.lineNumber() <-[Propag]- QCharReader <-[Call]- QSequenceReader < ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun lineNumber(): Int {
         // Consider caret to be between the character on the offset and the character preceding it
         //
@@ -4017,7 +4022,7 @@ private open class QCharReader(val text: CharSequence) {
         return lineBreakCount + 1
     }
 
-    // CallChain[size=13] = QCharReader.countIndentSpaces() <-[Propag]- QCharReader <-[Call]- QSequenceR ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.countIndentSpaces() <-[Propag]- QCharReader <-[Call]- QSequenceR ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun countIndentSpaces(space: Char = ' '): Int {
         var count = 0
 
@@ -4054,48 +4059,48 @@ private open class QCharReader(val text: CharSequence) {
         return count
     }
 
-    // CallChain[size=13] = QCharReader.hasNextChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader  ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.hasNextChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader  ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     inline fun hasNextChar(len: Int = 1): Boolean {
         return offset + len - 1 < text.length
     }
 
-    // CallChain[size=13] = QCharReader.isOffsetEOF() <-[Propag]- QCharReader <-[Call]- QSequenceReader  ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.isOffsetEOF() <-[Propag]- QCharReader <-[Call]- QSequenceReader  ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     inline fun isOffsetEOF(): Boolean {
         return offset == text.length - 1
     }
 
-    // CallChain[size=13] = QCharReader.isValidOffset() <-[Propag]- QCharReader <-[Call]- QSequenceReade ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.isValidOffset() <-[Propag]- QCharReader <-[Call]- QSequenceReade ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     inline fun isValidOffset(): Boolean {
         return 0 <= offset && offset < text.length
     }
 
-    // CallChain[size=13] = QCharReader.hasPreviousChar() <-[Propag]- QCharReader <-[Call]- QSequenceRea ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.hasPreviousChar() <-[Propag]- QCharReader <-[Call]- QSequenceRea ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     inline fun hasPreviousChar(len: Int = 1): Boolean {
         return 0 < offset - len + 1
     }
 
-    // CallChain[size=13] = QCharReader.previousChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.previousChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     inline fun previousChar(len: Int = 1): Char {
         offset -= len
         return text[offset]
     }
 
-    // CallChain[size=13] = QCharReader.currentChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader  ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.currentChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader  ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     inline fun currentChar(): Char {
         return text[offset]
     }
 
-    // CallChain[size=13] = QCharReader.peekNextChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.peekNextChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     inline fun peekNextChar(): Char {
         return text[offset]
     }
 
-    // CallChain[size=13] = QCharReader.moveOffset() <-[Propag]- QCharReader <-[Call]- QSequenceReader < ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.moveOffset() <-[Propag]- QCharReader <-[Call]- QSequenceReader < ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     inline fun moveOffset(plus: Int = 1) {
         offset += plus
     }
 
-    // CallChain[size=13] = QCharReader.nextChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader <-[ ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.nextChar() <-[Propag]- QCharReader <-[Call]- QSequenceReader <-[ ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     /**
      * Read current offset char and add offset by 1.
      */
@@ -4103,25 +4108,25 @@ private open class QCharReader(val text: CharSequence) {
         return text[offset++]
     }
 
-    // CallChain[size=13] = QCharReader.nextStringExcludingCurOffset() <-[Propag]- QCharReader <-[Call]- ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.nextStringExcludingCurOffset() <-[Propag]- QCharReader <-[Call]- ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun nextStringExcludingCurOffset(length: Int): String {
         val str = text.substring(offset + 1, (offset + 1 + length).coerceAtMost(text.length))
         offset += length
         return str
     }
 
-    // CallChain[size=13] = QCharReader.peekNextStringIncludingCurOffset() <-[Propag]- QCharReader <-[Ca ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.peekNextStringIncludingCurOffset() <-[Propag]- QCharReader <-[Ca ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun peekNextStringIncludingCurOffset(length: Int): String {
         return text.substring(offset, (offset + length).coerceAtMost(text.length))
     }
 
-    // CallChain[size=13] = QCharReader.peekPreviousStringExcludingCurOffset() <-[Propag]- QCharReader < ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QCharReader.peekPreviousStringExcludingCurOffset() <-[Propag]- QCharReader < ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun peekPreviousStringExcludingCurOffset(length: Int): String {
         return text.substring(offset - length, offset)
     }
 }
 
-// CallChain[size=10] = QBetween <-[Call]- String.qFindBetween() <-[Call]- QMaskBetween.applyMore()  ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = QBetween <-[Call]- String.qFindBetween() <-[Call]- QMaskBetween.applyMore()  ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private class QBetween(
     val startSequence: String,
     val endSequence: String,
@@ -4136,7 +4141,7 @@ private class QBetween(
     val regionIncludeStartAndEndSequence: Boolean = false,
 ) {
 
-    // CallChain[size=10] = QBetween.find() <-[Call]- String.qFindBetween() <-[Call]- QMaskBetween.apply ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=10] = QBetween.find() <-[Call]- String.qFindBetween() <-[Call]- QMaskBetween.apply ... _STRING <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun find(text: CharSequence): List<QRegion> {
         val reader = QSequenceReader(text)
 
@@ -4195,7 +4200,7 @@ private class QBetween(
     }
 }
 
-// CallChain[size=11] = qNow <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLoca ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = qNow <-[Call]- qCacheItTimedThreadLocal() <-[Call]- qCacheItOneSecThreadLoca ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private val qNow: Long
     get() = System.currentTimeMillis()
 

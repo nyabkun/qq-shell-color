@@ -42,41 +42,41 @@ import nyab.match.qMatches
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=13] = qBUFFER_SIZE <-[Call]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[ ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = qBUFFER_SIZE <-[Call]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[ ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal const val qBUFFER_SIZE = DEFAULT_BUFFER_SIZE
 
-// CallChain[size=13] = QOpenOpt <-[Ref]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[Call] ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = QOpenOpt <-[Ref]- Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[Call] ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 // @formatter:off
 internal enum class QOpenOpt(val opt: OpenOption) : QFlagEnum<QOpenOpt> {
-    // CallChain[size=15] = QOpenOpt.TRUNCATE_EXISTING <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.TRUNCATE_EXISTING <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     TRUNCATE_EXISTING(StandardOpenOption.TRUNCATE_EXISTING),
-    // CallChain[size=15] = QOpenOpt.CREATE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.CREATE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     CREATE(StandardOpenOption.CREATE),
-    // CallChain[size=15] = QOpenOpt.CREATE_NEW <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.CREATE_NEW <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     CREATE_NEW(StandardOpenOption.CREATE_NEW),
-    // CallChain[size=15] = QOpenOpt.WRITE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toO ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.WRITE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toO ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     WRITE(StandardOpenOption.WRITE),
-    // CallChain[size=15] = QOpenOpt.READ <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toOp ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.READ <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toOp ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     READ(StandardOpenOption.READ),
-    // CallChain[size=15] = QOpenOpt.APPEND <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.APPEND <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     APPEND(StandardOpenOption.APPEND),
-    // CallChain[size=15] = QOpenOpt.DELETE_ON_CLOSE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOp ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.DELETE_ON_CLOSE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOp ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     DELETE_ON_CLOSE(StandardOpenOption.DELETE_ON_CLOSE),
-    // CallChain[size=15] = QOpenOpt.DSYNC <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toO ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.DSYNC <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toO ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     DSYNC(StandardOpenOption.DSYNC),
-    // CallChain[size=15] = QOpenOpt.SYNC <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toOp ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.SYNC <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.toOp ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     SYNC(StandardOpenOption.SYNC),
-    // CallChain[size=15] = QOpenOpt.SPARSE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.SPARSE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt>.to ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     SPARSE(StandardOpenOption.SPARSE),
-    // CallChain[size=15] = QOpenOpt.EX_DIRECT <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt> ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.EX_DIRECT <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOpenOpt> ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     EX_DIRECT(ExtendedOpenOption.DIRECT),
-    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_DELETE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_DELETE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     EX_NOSHARE_DELETE(ExtendedOpenOption.NOSHARE_DELETE),
-    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_READ <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOp ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_READ <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QOp ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     EX_NOSHARE_READ(ExtendedOpenOption.NOSHARE_READ),
-    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_WRITE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QO ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.EX_NOSHARE_WRITE <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<QO ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     EX_NOSHARE_WRITE(ExtendedOpenOption.NOSHARE_WRITE),
-    // CallChain[size=15] = QOpenOpt.LN_NOFOLLOW_LINKS <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=15] = QOpenOpt.LN_NOFOLLOW_LINKS <-[Propag]- QOpenOpt.QOpenOpt() <-[Call]- QFlag<Q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LN_NOFOLLOW_LINKS(LinkOption.NOFOLLOW_LINKS);
 
     companion object {
@@ -84,12 +84,12 @@ internal enum class QOpenOpt(val opt: OpenOption) : QFlagEnum<QOpenOpt> {
     }
 }
 
-// CallChain[size=13] = QFlag<QOpenOpt>.toOptEnums() <-[Call]- Path.qReader() <-[Call]- Path.qFetchL ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = QFlag<QOpenOpt>.toOptEnums() <-[Call]- Path.qReader() <-[Call]- Path.qFetchL ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal fun QFlag<QOpenOpt>.toOptEnums(): Array<OpenOption> {
     return toEnumValues().map { it.opt }.toTypedArray()
 }
 
-// CallChain[size=12] = Path.qLineSeparator() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileL ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = Path.qLineSeparator() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileL ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal fun Path.qLineSeparator(charset: Charset = Charsets.UTF_8): QLineSeparator {
     this.bufferedReader(charset).use { reader ->
         var ch: Char
@@ -113,44 +113,44 @@ internal fun Path.qLineSeparator(charset: Charset = Charsets.UTF_8): QLineSepara
     }
 }
 
-// CallChain[size=11] = QFetchEnd <-[Ref]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[Cal ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = QFetchEnd <-[Ref]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[Cal ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal enum class QFetchEnd {
-    // CallChain[size=12] = QFetchEnd.FETCH_THIS_LINE_AND_GO_TO_NEXT_LINE <-[Propag]- QFetchEnd.END_WITH ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QFetchEnd.FETCH_THIS_LINE_AND_GO_TO_NEXT_LINE <-[Propag]- QFetchEnd.END_WITH ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     FETCH_THIS_LINE_AND_GO_TO_NEXT_LINE,
-    // CallChain[size=11] = QFetchEnd.END_WITH_THIS_LINE <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrc ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchEnd.END_WITH_THIS_LINE <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrc ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     END_WITH_THIS_LINE,
-    // CallChain[size=12] = QFetchEnd.END_WITH_NEXT_LINE <-[Propag]- QFetchEnd.END_WITH_THIS_LINE <-[Cal ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QFetchEnd.END_WITH_NEXT_LINE <-[Propag]- QFetchEnd.END_WITH_THIS_LINE <-[Cal ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     END_WITH_NEXT_LINE,
-    // CallChain[size=12] = QFetchEnd.END_WITH_PREVIOUS_LINE <-[Propag]- QFetchEnd.END_WITH_THIS_LINE <- ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QFetchEnd.END_WITH_PREVIOUS_LINE <-[Propag]- QFetchEnd.END_WITH_THIS_LINE <- ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     END_WITH_PREVIOUS_LINE
 }
 
-// CallChain[size=11] = QFetchStart <-[Ref]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[C ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = QFetchStart <-[Ref]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[C ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal enum class QFetchStart {
-    // CallChain[size=11] = QFetchStart.FETCH_THIS_LINE_AND_GO_TO_PREVIOUS_LINE <-[Call]- QFetchRule.SIN ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchStart.FETCH_THIS_LINE_AND_GO_TO_PREVIOUS_LINE <-[Call]- QFetchRule.SIN ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     FETCH_THIS_LINE_AND_GO_TO_PREVIOUS_LINE,
-    // CallChain[size=11] = QFetchStart.START_FROM_THIS_LINE <-[Call]- QFetchRule.SINGLE_LINE <-[Call]-  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchStart.START_FROM_THIS_LINE <-[Call]- QFetchRule.SINGLE_LINE <-[Call]-  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     START_FROM_THIS_LINE,
-    // CallChain[size=12] = QFetchStart.START_FROM_NEXT_LINE <-[Propag]- QFetchStart.FETCH_THIS_LINE_AND ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QFetchStart.START_FROM_NEXT_LINE <-[Propag]- QFetchStart.FETCH_THIS_LINE_AND ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     START_FROM_NEXT_LINE,
-    // CallChain[size=12] = QFetchStart.START_FROM_PREVIOUS_LINE <-[Propag]- QFetchStart.FETCH_THIS_LINE ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QFetchStart.START_FROM_PREVIOUS_LINE <-[Propag]- QFetchStart.FETCH_THIS_LINE ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     START_FROM_PREVIOUS_LINE
 }
 
-// CallChain[size=11] = QFetchRuleA <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[ ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = QFetchRuleA <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[ ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal abstract class QFetchRuleA(
     override val numLinesBeforeTargetLine: Int = 10,
     override val numLinesAfterTargetLine: Int = 10,
 ) : QFetchRule
 
-// CallChain[size=10] = QFetchRule <-[Ref]- QSrcCut.QSrcCut() <-[Call]- qLogStackFrames() <-[Call]-  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = QFetchRule <-[Ref]- QSrcCut.QSrcCut() <-[Call]- qLogStackFrames() <-[Call]-  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal interface QFetchRule {
-    // CallChain[size=11] = QFetchRule.numLinesBeforeTargetLine <-[Propag]- QFetchRule.SINGLE_LINE <-[Ca ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchRule.numLinesBeforeTargetLine <-[Propag]- QFetchRule.SINGLE_LINE <-[Ca ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val numLinesBeforeTargetLine: Int
-    // CallChain[size=11] = QFetchRule.numLinesAfterTargetLine <-[Propag]- QFetchRule.SINGLE_LINE <-[Cal ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchRule.numLinesAfterTargetLine <-[Propag]- QFetchRule.SINGLE_LINE <-[Cal ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val numLinesAfterTargetLine: Int
 
-    // CallChain[size=11] = QFetchRule.fetchStartCheck() <-[Propag]- QFetchRule.SINGLE_LINE <-[Call]- QS ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchRule.fetchStartCheck() <-[Propag]- QFetchRule.SINGLE_LINE <-[Call]- QS ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun fetchStartCheck(
         line: String,
         currentLineNumber: Int,
@@ -159,7 +159,7 @@ internal interface QFetchRule {
         context: MutableSet<String>,
     ): QFetchStart
 
-    // CallChain[size=11] = QFetchRule.fetchEndCheck() <-[Propag]- QFetchRule.SINGLE_LINE <-[Call]- QSrc ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=11] = QFetchRule.fetchEndCheck() <-[Propag]- QFetchRule.SINGLE_LINE <-[Call]- QSrc ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun fetchEndCheck(
         line: String,
         currentLineNumber: Int,
@@ -169,7 +169,7 @@ internal interface QFetchRule {
     ): QFetchEnd
 
     companion object {
-        // CallChain[size=10] = QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[Call]- qLogStackFrames ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=10] = QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut() <-[Call]- qLogStackFrames ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val SINGLE_LINE = object : QFetchRuleA(0, 0) {
             override fun fetchStartCheck(
                 line: String,
@@ -196,7 +196,7 @@ internal interface QFetchRule {
             }
         }
 
-        // CallChain[size=5] = QFetchRule.SMART_FETCH_INFIX <-[Call]- QSrcCut.MULTILINE_INFIX_NOCUT <-[Call]- qThrowIt() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=5] = QFetchRule.SMART_FETCH_INFIX <-[Call]- QSrcCut.MULTILINE_INFIX_NOCUT <-[Call]- qThrowIt() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val SMART_FETCH_INFIX = object : QFetchRuleA(10, 10) {
             // """               <<< targetLine
             // some text
@@ -245,7 +245,7 @@ internal interface QFetchRule {
             }
         }
 
-        // CallChain[size=9] = QFetchRule.SMART_FETCH <-[Call]- qLogStackFrames() <-[Call]- QException.mySrc ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        // CallChain[size=9] = QFetchRule.SMART_FETCH <-[Call]- qLogStackFrames() <-[Call]- QException.mySrc ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
         val SMART_FETCH = object : QFetchRuleA(10, 10) {
             override fun fetchStartCheck(
                 line: String,
@@ -317,7 +317,7 @@ internal interface QFetchRule {
     }
 }
 
-// CallChain[size=14] = LineNumberReader.qFetchLinesBetween() <-[Call]- LineNumberReader.qFetchTarge ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = LineNumberReader.qFetchLinesBetween() <-[Call]- LineNumberReader.qFetchTarge ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun LineNumberReader.qFetchLinesBetween(
     lineNumberStartInclusive: Int,
     lineNumberEndInclusive: Int,
@@ -344,7 +344,7 @@ private fun LineNumberReader.qFetchLinesBetween(
     return lines
 }
 
-// CallChain[size=14] = TargetSurroundingLines <-[Ref]- LineNumberReader.qFetchTargetSurroundingLine ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = TargetSurroundingLines <-[Ref]- LineNumberReader.qFetchTargetSurroundingLine ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal class TargetSurroundingLines(
     val targetLineNumber: Int,
     val startLineNumber: Int,
@@ -353,7 +353,7 @@ internal class TargetSurroundingLines(
     val linesBeforeTargetLine: List<String>,
     val linesAfterTargetLine: List<String>,
 ) {
-    // CallChain[size=13] = TargetSurroundingLines.linesBetween() <-[Call]- LineNumberReader.qFetchLines ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = TargetSurroundingLines.linesBetween() <-[Call]- LineNumberReader.qFetchLines ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun linesBetween(lineNumberStartInclusive: Int, lineNumberEndInclusive: Int): List<String> {
         val lines = mutableListOf<String>()
 
@@ -368,7 +368,7 @@ internal class TargetSurroundingLines(
     }
 }
 
-// CallChain[size=13] = LineNumberReader.qFetchTargetSurroundingLines() <-[Call]- LineNumberReader.q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = LineNumberReader.qFetchTargetSurroundingLines() <-[Call]- LineNumberReader.q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun LineNumberReader.qFetchTargetSurroundingLines(
     targetLineNumber: Int,
     numLinesBeforeTargetLine: Int = 10,
@@ -389,7 +389,7 @@ private fun LineNumberReader.qFetchTargetSurroundingLines(
     )
 }
 
-// CallChain[size=12] = LineNumberReader.qFetchLinesAround() <-[Call]- Path.qFetchLinesAround() <-[C ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = LineNumberReader.qFetchLinesAround() <-[Call]- Path.qFetchLinesAround() <-[C ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private fun LineNumberReader.qFetchLinesAround(
     file: Path,
     targetLineNumber: Int,
@@ -494,7 +494,7 @@ private fun LineNumberReader.qFetchLinesAround(
     }
 }
 
-// CallChain[size=12] = Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtF ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = Path.qReader() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtF ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal fun Path.qReader(
     charset: Charset = Charsets.UTF_8,
     buffSize: Int = qBUFFER_SIZE,
@@ -503,7 +503,7 @@ internal fun Path.qReader(
     return LineNumberReader(reader(charset, *opts.toOptEnums()), buffSize)
 }
 
-// CallChain[size=11] = Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtFrame() <-[Call]- qMySrcLi ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=11] = Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtFrame() <-[Call]- qMySrcLi ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal fun Path.qFetchLinesAround(
     lineNumber: Int,
     fetchRule: QFetchRule = QFetchRule.SMART_FETCH,
@@ -528,7 +528,7 @@ internal fun Path.qFetchLinesAround(
     }
 }
 
-// CallChain[size=12] = Path.qLineAt() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtF ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = Path.qLineAt() <-[Call]- Path.qFetchLinesAround() <-[Call]- qSrcFileLinesAtF ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal fun Path.qLineAt(
     lineNumber: Int,
     charset: Charset = Charsets.UTF_8,
@@ -551,20 +551,20 @@ internal fun Path.qLineAt(
     }
 }
 
-// CallChain[size=13] = QFType <-[Ref]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() <-[Call ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = QFType <-[Ref]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() <-[Call ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal enum class QFType {
-    // CallChain[size=17] = QFType.Any <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=17] = QFType.Any <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Any,
-    // CallChain[size=13] = QFType.File <-[Call]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() < ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QFType.File <-[Call]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() < ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     File,
-    // CallChain[size=17] = QFType.Dir <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.q ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=17] = QFType.Dir <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Dir,
-    // CallChain[size=17] = QFType.SymLink <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Pa ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=17] = QFType.SymLink <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Pa ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     SymLink,
-    // CallChain[size=17] = QFType.FileOrDir <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]-  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=17] = QFType.FileOrDir <-[Call]- QFType.matches() <-[Call]- Path.qSeq() <-[Call]-  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     FileOrDir;
 
-    // CallChain[size=16] = QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.qList() <-[Call]- Path ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=16] = QFType.matches() <-[Call]- Path.qSeq() <-[Call]- Path.qList() <-[Call]- Path ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     fun matches(path: Path?, followSymLink: Boolean = true): Boolean {
         if (path == null) return false
 
@@ -583,7 +583,7 @@ internal enum class QFType {
     }
 }
 
-// CallChain[size=12] = Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLines ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLines ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal fun Collection<Path>.qFind(nameMatcher: QM, type: QFType = QFType.File, maxDepth: Int = 1): Path? {
     for (path in this) {
         val found = path.qFind(nameMatcher, type, maxDepth)
@@ -593,7 +593,7 @@ internal fun Collection<Path>.qFind(nameMatcher: QM, type: QFType = QFType.File,
     return null
 }
 
-// CallChain[size=13] = Path.qFind() <-[Call]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame()  ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = Path.qFind() <-[Call]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame()  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal fun Path.qFind(nameMatcher: QM, type: QFType = QFType.File, maxDepth: Int = 1): Path? {
     return try {
         qList(type, maxDepth = maxDepth) {
@@ -604,7 +604,7 @@ internal fun Path.qFind(nameMatcher: QM, type: QFType = QFType.File, maxDepth: I
     }
 }
 
-// CallChain[size=10] = Path.qListByMatch() <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() < ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = Path.qListByMatch() <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() < ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal fun Path.qListByMatch(
     nameMatch: QM,
     type: QFType = QFType.File,
@@ -618,7 +618,7 @@ internal fun Path.qListByMatch(
     }
 }
 
-// CallChain[size=14] = Path.qList() <-[Call]- Path.qFind() <-[Call]- Collection<Path>.qFind() <-[Ca ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = Path.qList() <-[Call]- Path.qFind() <-[Call]- Collection<Path>.qFind() <-[Ca ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal fun Path.qList(
     type: QFType = QFType.File,
     maxDepth: Int = 1,
@@ -637,7 +637,7 @@ internal fun Path.qList(
     ).toList()
 }
 
-// CallChain[size=15] = Path.qSeq() <-[Call]- Path.qList() <-[Call]- Path.qFind() <-[Call]- Collecti ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=15] = Path.qSeq() <-[Call]- Path.qList() <-[Call]- Path.qFind() <-[Call]- Collecti ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal fun Path.qSeq(
     type: QFType = QFType.File,
     maxDepth: Int = 1,

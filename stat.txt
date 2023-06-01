@@ -1,0 +1,76 @@
+Version: v2023-06-01-bc02
+
+# Public API [main]
+String.qColor() - ExtensionFunction
+String.qDeco() - ExtensionFunction
+String.qColorAndDecoDebug() - ExtensionFunction
+String.qColorTarget() - ExtensionFunction
+String.qDecoTarget() - ExtensionFunction
+String.qColorRandom() - ExtensionFunction
+String.bold - ExtensionProperty
+String.italic - ExtensionProperty
+String.underline - ExtensionProperty
+String.black - ExtensionProperty
+String.red - ExtensionProperty
+String.green - ExtensionProperty
+String.yellow - ExtensionProperty
+String.blue - ExtensionProperty
+String.purple - ExtensionProperty
+String.cyan - ExtensionProperty
+String.light_gray - ExtensionProperty
+String.dark_gray - ExtensionProperty
+String.light_red - ExtensionProperty
+String.light_green - ExtensionProperty
+String.light_yellow - ExtensionProperty
+String.light_blue - ExtensionProperty
+String.light_magenta - ExtensionProperty
+String.light_cyan - ExtensionProperty
+String.white - ExtensionProperty
+String.noStyle - ExtensionProperty
+QShDeco - EnumClass
+QShColor - EnumClass
+
+# single src file number of lines [main]
+449
+# split src file number of files [main]
+8
+# number of marked nodes [main]
+90
+# number of all nodes [main]
+148
+# number of root of chain nodes [main]
+63
+# single src file number of lines [test]
+4238
+# split src file number of files [test]
+30
+# number of marked nodes [test]
+630
+# number of all nodes [test]
+1568
+# number of root of chain nodes [test]
+19
+
+# chain node hit count [main]
+                       String.noStyle [KtProperty] <Top Level> : 19
+@receiver:Language("RegExp") String.re [KtProperty] <Top Level> : 18
+                           qRe() [KtNamedFunction] <Top Level> : 17
+     qCacheItOneSecThreadLocal() [KtNamedFunction] <Top Level> : 15
+      qCacheItTimedThreadLocal() [KtNamedFunction] <Top Level> : 14
+         QCacheMap.getOrPut() [KtNamedFunction] <Second Level> :  8
+           String.qColorRandom() [KtNamedFunction] <Top Level> :  4
+       qCallerSrcLineSignature() [KtNamedFunction] <Top Level> :  3
+                 String.qColor() [KtNamedFunction] <Top Level> :  2
+                   qStackFrame() [KtNamedFunction] <Top Level> :  2
+
+# chain node hit count [test]
+        QShColorTest.nest2() [KtNamedFunction] <Second Level> : 435
+                 Any.shouldBe() [KtNamedFunction] <Top Level> : 423
+                    qBrackets() [KtNamedFunction] <Top Level> : 238
+           QE.throwItBrackets() [KtNamedFunction] <Top Level> : 214
+QException.QException() [KtPrimaryConstructor] <Second Level> : 212
+QException.printStackTrace() [KtNamedFunction] <Second Level> : 198
+         QException.mySrcAndStack [KtProperty] <Second Level> : 197
+                         main() [KtNamedFunction] <Top Level> : 167
+                        qTest() [KtNamedFunction] <Top Level> : 166
+              qLogStackFrames() [KtNamedFunction] <Top Level> : 156

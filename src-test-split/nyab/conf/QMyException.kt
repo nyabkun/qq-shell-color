@@ -13,33 +13,33 @@ package nyab.conf
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=3] = QE <-[Ref]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = QE <-[Ref]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal typealias QE = QMyException
 
-// CallChain[size=4] = QMyException <-[Ref]- QE <-[Ref]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = QMyException <-[Ref]- QE <-[Ref]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal enum class QMyException {
-    // CallChain[size=6] = QMyException.Other <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QMyException.Other <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Other,
 
-    // CallChain[size=12] = QMyException.Unreachable <-[Call]- qUnreachable() <-[Call]- QFetchRule.SINGL ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QMyException.Unreachable <-[Call]- qUnreachable() <-[Call]- QFetchRule.SINGL ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Unreachable,
-    // CallChain[size=3] = QMyException.ShouldBeTrue <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=3] = QMyException.ShouldBeTrue <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldBeTrue,
-    // CallChain[size=3] = QMyException.ShouldBeFalse <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=3] = QMyException.ShouldBeFalse <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldBeFalse,
-    // CallChain[size=13] = QMyException.ShouldNotBeNull <-[Call]- T?.qaNotNull() <-[Call]- qSrcFileAtFr ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QMyException.ShouldNotBeNull <-[Call]- T.qaNotNull() <-[Call]- qSrcFileAtFra ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldNotBeNull,
-    // CallChain[size=6] = QMyException.ShouldNotBeZero <-[Call]- Int?.qaNotZero() <-[Call]- CharSequence.qMask() <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=6] = QMyException.ShouldNotBeZero <-[Call]- Int.qaNotZero() <-[Call]- CharSequence.qMask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldNotBeZero,
-    // CallChain[size=3] = QMyException.ShouldBeEqual <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=3] = QMyException.ShouldBeEqual <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldBeEqual,
-    // CallChain[size=4] = QMyException.ShouldBeEvenNumber <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=4] = QMyException.ShouldBeEvenNumber <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     ShouldBeEvenNumber,
-    // CallChain[size=12] = QMyException.FileNotFound <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLine ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QMyException.FileNotFound <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLine ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     FileNotFound,
-    // CallChain[size=12] = QMyException.FetchLinesFail <-[Call]- Path.qFetchLinesAround() <-[Call]- qSr ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=12] = QMyException.FetchLinesFail <-[Call]- Path.qFetchLinesAround() <-[Call]- qSr ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     FetchLinesFail,
-    // CallChain[size=13] = QMyException.LineNumberExceedsMaximum <-[Call]- Path.qLineAt() <-[Call]- Pat ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=13] = QMyException.LineNumberExceedsMaximum <-[Call]- Path.qLineAt() <-[Call]- Pat ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LineNumberExceedsMaximum,
     // CallChain[size=5] = QMyException.TrySetAccessibleFail <-[Call]- AccessibleObject.qTrySetAccessible() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
     TrySetAccessibleFail,
@@ -53,7 +53,7 @@ internal enum class QMyException {
     
 }
 
-// CallChain[size=6] = qSTACK_FRAME_FILTER <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = qSTACK_FRAME_FILTER <-[Call]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal val qSTACK_FRAME_FILTER: (StackWalker.StackFrame) -> Boolean = {
     !it.className.startsWith("org.gradle") &&
             !it.className.startsWith("org.testng") &&

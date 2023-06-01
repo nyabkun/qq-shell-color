@@ -86,12 +86,6 @@ private fun String.qApplyEscapeLine(
 }
 
 // << Root of the CallChain >>
-val String.noStyle: String
-    get() {
-        return this.replace("""\Q$qSTART\E\d{1,2}m""".re, "")
-    }
-
-// << Root of the CallChain >>
 enum class QShDeco(val code: Int) {
     // << Root of the CallChain >>
     // https://en.wikipedia.org/wiki/ANSI_escape_code
@@ -281,3 +275,9 @@ val String?.light_cyan: String
 // << Root of the CallChain >>
 val String?.white: String
     get() = this?.qColor(QShColor.White) ?: "null".qColor(QShColor.White)
+
+// << Root of the CallChain >>
+val String.noStyle: String
+    get() {
+        return this.replace("""\Q$qSTART\E\d{1,2}m""".re, "")
+    }

@@ -17,6 +17,6 @@ import nyab.conf.QMyPath
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=10] = path <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[Call]- QExcep ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=10] = String.path <-[Call]- QMyPath.src_root <-[Call]- qLogStackFrames() <-[Call]- ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal val String.path: Path
     get() = Paths.get(this.trim()).toAbsolutePath().normalize()
