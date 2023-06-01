@@ -186,12 +186,12 @@ internal fun qLogStackFrames(
 
     val text = style.start + output + style.end
 
-    val finalTxt = if (noColor) text.noColor else text
+    val finalTxt = if (noColor) text.noStyle else text
 
     if (!quiet)
         style.out.print(finalTxt)
 
-    return if (noColor) output.noColor else output
+    return if (noColor) output.noStyle else output
 }
 
 // CallChain[size=10] = qSrcFileLinesAtFrame() <-[Call]- qMySrcLinesAtFrame() <-[Call]- qLogStackFra ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]

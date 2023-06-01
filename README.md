@@ -11,7 +11,7 @@
 ### output
 
 <p align="center">
-    <img src="img/result.png" width="617" alt="result.png">
+    <img src="img/result.png" width="627" alt="result.png">
 </p>
 
 ### code
@@ -20,7 +20,19 @@ Full Source  [QShColorExample.kt](src-example/QShColorExample.kt)
 
 ```kotlin
 fun colorful() {
-    println("c".yellow + "o".blue + "l".red + "o".magenta + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red)
+    println("c".yellow + "o".blue + "l".red + "o".purple + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red)
+}
+
+fun regex() {
+    val txt = """val color = "you can use regex to color targeted text"""".qColorTarget(
+        ptn = """val(?!\S)""".toRegex(),
+        fg = QShColor.Purple
+    ).qColorTarget(
+        ptn = """".*?"""".toRegex(),
+        fg = QShColor.Green
+    )
+
+    println(txt)
 }
 
 fun background() {
@@ -37,23 +49,11 @@ fun nest() {
     println("ne${"stab".blue.underline}le".yellow)
 }
 
-fun regex() {
-    val txt = """val color = "you can use regex to color targeted text"""".qColorTarget(
-        ptn = """val(?!\S)""".toRegex(),
-        fg = QShColor.Magenta
-    ).qColorTarget(
-        ptn = """".*?"""".toRegex(),
-        fg = QShColor.Green
-    )
-
-    println(txt)
-}
-
 fun multiline() {
     val txt = """
-        ${"multiline".underline}
-        text
-    """.trimIndent().blue
+        multiline
+        multiline
+    """.trimIndent().blue.underline
 
     println(txt)
 }

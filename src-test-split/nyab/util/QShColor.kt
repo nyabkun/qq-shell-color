@@ -10,13 +10,15 @@
 
 package nyab.util
 
+import kotlin.math.absoluteValue
+
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=7] = qBG_JUMP <-[Call]- QShColor.bg <-[Call]- String.qApplyEscapeLine() <-[Call]- String.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = qBG_JUMP <-[Call]- QShColor.bg <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private const val qBG_JUMP = 10
 
-// CallChain[size=5] = qSTART <-[Call]- String.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = qSTART <-[Call]- QShColor.bg <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 private const val qSTART = "\u001B["
 
 // CallChain[size=7] = qEND <-[Call]- String.qApplyEscapeLine() <-[Call]- String.qApplyEscapeLine()  ... ring.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
@@ -83,8 +85,8 @@ private fun String.qApplyEscapeLine(
     return text
 }
 
-// CallChain[size=3] = noColor <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
-internal val String.noColor: String
+// CallChain[size=3] = noStyle <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+internal val String.noStyle: String
     get() {
         return this.replace("""\Q$qSTART\E\d{1,2}m""".re, "")
     }
@@ -119,12 +121,17 @@ internal enum class QShColor(val code: Int) {
     Yellow(33),
     // CallChain[size=5] = QShColor.Blue <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Blue(34),
-    // CallChain[size=5] = QShColor.Magenta <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
-    Magenta(35),
+    // CallChain[size=5] = QShColor.Purple <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    Purple(35),
     // CallChain[size=5] = QShColor.Cyan <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     Cyan(36),
     // CallChain[size=5] = QShColor.LightGray <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LightGray(37),
+
+    // CallChain[size=5] = QShColor.DefaultFG <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    DefaultFG(39),
+    // CallChain[size=5] = QShColor.DefaultBG <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    DefaultBG(49),
 
     // CallChain[size=5] = QShColor.DarkGray <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     DarkGray(90),
@@ -136,21 +143,32 @@ internal enum class QShColor(val code: Int) {
     LightYellow(93),
     // CallChain[size=5] = QShColor.LightBlue <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LightBlue(94),
-    // CallChain[size=5] = QShColor.LightMagenta <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
-    LightMagenta(95),
+    // CallChain[size=5] = QShColor.LightPurple <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    LightPurple(95),
     // CallChain[size=5] = QShColor.LightCyan <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     LightCyan(96),
     // CallChain[size=5] = QShColor.White <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     White(97);
 
-    // CallChain[size=6] = QShColor.fg <-[Call]- String.qApplyEscapeLine() <-[Call]- String.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.fg <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val fg: String = "$qSTART${code}m"
 
-    // CallChain[size=6] = QShColor.bg <-[Call]- String.qApplyEscapeLine() <-[Call]- String.qColor() <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=5] = QShColor.bg <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
     val bg: String = "$qSTART${code + qBG_JUMP}m"
 
     companion object {
-        
+        // CallChain[size=5] = QShColor.random() <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        fun random(seed: String, colors: Array<QShColor> = arrayOf(Yellow, Green, Blue, Purple, Cyan)): QShColor {
+            val idx = seed.hashCode().rem(colors.size).absoluteValue
+            return colors[idx]
+        }
+
+        // CallChain[size=5] = QShColor.get() <-[Propag]- QShColor.LightGreen <-[Call]- light_green <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+        fun get(ansiEscapeCode: Int): QShColor {
+            return QShColor.values().find {
+                it.code == ansiEscapeCode
+            }!!
+        }
     }
 }
 
@@ -174,6 +192,9 @@ internal fun String.qColorAndDecoDebug(tagStart: String = "[", tagEnd: String = 
 internal fun String.qColorTarget(ptn: Regex, fg: QShColor? = null, bg: QShColor? = null): String {
     return ptn.replace(this, "$0".qColor(fg, bg))
 }
+
+// CallChain[size=2] = String.qColorRandom() <-[Call]- QShColorTest.randomColor()[Root]
+internal fun String.qColorRandom(seed: String = qCallerSrcLineSignature()): String = this.qColor(QShColor.random(seed))
 
 // CallChain[size=2] = bold <-[Call]- QShColorTest.bold()[Root]
 internal val String?.bold: String
@@ -203,9 +224,9 @@ internal val String?.yellow: String
 internal val String?.blue: String
     get() = this?.qColor(QShColor.Blue) ?: "null".qColor(QShColor.Blue)
 
-// CallChain[size=2] = magenta <-[Call]- QShColorTest.colourful()[Root]
-internal val String?.magenta: String
-    get() = this?.qColor(QShColor.Magenta) ?: "null".qColor(QShColor.Cyan)
+// CallChain[size=2] = purple <-[Call]- QShColorTest.colourful()[Root]
+internal val String?.purple: String
+    get() = this?.qColor(QShColor.Purple) ?: "null".qColor(QShColor.Cyan)
 
 // CallChain[size=10] = cyan <-[Call]- QLogStyle <-[Ref]- QLogStyle.SRC_AND_STACK <-[Call]- QExcepti ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal val String?.cyan: String

@@ -613,18 +613,21 @@ internal open class QCharReader(val text: CharSequence) {
         return text[offset++]
     }
 
-    // CallChain[size=13] = QCharReader.nextString() <-[Propag]- QCharReader <-[Call]- QSequenceReader < ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
-    fun nextString(length: Int): String {
-        val str = text.substring(offset + 1, (offset + length).coerceAtMost(text.length))
+    // CallChain[size=13] = QCharReader.nextStringExcludingCurOffset() <-[Propag]- QCharReader <-[Call]- ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    fun nextStringExcludingCurOffset(length: Int): String {
+        val str = text.substring(offset + 1, (offset + 1 + length).coerceAtMost(text.length))
         offset += length
         return str
     }
 
-    // CallChain[size=13] = QCharReader.previousString() <-[Propag]- QCharReader <-[Call]- QSequenceRead ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
-    fun previousString(length: Int): String {
-        val str = text.substring(offset - length, offset)
-        offset -= length
-        return str
+    // CallChain[size=13] = QCharReader.peekNextStringIncludingCurOffset() <-[Propag]- QCharReader <-[Ca ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    fun peekNextStringIncludingCurOffset(length: Int): String {
+        return text.substring(offset, (offset + length).coerceAtMost(text.length))
+    }
+
+    // CallChain[size=13] = QCharReader.peekPreviousStringExcludingCurOffset() <-[Propag]- QCharReader < ... TRING <-[Call]- Any?.qToLogString() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    fun peekPreviousStringExcludingCurOffset(length: Int): String {
+        return text.substring(offset - length, offset)
     }
 }
 

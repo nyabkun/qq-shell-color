@@ -34,7 +34,7 @@ import nyab.util.light_gray
 import nyab.util.light_green
 import nyab.util.light_red
 import nyab.util.light_yellow
-import nyab.util.noColor
+import nyab.util.noStyle
 import nyab.util.qBrackets
 import nyab.util.qCallerFileName
 import nyab.util.qColor
@@ -69,7 +69,7 @@ import nyab.util.yellow
 @Target(AnnotationTarget.FUNCTION)
 internal annotation class QTest(val testOnlyThis: Boolean = false)
 
-// CallChain[size=3] = QTestHumanCheckRequired <-[Ref]- qTest() <-[Call]- main()[Root]
+// CallChain[size=2] = QTestHumanCheckRequired <-[Call]- QShColorTest.randomColor()[Root]
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FUNCTION)
 internal annotation class QTestHumanCheckRequired(val testOnlyThis: Boolean = false)
@@ -377,7 +377,7 @@ internal infix fun Any?.shouldBe(expected: Any?) {
     val thisStr = this.qToLogString()
     val expectedStr = expected.qToLogString()
 
-    if (thisStr.trim().noColor != expectedStr.trim().noColor) {
+    if (thisStr.trim().noStyle != expectedStr.trim().noStyle) {
         val msg = qFailMsg(thisStr, "is not equals to", expectedStr)
 
         val diffIdx =

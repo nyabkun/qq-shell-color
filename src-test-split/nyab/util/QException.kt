@@ -19,6 +19,7 @@ import kotlin.io.path.isDirectory
 import kotlin.io.path.isRegularFile
 import nyab.conf.QE
 import nyab.conf.QMyMark
+import nyab.conf.qSTACK_FRAME_FILTER
 import nyab.match.QM
 
 // qq-shell-color is a self-contained single-file library created by nyabkun.
@@ -59,7 +60,7 @@ internal class QException(
     e: Throwable? = null,
     val stackDepth: Int = 0,
     stackSize: Int = 20,
-    stackFilter: (StackWalker.StackFrame) -> Boolean = QE.STACK_FRAME_FILTER,
+    stackFilter: (StackWalker.StackFrame) -> Boolean = qSTACK_FRAME_FILTER,
     private val srcCut: QSrcCut = QSrcCut.MULTILINE_NOCUT,
 ) : RuntimeException(msg, e) {
 

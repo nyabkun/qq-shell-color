@@ -1,23 +1,23 @@
 ## main
-                        String.qColorRandom() [KtNamedFunction] <Top Level> : 87
-                    qCallerSrcLineSignature() [KtNamedFunction] <Top Level> : 86
-                                qStackFrame() [KtNamedFunction] <Top Level> : 85
-                 QMyException.STACK_FRAME_FILTER [KtProperty] <Third Level> : 81
-                                     qMASK_COLORED [KtProperty] <Top Level> : 74
-          QMaskBetween.QMaskBetween() [KtPrimaryConstructor] <Second Level> : 69
-                      QMaskBetween.apply() [KtNamedFunction] <Second Level> : 68
-                  QMaskBetween.applyMore() [KtNamedFunction] <Second Level> : 46
-                        String.qFindBetween() [KtNamedFunction] <Top Level> : 29
-                           QBetween.find() [KtNamedFunction] <Second Level> : 27
+                          noStyle [KtProperty] <Top Level> : 19
+                               re [KtProperty] <Top Level> : 18
+                       qRe() [KtNamedFunction] <Top Level> : 17
+ qCacheItOneSecThreadLocal() [KtNamedFunction] <Top Level> : 15
+  qCacheItTimedThreadLocal() [KtNamedFunction] <Top Level> : 14
+     QCacheMap.getOrPut() [KtNamedFunction] <Second Level> :  8
+       String.qColorRandom() [KtNamedFunction] <Top Level> :  4
+   qCallerSrcLineSignature() [KtNamedFunction] <Top Level> :  3
+             String.qColor() [KtNamedFunction] <Top Level> :  2
+               qStackFrame() [KtNamedFunction] <Top Level> :  2
 
 ## test
-                          QShColorTest.nest2() [KtNamedFunction] <Second Level> : 500
-                                  Any?.shouldBe() [KtNamedFunction] <Top Level> : 488
-                                      qBrackets() [KtNamedFunction] <Top Level> : 231
-                             QE.throwItBrackets() [KtNamedFunction] <Top Level> : 208
-                  QException.QException() [KtPrimaryConstructor] <Second Level> : 206
-                  QException.printStackTrace() [KtNamedFunction] <Second Level> : 193
-                           QException.mySrcAndStack [KtProperty] <Second Level> : 192
-                                           main() [KtNamedFunction] <Top Level> : 165
-                                          qTest() [KtNamedFunction] <Top Level> : 164
-                                qLogStackFrames() [KtNamedFunction] <Top Level> : 151
+                             QShColorTest.nest2() [KtNamedFunction] <Second Level> : 435
+                                     Any?.shouldBe() [KtNamedFunction] <Top Level> : 423
+                                         qBrackets() [KtNamedFunction] <Top Level> : 238
+                                QE.throwItBrackets() [KtNamedFunction] <Top Level> : 214
+                     QException.QException() [KtPrimaryConstructor] <Second Level> : 212
+                     QException.printStackTrace() [KtNamedFunction] <Second Level> : 198
+                              QException.mySrcAndStack [KtProperty] <Second Level> : 197
+                                              main() [KtNamedFunction] <Top Level> : 167
+                                             qTest() [KtNamedFunction] <Top Level> : 166
+                                   qLogStackFrames() [KtNamedFunction] <Top Level> : 156

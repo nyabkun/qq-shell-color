@@ -25,18 +25,6 @@ private const val qSTART = "\u001B["
 private const val qEND = "${qSTART}0m"
 
 // << Root of the CallChain >>
-private val qMASK_COLORED by lazy {
-    QMaskBetween(
-        qSTART,
-        qEND,
-        null,
-        escapeChar = '\\',
-        targetNestDepth = 1,
-        maskIncludeStartAndEndSequence = false
-    )
-}
-
-// << Root of the CallChain >>
 private fun String.qApplyEscapeNestable(start: String): String {
     val lastEnd = this.endsWith(qEND)
 
@@ -98,7 +86,7 @@ private fun String.qApplyEscapeLine(
 }
 
 // << Root of the CallChain >>
-val String.noColor: String
+val String.noStyle: String
     get() {
         return this.replace("""\Q$qSTART\E\d{1,2}m""".re, "")
     }
@@ -118,7 +106,7 @@ enum class QShDeco(val code: Int) {
 
     companion object {
         // << Root of the CallChain >>
-        internal fun get(code: Int): QShDeco {
+        fun get(code: Int): QShDeco {
             return QShDeco.values().find {
                 it.code == code
             }!!
@@ -139,11 +127,16 @@ enum class QShColor(val code: Int) {
     // << Root of the CallChain >>
     Blue(34),
     // << Root of the CallChain >>
-    Magenta(35),
+    Purple(35),
     // << Root of the CallChain >>
     Cyan(36),
     // << Root of the CallChain >>
     LightGray(37),
+
+    // << Root of the CallChain >>
+    DefaultFG(39),
+    // << Root of the CallChain >>
+    DefaultBG(49),
 
     // << Root of the CallChain >>
     DarkGray(90),
@@ -156,7 +149,7 @@ enum class QShColor(val code: Int) {
     // << Root of the CallChain >>
     LightBlue(94),
     // << Root of the CallChain >>
-    LightMagenta(95),
+    LightPurple(95),
     // << Root of the CallChain >>
     LightCyan(96),
     // << Root of the CallChain >>
@@ -170,15 +163,15 @@ enum class QShColor(val code: Int) {
 
     companion object {
         // << Root of the CallChain >>
-        fun random(seed: String, colors: Array<QShColor> = arrayOf(Yellow, Green, Blue, Magenta, Cyan)): QShColor {
+        fun random(seed: String, colors: Array<QShColor> = arrayOf(Yellow, Green, Blue, Purple, Cyan)): QShColor {
             val idx = seed.hashCode().rem(colors.size).absoluteValue
             return colors[idx]
         }
 
         // << Root of the CallChain >>
-        internal fun get(code: Int): QShColor {
+        fun get(ansiEscapeCode: Int): QShColor {
             return QShColor.values().find {
-                it.code == code
+                it.code == ansiEscapeCode
             }!!
         }
     }
@@ -246,8 +239,8 @@ val String?.blue: String
     get() = this?.qColor(QShColor.Blue) ?: "null".qColor(QShColor.Blue)
 
 // << Root of the CallChain >>
-val String?.magenta: String
-    get() = this?.qColor(QShColor.Magenta) ?: "null".qColor(QShColor.Cyan)
+val String?.purple: String
+    get() = this?.qColor(QShColor.Purple) ?: "null".qColor(QShColor.Cyan)
 
 // << Root of the CallChain >>
 val String?.cyan: String
@@ -279,7 +272,7 @@ val String?.light_blue: String
 
 // << Root of the CallChain >>
 val String?.light_magenta: String
-    get() = this?.qColor(QShColor.LightMagenta) ?: "null".qColor(QShColor.LightMagenta)
+    get() = this?.qColor(QShColor.LightPurple) ?: "null".qColor(QShColor.LightPurple)
 
 // << Root of the CallChain >>
 val String?.light_cyan: String

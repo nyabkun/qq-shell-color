@@ -15,9 +15,8 @@ package nyab.util
 import java.lang.StackWalker.StackFrame
 import java.util.*
 import java.util.stream.Stream
-import kotlin.reflect.KClass
 import kotlin.streams.asSequence
-import nyab.conf.QE
+import nyab.conf.qSTACK_FRAME_FILTER
 
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
@@ -45,7 +44,7 @@ internal fun qCallerSrcLineSignature(stackDepth: Int = 0): String {
 internal inline fun qStackFrames(
         stackDepth: Int = 0,
         size: Int = 1,
-        noinline filter: (StackFrame) -> Boolean = QE.STACK_FRAME_FILTER,
+        noinline filter: (StackFrame) -> Boolean = qSTACK_FRAME_FILTER,
 ): List<StackFrame> {
     return StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE).walk { s: Stream<StackFrame> ->
         s.asSequence().filter(filter).drop(stackDepth).take(size).toList()
@@ -55,7 +54,7 @@ internal inline fun qStackFrames(
 // CallChain[size=3] = qStackFrame() <-[Call]- qCallerSrcLineSignature() <-[Call]- String.qColorRandom()[Root]
 internal inline fun qStackFrame(
         stackDepth: Int = 0,
-        noinline filter: (StackFrame) -> Boolean = QE.STACK_FRAME_FILTER,
+        noinline filter: (StackFrame) -> Boolean = qSTACK_FRAME_FILTER,
 ): StackFrame {
     return qStackFrames(stackDepth, 1, filter)[0]
 }

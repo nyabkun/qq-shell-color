@@ -11,6 +11,7 @@
 package nyab.util
 
 import nyab.test.QTest
+import nyab.test.QTestHumanCheckRequired
 import nyab.test.qTest
 import nyab.test.shouldBe
 
@@ -25,6 +26,21 @@ fun main() {
 
 // << Root of the CallChain >>
 class QShColorTest {
+    // << Root of the CallChain >>
+    @QTestHumanCheckRequired
+    fun listAllColors() {
+        val txt = QShColor.values().joinToString("\n") {
+            "${it.name} => " + "　".qColor(bg = it)
+        }
+
+        println(txt)
+    }
+
+    // << Root of the CallChain >>
+    @QTestHumanCheckRequired
+    fun randomColor() {
+        println("""random""".qColorRandom())
+    }
 
     // << Root of the CallChain >>
     @QTest
@@ -69,8 +85,8 @@ class QShColorTest {
     // << Root of the CallChain >>
     @QTest
     fun colourful() {
-        ("c".yellow + "o".blue + "l".red + "o".magenta + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red).qColorAndDecoDebug() shouldBe """
-            [Yellow]c[End][Blue]o[End][Red]l[End][Magenta]o[End][Green]u[End][Cyan]r[End][Yellow]f[End][Blue]u[End][Red]l[End]
+        ("c".yellow + "o".blue + "l".red + "o".purple + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red).qColorAndDecoDebug() shouldBe """
+            [Yellow]c[End][Blue]o[End][Red]l[End][Purple]o[End][Green]u[End][Cyan]r[End][Yellow]f[End][Blue]u[End][Red]l[End]
         """.trimIndent()
     }
 
@@ -121,25 +137,25 @@ class QShColorTest {
     fun colorTarget() {
         """val color = "green"""".qColorTarget(
             ptn = """val""".toRegex(),
-            fg = QShColor.Magenta
+            fg = QShColor.Purple
         ).qColorTarget(
             ptn = """".*?"""".toRegex(),
             fg = QShColor.Green
         ).qColorAndDecoDebug() shouldBe """
-            [Magenta]val[End] color = [Green]"green"[End]
+            [Purple]val[End] color = [Green]"green"[End]
         """.trimIndent()
     }
 
     // << Root of the CallChain >>
     @QTest
-    fun noColor() {
+    fun noStyle() {
         """val color = "text"""".qColorTarget(
             ptn = """val""".toRegex(),
-            fg = QShColor.Magenta
+            fg = QShColor.Purple
         ).qColorTarget(
             ptn = """".*?"""".toRegex(),
             fg = QShColor.Green
-        ).noColor.qColorAndDecoDebug() shouldBe """val color = "text""""
+        ).noStyle.qColorAndDecoDebug() shouldBe """val color = "text""""
     }
 
     // << Root of the CallChain >>

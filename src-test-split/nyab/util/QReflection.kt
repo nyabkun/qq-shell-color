@@ -30,6 +30,7 @@ import kotlin.reflect.full.memberFunctions
 import kotlin.streams.asSequence
 import nyab.conf.QE
 import nyab.conf.QMyPath
+import nyab.conf.qSTACK_FRAME_FILTER
 import nyab.match.QM
 import nyab.match.QMFunc
 import nyab.match.and
@@ -122,7 +123,7 @@ internal fun qCallerFileName(stackDepth: Int = 0): String {
     return qStackFrame(stackDepth + 2).fileName
 }
 
-// CallChain[size=6] = qCallerSrcLineSignature() <-[Call]- qThisSrcLineSignature <-[Call]- qTimeIt() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
+// CallChain[size=3] = qCallerSrcLineSignature() <-[Call]- String.qColorRandom() <-[Call]- QShColorTest.randomColor()[Root]
 internal fun qCallerSrcLineSignature(stackDepth: Int = 0): String {
     val frame = qStackFrame(stackDepth + 2)
 
@@ -145,7 +146,7 @@ internal fun qCallerSrcLineSignature(stackDepth: Int = 0): String {
 internal inline fun qStackFrames(
         stackDepth: Int = 0,
         size: Int = 1,
-        noinline filter: (StackFrame) -> Boolean = QE.STACK_FRAME_FILTER,
+        noinline filter: (StackFrame) -> Boolean = qSTACK_FRAME_FILTER,
 ): List<StackFrame> {
     return StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE).walk { s: Stream<StackFrame> ->
         s.asSequence().filter(filter).drop(stackDepth).take(size).toList()
@@ -155,7 +156,7 @@ internal inline fun qStackFrames(
 // CallChain[size=11] = qStackFrame() <-[Call]- qSrcFileLinesAtFrame() <-[Call]- qMySrcLinesAtFrame( ... wItBrackets() <-[Call]- qBrackets() <-[Call]- Any?.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
 internal inline fun qStackFrame(
         stackDepth: Int = 0,
-        noinline filter: (StackFrame) -> Boolean = QE.STACK_FRAME_FILTER,
+        noinline filter: (StackFrame) -> Boolean = qSTACK_FRAME_FILTER,
 ): StackFrame {
     return qStackFrames(stackDepth, 1, filter)[0]
 }

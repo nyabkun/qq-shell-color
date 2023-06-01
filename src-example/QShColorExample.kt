@@ -16,7 +16,7 @@ import nyab.util.bold
 import nyab.util.cyan
 import nyab.util.green
 import nyab.util.italic
-import nyab.util.magenta
+import nyab.util.purple
 import nyab.util.qColor
 import nyab.util.qColorTarget
 import nyab.util.red
@@ -31,17 +31,18 @@ fun main() {
     regex()
 
     println()
+
     multiline()
 }
 
 fun colorful() {
-    println("c".yellow + "o".blue + "l".red + "o".magenta + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red)
+    println("c".yellow + "o".blue + "l".red + "o".purple + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red)
 }
 
 fun regex() {
     val txt = """val color = "you can use regex to color targeted text"""".qColorTarget(
         ptn = """val(?!\S)""".toRegex(),
-        fg = QShColor.Magenta
+        fg = QShColor.Purple
     ).qColorTarget(
         ptn = """".*?"""".toRegex(),
         fg = QShColor.Green
@@ -66,9 +67,9 @@ fun nest() {
 
 fun multiline() {
     val txt = """
-        ${"multiline".underline}
-        text
-    """.trimIndent().blue
+        multiline
+        multiline
+    """.trimIndent().blue.underline
 
     println(txt)
 }
