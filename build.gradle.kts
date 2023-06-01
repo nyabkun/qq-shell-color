@@ -29,7 +29,7 @@ plugins {
 
 group = "com.github.nyabkun"
 
-version = "v2023-06-01-bc02"
+version = "v2023-06-01-bc03"
 
 repositories {
     mavenCentral()

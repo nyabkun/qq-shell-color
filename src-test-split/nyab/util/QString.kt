@@ -11,6 +11,7 @@
 package nyab.util
 
 import java.nio.charset.Charset
+import java.util.*
 import kotlin.math.min
 import kotlin.reflect.full.extensionReceiverParameter
 import kotlin.reflect.full.isSuperclassOf

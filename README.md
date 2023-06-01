@@ -1,4 +1,4 @@
-<!--- version = v2023-06-01-bc02 --->
+<!--- version = v2023-06-01-bc03 --->
 
 # 🐕 qq-shell-color
 
@@ -70,34 +70,34 @@ You can easily copy and paste it into your codebase.
 
 ## Public API
 
-- `String.qColor()` *ExtensionFunction* [📄 jump to code](src-split/nyab/util/QShColor.kt#L38-L47)
-- `String.qDeco()` *ExtensionFunction* [📄 jump to code](src-split/nyab/util/QShColor.kt#L49-L58)
-- `String.qColorAndDecoDebug()` *ExtensionFunction* [📄 jump to code](src-split/nyab/util/QShColor.kt#L174-L188)
-- `String.qColorTarget()` *ExtensionFunction* [📄 jump to code](src-split/nyab/util/QShColor.kt#L190-L193)
-- `String.qDecoTarget()` *ExtensionFunction* [📄 jump to code](src-split/nyab/util/QShColor.kt#L195-L198)
-- `String.qColorRandom()` *ExtensionFunction* [📄 jump to code](src-split/nyab/util/QShColor.kt#L200-L201)
-- `String.bold` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L203-L205)
-- `String.italic` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L207-L209)
-- `String.underline` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L211-L213)
-- `String.black` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L215-L217)
-- `String.red` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L219-L221)
-- `String.green` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L223-L225)
-- `String.yellow` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L227-L229)
-- `String.blue` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L231-L233)
-- `String.purple` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L235-L237)
-- `String.cyan` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L239-L241)
-- `String.light_gray` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L243-L245)
-- `String.dark_gray` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L247-L249)
-- `String.light_red` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L251-L253)
-- `String.light_green` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L255-L257)
-- `String.light_yellow` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L259-L261)
-- `String.light_blue` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L263-L265)
-- `String.light_magenta` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L267-L269)
-- `String.light_cyan` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L271-L273)
-- `String.white` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L275-L277)
-- `String.noStyle` *ExtensionProperty* [📄 jump to code](src-split/nyab/util/QShColor.kt#L279-L283)
-- `QShDeco` *EnumClass* [📄 jump to code](src-split/nyab/util/QShColor.kt#L88-L109)
-- `QShColor` *EnumClass* [📄 jump to code](src-split/nyab/util/QShColor.kt#L111-L172)
+- [`String.qColor()`](src-split/nyab/util/QShColor.kt#L38-L47) *extension function*
+- [`String.qDeco()`](src-split/nyab/util/QShColor.kt#L49-L58) *extension function*
+- [`String.qColorAndDecoDebug()`](src-split/nyab/util/QShColor.kt#L174-L188) *extension function*
+- [`String.qColorTarget()`](src-split/nyab/util/QShColor.kt#L190-L193) *extension function*
+- [`String.qDecoTarget()`](src-split/nyab/util/QShColor.kt#L195-L198) *extension function*
+- [`String.qColorRandom()`](src-split/nyab/util/QShColor.kt#L200-L201) *extension function*
+- [`String.bold`](src-split/nyab/util/QShColor.kt#L203-L205) *extension property*
+- [`String.italic`](src-split/nyab/util/QShColor.kt#L207-L209) *extension property*
+- [`String.underline`](src-split/nyab/util/QShColor.kt#L211-L213) *extension property*
+- [`String.black`](src-split/nyab/util/QShColor.kt#L215-L217) *extension property*
+- [`String.red`](src-split/nyab/util/QShColor.kt#L219-L221) *extension property*
+- [`String.green`](src-split/nyab/util/QShColor.kt#L223-L225) *extension property*
+- [`String.yellow`](src-split/nyab/util/QShColor.kt#L227-L229) *extension property*
+- [`String.blue`](src-split/nyab/util/QShColor.kt#L231-L233) *extension property*
+- [`String.purple`](src-split/nyab/util/QShColor.kt#L235-L237) *extension property*
+- [`String.cyan`](src-split/nyab/util/QShColor.kt#L239-L241) *extension property*
+- [`String.light_gray`](src-split/nyab/util/QShColor.kt#L243-L245) *extension property*
+- [`String.dark_gray`](src-split/nyab/util/QShColor.kt#L247-L249) *extension property*
+- [`String.light_red`](src-split/nyab/util/QShColor.kt#L251-L253) *extension property*
+- [`String.light_green`](src-split/nyab/util/QShColor.kt#L255-L257) *extension property*
+- [`String.light_yellow`](src-split/nyab/util/QShColor.kt#L259-L261) *extension property*
+- [`String.light_blue`](src-split/nyab/util/QShColor.kt#L263-L265) *extension property*
+- [`String.light_magenta`](src-split/nyab/util/QShColor.kt#L267-L269) *extension property*
+- [`String.light_cyan`](src-split/nyab/util/QShColor.kt#L271-L273) *extension property*
+- [`String.white`](src-split/nyab/util/QShColor.kt#L275-L277) *extension property*
+- [`String.noStyle`](src-split/nyab/util/QShColor.kt#L279-L283) *extension property*
+- [`QShDeco`](src-split/nyab/util/QShColor.kt#L88-L109) *enum class*
+- [`QShColor`](src-split/nyab/util/QShColor.kt#L111-L172) *enum class*
 
 ## Single-File version Dependency
 
@@ -126,7 +126,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.nyabkun:qq-shell-color:v2023-06-01-bc02'
+    implementation 'com.github.nyabkun:qq-shell-color:v2023-06-01-bc03'
 }
 ```
 
@@ -138,7 +138,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.nyabkun:qq-shell-color:v2023-06-01-bc02")
+    implementation("com.github.nyabkun:qq-shell-color:v2023-06-01-bc03")
 }
 ```
 
@@ -157,7 +157,7 @@ dependencies {
     <dependency>
         <groupId>com.github.nyabkun</groupId>
         <artifactId>qq-shell-color</artifactId>
-        <version>v2023-06-01-bc02</version>
+        <version>v2023-06-01-bc03</version>
     </dependency>
 </dependencies>
 ```

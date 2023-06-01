@@ -10,6 +10,8 @@
 
 package nyab.util
 
+import java.util.*
+
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
