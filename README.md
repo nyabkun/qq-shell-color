@@ -14,9 +14,9 @@
     <img src="img/result.png" width="627" alt="result.png">
 </p>
 
-### code
+### code example
 
-Full Source  [QShColorExample.kt](src-example/QShColorExample.kt)
+Full Source : [QShColorExample.kt](src-example/QShColorExample.kt)
 
 ```kotlin
 fun colorful() {
@@ -90,7 +90,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.nyabkun:qq-shell-color:v2023-05-30'
+    implementation 'com.github.nyabkun:qq-shell-color:v2023-06-01'
 }
 ```
 
@@ -102,7 +102,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.nyabkun:qq-shell-color:v2023-05-30")
+    implementation("com.github.nyabkun:qq-shell-color:v2023-06-01")
 }
 ```
 
@@ -121,7 +121,7 @@ dependencies {
     <dependency>
         <groupId>com.github.nyabkun</groupId>
         <artifactId>qq-shell-color</artifactId>
-        <version>v2023-05-30</version>
+        <version>v2023-06-01</version>
     </dependency>
 </dependencies>
 ```
