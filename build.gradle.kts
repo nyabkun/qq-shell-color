@@ -19,7 +19,7 @@ plugins {
 
 group = "com.github.nyabkun"
 
-version = "v2023-11-13"
+version = "v2023-11-13-bc02"
 
 repositories {
     mavenCentral()
@@ -46,7 +46,24 @@ sourceSets.test {
     resources.srcDirs("rsc-test")
 }
 
+sourceSets.register("example") {
+    java.srcDirs("src-example")
+    val jarFile = "$buildDir/libs/$qMavenArtifactId-$version.jar"
+    compileClasspath += files(jarFile)
+    runtimeClasspath += files(jarFile)
 
+    resources.srcDirs("rsc")
+}
+
+tasks.getByName("compileExampleKotlin").dependsOn("jar")
+
+val exampleImplementation: Configuration by configurations.getting {
+    extendsFrom(configurations.implementation.get())
+}
+
+val exampleRuntimeOnly: Configuration by configurations.getting {
+    extendsFrom(configurations.runtimeOnly.get())
+}
 
 sourceSets.register("single") {
     java.srcDirs("src-single")
@@ -76,8 +93,7 @@ val testSingleRuntimeOnly: Configuration by configurations.getting {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
-    implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.8.20")
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.20")
+    testImplementation("org.jetbrains.kotlin:kotlin-reflect:1.8.20")
 }
 
 tasks {
@@ -141,11 +157,15 @@ tasks {
         classpath = sourceSets.get("testSingle").runtimeClasspath
     }
 
-    
+    register<JavaExec>("qRunExample") {
+        mainClass.set("shcolor.QColorExampleKt")
+        classpath = sourceSets.get("example").runtimeClasspath
+    }
     
     getByName<Test>("test") {
         dependsOn("qRunTestSingle")
         dependsOn("qRunTestSplit")
+        dependsOn("qRunExample")
     }
 }
 

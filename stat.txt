@@ -1,4 +1,4 @@
-Version: v2023-11-13
+Version: v2023-11-13-bc02
 
 # Public API [main]
 String.qColor() - ExtensionFunction
@@ -42,7 +42,7 @@ QMyColorStyle (Chained) - EnumClass
 # number of root of chain nodes [main]
 72
 # single src file number of lines [test]
-5686
+5687
 # split src file number of files [test]
 38
 # number of marked nodes [test]

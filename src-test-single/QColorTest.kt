@@ -57,7 +57,6 @@ import kotlin.reflect.full.memberExtensionFunctions
 import kotlin.reflect.full.memberFunctions
 import kotlin.streams.asSequence
 import org.intellij.lang.annotations.Language
-import org.jetbrains.kotlin.utils.addToStdlib.applyIf
 
 
 // qq-shell-color is self-contained single-file library created by nyabkun.
@@ -1317,7 +1316,7 @@ private class QTestResult(val elements: List<QTestResultElement>, val time: Long
             out.println(elements.allTestedMethods)
             out.println()
             out.println(str)
-            out.println("${"✨".yellow} ${" Success ".green} ${"✨".yellow}".green + "\n")
+            out.println("${"★".yellow} ${" Success ".green} ${"★".yellow}".green + "\n")
         }
     }
 }
@@ -2690,7 +2689,7 @@ private fun Collection<Path>.qFind(nameMatcher: QM, type: QFType = QFType.File, 
 }
 
 // CallChain[size=14] = Path.qFind() <-[Call]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame()  ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
-private fun Path.qFind(nameMatcher: QM, type: QFType = QFType.File, maxDepth: Int = 1): Path? {
+private fun Path.qFind(nameMatcher: QM, type: QFType = QFType.File, maxDepth: Int = 100): Path? {
     return try {
         qList(type, maxDepth = maxDepth) {
             it.name.qMatches(nameMatcher)
@@ -2720,8 +2719,8 @@ private fun Path.qList(
     maxDepth: Int = 1,
     followSymLink: Boolean = false,
     sortWith: ((Path, Path) -> Int)? = Path::compareTo,
-    fileFilter: (Path) -> Boolean = { true },
     dirFilter: (Path) -> Boolean = { true },
+    fileFilter: (Path) -> Boolean = { true },
     // TODO https://stackoverflow.com/a/66996768/5570400
     // errorContinue: Boolean = true
 ): List<Path> {
@@ -2730,8 +2729,8 @@ private fun Path.qList(
         maxDepth = maxDepth,
         followSymLink = followSymLink,
         sortWith = sortWith,
+        dirFilter = dirFilter,
         fileFilter = fileFilter,
-        dirFilter = dirFilter
     ).toList()
 }
 
@@ -5357,8 +5356,10 @@ private fun Char.qIsWhitespace(allowLinebreak: Boolean = false): Boolean {
 // CallChain[size=9] = String.qCamelCaseToSpaceSeparated() <-[Call]- QException.qToString() <-[Call] ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 private fun String.qCamelCaseToSpaceSeparated(toLowerCase: Boolean = false): String {
     return this.replace("([a-z])([A-Z]+)".re, "$1 $2")
-        .replace("([A-Z]+)([A-Z][a-z])".re, "$1 $2").applyIf(toLowerCase) {
-            lowercase(Locale.ENGLISH)
+        .replace("([A-Z]+)([A-Z][a-z])".re, "$1 $2").apply {
+            if( toLowerCase) {
+                lowercase(Locale.ENGLISH)
+            }
         }
 }
 

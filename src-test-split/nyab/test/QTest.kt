@@ -164,7 +164,7 @@ internal class QTestResult(val elements: List<QTestResultElement>, val time: Lon
             out.println(elements.allTestedMethods)
             out.println()
             out.println(str)
-            out.println("${"✨".yellow} ${" Success ".green} ${"✨".yellow}".green + "\n")
+            out.println("${"★".yellow} ${" Success ".green} ${"★".yellow}".green + "\n")
         }
     }
 }

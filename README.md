@@ -1,4 +1,4 @@
-<!--- version = v2023-11-13 --->
+<!--- version = v2023-11-13-bc02 --->
 
 # 🐕 qq-shell-color
 
@@ -9,38 +9,95 @@
 - Or you can use Jar version. See [Maven Dependency Section](#jar-version-maven-dependency).
 - Feel free to fork or copy to your own codebase 😍
 
+## Example
 
+### output
+<p align="center">
+    
+</p>
+<p align="center">
+    <img src="img/result.png" width="587" alt="result.png">
+</p>
+
+### code example
+
+Full Source : [QColorExample.kt](src-example/QColorExample.kt)
+
+```kotlin
+fun colorful() {
+    println("c".yellow + "o".blue + "l".red + "o".purple + "u".green + "r".cyan + "f".yellow + "u".blue + "l".red)
+}
+
+fun regex() {
+    val txt = """val color = "you can use regex to color targeted text"""".qColorTarget(
+        ptn = """val(?!\S)""".toRegex(),
+        fg = QColor.Purple
+    ).qColorTarget(
+        ptn = """".*?"""".toRegex(),
+        fg = QColor.Green
+    )
+
+    println(txt)
+}
+
+fun background() {
+    println("background".qColor(fg = QColor.Red, bg = QColor.Blue))
+}
+
+fun decorate() {
+    println("underlined".underline)
+    println("italic".italic)
+    println("bold".bold)
+}
+
+fun nest() {
+    println("ne${"stab".blue.underline}le".yellow)
+}
+
+fun multiline() {
+    val txt = """
+        multiline
+        multiline
+    """.trimIndent().blue.underline
+
+    println(txt)
+}
+```
+
+Please see [QColorTest.kt](src-test-split/nyab/util/QColorTest.kt) for more code examples.
+Single-File version [src-test-single/QColorTest.kt](src-test-single/QColorTest.kt) is a self-contained source code that includes a runnable main function.
+You can easily copy and paste it into your codebase.        
 
 ## Public API
 
-- [`String.qColor()`](src-split/nyab/util/QColor.kt#L23-L32) *extension function*
-- [`String.qDeco()`](src-split/nyab/util/QColor.kt#L33-L42) *extension function*
-- [`String.qColorAndDecoDebug()`](src-split/nyab/util/QColor.kt#L168-L180) *extension function*
-- [`String.qColorTarget()`](src-split/nyab/util/QColor.kt#L181-L184) *extension function*
-- [`String.qDecoTarget()`](src-split/nyab/util/QColor.kt#L185-L188) *extension function*
-- [`String.qColorRandom()`](src-split/nyab/util/QColor.kt#L189-L190) *extension function*
-- [`String.bold`](src-split/nyab/util/QColor.kt#L191-L193) *extension property*
-- [`String.italic`](src-split/nyab/util/QColor.kt#L194-L196) *extension property*
-- [`String.underline`](src-split/nyab/util/QColor.kt#L197-L199) *extension property*
-- [`String.black`](src-split/nyab/util/QColor.kt#L200-L202) *extension property*
-- [`String.red`](src-split/nyab/util/QColor.kt#L203-L205) *extension property*
-- [`String.green`](src-split/nyab/util/QColor.kt#L206-L208) *extension property*
-- [`String.yellow`](src-split/nyab/util/QColor.kt#L209-L211) *extension property*
-- [`String.blue`](src-split/nyab/util/QColor.kt#L212-L214) *extension property*
-- [`String.purple`](src-split/nyab/util/QColor.kt#L215-L217) *extension property*
-- [`String.cyan`](src-split/nyab/util/QColor.kt#L218-L220) *extension property*
-- [`String.light_gray`](src-split/nyab/util/QColor.kt#L221-L223) *extension property*
-- [`String.dark_gray`](src-split/nyab/util/QColor.kt#L224-L226) *extension property*
-- [`String.light_red`](src-split/nyab/util/QColor.kt#L227-L229) *extension property*
-- [`String.light_green`](src-split/nyab/util/QColor.kt#L230-L232) *extension property*
-- [`String.light_yellow`](src-split/nyab/util/QColor.kt#L233-L235) *extension property*
-- [`String.light_blue`](src-split/nyab/util/QColor.kt#L236-L238) *extension property*
-- [`String.light_magenta`](src-split/nyab/util/QColor.kt#L239-L241) *extension property*
-- [`String.light_cyan`](src-split/nyab/util/QColor.kt#L242-L244) *extension property*
-- [`String.white`](src-split/nyab/util/QColor.kt#L245-L247) *extension property*
-- [`String.noStyle`](src-split/nyab/util/QColor.kt#L248-L252) *extension property*
-- [`QDeco`](src-split/nyab/util/QColor.kt#L66-L85) *enum class*
-- [`QColor`](src-split/nyab/util/QColor.kt#L86-L167) *enum class*
+- [`String.qColor()`](src-split/nyab/util/QColor.kt#L23-L32) *Extension Function*
+- [`String.qDeco()`](src-split/nyab/util/QColor.kt#L33-L42) *Extension Function*
+- [`String.qColorAndDecoDebug()`](src-split/nyab/util/QColor.kt#L168-L180) *Extension Function*
+- [`String.qColorTarget()`](src-split/nyab/util/QColor.kt#L181-L184) *Extension Function*
+- [`String.qDecoTarget()`](src-split/nyab/util/QColor.kt#L185-L188) *Extension Function*
+- [`String.qColorRandom()`](src-split/nyab/util/QColor.kt#L189-L190) *Extension Function*
+- [`String.bold`](src-split/nyab/util/QColor.kt#L191-L193) *Extension Property*
+- [`String.italic`](src-split/nyab/util/QColor.kt#L194-L196) *Extension Property*
+- [`String.underline`](src-split/nyab/util/QColor.kt#L197-L199) *Extension Property*
+- [`String.black`](src-split/nyab/util/QColor.kt#L200-L202) *Extension Property*
+- [`String.red`](src-split/nyab/util/QColor.kt#L203-L205) *Extension Property*
+- [`String.green`](src-split/nyab/util/QColor.kt#L206-L208) *Extension Property*
+- [`String.yellow`](src-split/nyab/util/QColor.kt#L209-L211) *Extension Property*
+- [`String.blue`](src-split/nyab/util/QColor.kt#L212-L214) *Extension Property*
+- [`String.purple`](src-split/nyab/util/QColor.kt#L215-L217) *Extension Property*
+- [`String.cyan`](src-split/nyab/util/QColor.kt#L218-L220) *Extension Property*
+- [`String.light_gray`](src-split/nyab/util/QColor.kt#L221-L223) *Extension Property*
+- [`String.dark_gray`](src-split/nyab/util/QColor.kt#L224-L226) *Extension Property*
+- [`String.light_red`](src-split/nyab/util/QColor.kt#L227-L229) *Extension Property*
+- [`String.light_green`](src-split/nyab/util/QColor.kt#L230-L232) *Extension Property*
+- [`String.light_yellow`](src-split/nyab/util/QColor.kt#L233-L235) *Extension Property*
+- [`String.light_blue`](src-split/nyab/util/QColor.kt#L236-L238) *Extension Property*
+- [`String.light_magenta`](src-split/nyab/util/QColor.kt#L239-L241) *Extension Property*
+- [`String.light_cyan`](src-split/nyab/util/QColor.kt#L242-L244) *Extension Property*
+- [`String.white`](src-split/nyab/util/QColor.kt#L245-L247) *Extension Property*
+- [`String.noStyle`](src-split/nyab/util/QColor.kt#L248-L252) *Extension Property*
+- [`QDeco`](src-split/nyab/util/QColor.kt#L66-L85) *Enum Class*
+- [`QColor`](src-split/nyab/util/QColor.kt#L86-L167) *Enum Class*
 
 ## Single-File version Dependency
 
@@ -52,8 +109,7 @@ refer to [build.gradle.kts](build.gradle.kts) to directly check project settings
 ```kotlin
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
-    implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.8.20")
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.20")
+    testImplementation("org.jetbrains.kotlin:kotlin-reflect:1.8.20")
 }
 ```
 
@@ -70,7 +126,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.nyabkun:qq-shell-color:v2023-06-01-bc03'
+    implementation 'com.github.nyabkun:qq-shell-color:v2023-11-13'
 }
 ```
 
@@ -82,7 +138,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.nyabkun:qq-shell-color:v2023-06-01-bc03")
+    implementation("com.github.nyabkun:qq-shell-color:v2023-11-13")
 }
 ```
 
@@ -101,7 +157,7 @@ dependencies {
     <dependency>
         <groupId>com.github.nyabkun</groupId>
         <artifactId>qq-shell-color</artifactId>
-        <version>v2023-06-01-bc03</version>
+        <version>v2023-11-13</version>
     </dependency>
 </dependencies>
 ```

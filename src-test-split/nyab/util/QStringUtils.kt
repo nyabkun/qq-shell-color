@@ -12,7 +12,6 @@ import nyab.conf.QMyLog
 import nyab.conf.QMyToString
 import nyab.match.QMFunc
 import nyab.match.and
-import org.jetbrains.kotlin.utils.addToStdlib.applyIf
 
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
@@ -276,8 +275,10 @@ internal fun Char.qIsWhitespace(allowLinebreak: Boolean = false): Boolean {
 // CallChain[size=9] = String.qCamelCaseToSpaceSeparated() <-[Call]- QException.qToString() <-[Call] ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 internal fun String.qCamelCaseToSpaceSeparated(toLowerCase: Boolean = false): String {
     return this.replace("([a-z])([A-Z]+)".re, "$1 $2")
-        .replace("([A-Z]+)([A-Z][a-z])".re, "$1 $2").applyIf(toLowerCase) {
-            lowercase(Locale.ENGLISH)
+        .replace("([A-Z]+)([A-Z][a-z])".re, "$1 $2").apply {
+            if( toLowerCase) {
+                lowercase(Locale.ENGLISH)
+            }
         }
 }
 

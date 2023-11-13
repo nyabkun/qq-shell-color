@@ -623,7 +623,7 @@ internal fun Collection<Path>.qFind(nameMatcher: QM, type: QFType = QFType.File,
 }
 
 // CallChain[size=14] = Path.qFind() <-[Call]- Collection<Path>.qFind() <-[Call]- qSrcFileAtFrame()  ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
-internal fun Path.qFind(nameMatcher: QM, type: QFType = QFType.File, maxDepth: Int = 1): Path? {
+internal fun Path.qFind(nameMatcher: QM, type: QFType = QFType.File, maxDepth: Int = 100): Path? {
     return try {
         qList(type, maxDepth = maxDepth) {
             it.name.qMatches(nameMatcher)
@@ -653,8 +653,8 @@ internal fun Path.qList(
     maxDepth: Int = 1,
     followSymLink: Boolean = false,
     sortWith: ((Path, Path) -> Int)? = Path::compareTo,
-    fileFilter: (Path) -> Boolean = { true },
     dirFilter: (Path) -> Boolean = { true },
+    fileFilter: (Path) -> Boolean = { true },
     // TODO https://stackoverflow.com/a/66996768/5570400
     // errorContinue: Boolean = true
 ): List<Path> {
@@ -663,8 +663,8 @@ internal fun Path.qList(
         maxDepth = maxDepth,
         followSymLink = followSymLink,
         sortWith = sortWith,
+        dirFilter = dirFilter,
         fileFilter = fileFilter,
-        dirFilter = dirFilter
     ).toList()
 }
 
