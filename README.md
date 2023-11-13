@@ -16,7 +16,7 @@
     
 </p>
 <p align="center">
-    <img src="img/result.png" width="587" alt="result.png">
+    <img src="img/result.png" width="602" alt="result.png">
 </p>
 
 ### code example
