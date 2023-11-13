@@ -126,7 +126,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.nyabkun:qq-shell-color:v2023-11-13'
+    implementation 'com.github.nyabkun:qq-shell-color:v2023-11-13-bc02'
 }
 ```
 
@@ -138,7 +138,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.nyabkun:qq-shell-color:v2023-11-13")
+    implementation("com.github.nyabkun:qq-shell-color:v2023-11-13-bc02")
 }
 ```
 
@@ -157,7 +157,7 @@ dependencies {
     <dependency>
         <groupId>com.github.nyabkun</groupId>
         <artifactId>qq-shell-color</artifactId>
-        <version>v2023-11-13</version>
+        <version>v2023-11-13-bc02</version>
     </dependency>
 </dependencies>
 ```
