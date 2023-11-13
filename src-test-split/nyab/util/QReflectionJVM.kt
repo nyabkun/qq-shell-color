@@ -1,12 +1,4 @@
-/*
- * Copyright 2023. nyabkun
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+// 2023. nyabkun  MIT LICENSE
 
 @file:Suppress("UNCHECKED_CAST")
 
@@ -20,6 +12,7 @@ import java.nio.charset.Charset
 import java.nio.file.Path
 import kotlin.io.path.bufferedReader
 import kotlin.io.path.exists
+import kotlin.io.path.readText
 import kotlin.reflect.KClass
 import nyab.conf.QE
 import nyab.conf.QMyPath
@@ -43,6 +36,41 @@ internal fun AccessibleObject.qTrySetAccessible() {
 internal val qThisFileMainClass: Class<*>
     get() = qCallerFileMainClass()
 
+// CallChain[size=6] = qThisFilePackageName <-[Call]- Path.qListTopLevelFqClassNamesInThisFile() <-[Call]- qCallerFileMainClass() <-[Call]- qThisFileMainClass <-[Call]- qTest() <-[Call]- main()[Root]
+internal val qThisFilePackageName: String = qCallerPackageName(0)
+
+// CallChain[size=5] = Path.qListTopLevelFqClassNamesInThisFile() <-[Call]- qCallerFileMainClass() <-[Call]- qThisFileMainClass <-[Call]- qTest() <-[Call]- main()[Root]
+internal fun Path.qListTopLevelFqClassNamesInThisFile(charset: Charset = Charsets.UTF_8): List<String> {
+    val srcCode = this.readText(charset)
+
+    val topLevelSrc = srcCode.qMask(QMask.KOTLIN_STRING).maskedStr
+        .qRemoveBetween(
+            "{",
+            "}",
+            "{",
+            nestingDepth = 1,
+            regionIncludesStartAndEndSequence = false
+        )
+
+    val pkgName = qThisFilePackageName
+
+    val pkgNameDot = if (pkgName.isNotEmpty()) {
+        "$pkgName."
+    } else {
+        ""
+    }
+
+    val regex = """^((private|internal) +)?class +(\w+).*""".re
+
+    return topLevelSrc.lineSequence().filter {
+        it.matches(regex)
+    }.map {
+        it.replaceFirst(regex, "$3").trim()
+    }.map {
+        "$pkgNameDot$it"
+    }.toList()
+}
+
 // CallChain[size=3] = Class<*>.qMethods() <-[Call]- qTest() <-[Call]- main()[Root]
 internal fun Class<*>.qMethods(matcher: QMMethod = QMMethod.DeclaredOnly): List<Method> {
     val allMethods = if (matcher.declaredOnly) declaredMethods else methods
@@ -50,8 +78,14 @@ internal fun Class<*>.qMethods(matcher: QMMethod = QMMethod.DeclaredOnly): List<
 }
 
 // CallChain[size=4] = Class<T>.qNewInstance() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
-internal fun <T : Any> Class<T>.qNewInstance(vararg params: Any): T {
+internal fun <T : Any> Class<T>.qNewInstance(vararg params: Any, setAccessible: Boolean = false): T {
     val constructor = qConstructor(*params, declaredOnly = false)
+    try {
+        if( setAccessible )
+            constructor.isAccessible = true
+    } catch( e: QException ) {
+
+    }
     return constructor.newInstance()
 }
 
@@ -98,6 +132,16 @@ internal fun Method.qIsInstanceMethod(): Boolean {
     return !Modifier.isStatic(this.modifiers)
 }
 
+// CallChain[size=7] = qCallerPackageName() <-[Call]- qThisFilePackageName <-[Call]- Path.qListTopLe ... all]- qCallerFileMainClass() <-[Call]- qThisFileMainClass <-[Call]- qTest() <-[Call]- main()[Root]
+internal fun qCallerPackageName(stackDepth: Int = 0): String {
+    return try {
+        val frame = qStackFrame(stackDepth + 2)
+        frame.declaringClass.packageName
+    } catch (e: Exception) {
+        ""
+    }
+}
+
 // CallChain[size=4] = qCallerFileMainClass() <-[Call]- qThisFileMainClass <-[Call]- qTest() <-[Call]- main()[Root]
 internal fun qCallerFileMainClass(stackDepth: Int = 0): Class<*> {
     val frame = qStackFrame(stackDepth + 2)
@@ -116,5 +160,24 @@ internal fun qCallerFileMainClass(stackDepth: Int = 0): Class<*> {
             fileName
     }
 
-    return Class.forName(clsName)
+    val classesNotFound = mutableListOf<String>()
+
+    try {
+        return Class.forName(clsName)
+    } catch ( e: ClassNotFoundException) {
+        classesNotFound.add(clsName)
+        val srcFile = qSrcFileAtFrame(frame)
+        val classNamesInSrcFile = srcFile.qListTopLevelFqClassNamesInThisFile()
+
+        for(clsInFile in classNamesInSrcFile) {
+            try {
+                return Class.forName(clsInFile)
+            } catch(e: ClassNotFoundException) {
+                classesNotFound.add(clsInFile)
+                continue
+            }
+        }
+    }
+
+    QE.ClassNotFound.throwItBrackets("Classes", classesNotFound)
 }

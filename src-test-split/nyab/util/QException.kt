@@ -1,12 +1,4 @@
-/*
- * Copyright 2023. nyabkun
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+// 2023. nyabkun  MIT LICENSE
 
 @file:Suppress("NOTHING_TO_INLINE")
 
@@ -25,7 +17,7 @@ import nyab.match.QM
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=12] = QE.throwIt() <-[Call]- qUnreachable() <-[Call]- QFetchRule.SINGLE_LINE <-[Ca ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=13] = QE.throwIt() <-[Call]- qUnreachable() <-[Call]- QFetchRule.SINGLE_LINE <-[Ca ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 internal fun QE.throwIt(msg: Any? = "", e: Throwable? = null, stackDepth: Int = 0): Nothing {
     throw QException(
         this,
@@ -34,28 +26,29 @@ internal fun QE.throwIt(msg: Any? = "", e: Throwable? = null, stackDepth: Int = 
         } else {
             msg.qToLogString()
         },
-        e, stackDepth = stackDepth + 1
+        e,
+        stackDepth = stackDepth + 1
     )
 }
 
-// CallChain[size=13] = QE.throwItFile() <-[Call]- LineNumberReader.qFetchLinesAround() <-[Call]- Pa ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=14] = QE.throwItFile() <-[Call]- LineNumberReader.qFetchLinesAround() <-[Call]- Pa ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 internal fun QE.throwItFile(path: Path, e: Throwable? = null, stackDepth: Int = 0): Nothing {
     throw QException(this, qBrackets("File", path.absolutePathString()), e, stackDepth = stackDepth + 1)
 }
 
-// CallChain[size=4] = QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = QE.throwItBrackets() <-[Call]- qBracketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 internal fun QE.throwItBrackets(vararg keysAndValues: Any?, e: Throwable? = null, stackDepth: Int = 0): Nothing {
-    throw QException(this, qBrackets(*keysAndValues), e, stackDepth = stackDepth + 1)
+    throw QException(this, qBracketsCyan(*keysAndValues), e, stackDepth = stackDepth + 1)
 }
 
-// CallChain[size=11] = qUnreachable() <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut()  ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=12] = qUnreachable() <-[Call]- QFetchRule.SINGLE_LINE <-[Call]- QSrcCut.QSrcCut()  ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 internal fun qUnreachable(msg: Any? = ""): Nothing {
     QE.Unreachable.throwIt(msg)
 }
 
-// CallChain[size=5] = QException <-[Call]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=6] = QException <-[Call]- QE.throwItBrackets() <-[Call]- qBracketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 internal class QException(
-    val type: QE = QE.Other,
+    val type: QE = QE.UnknownReason,
     msg: String = QMyMark.warn,
     e: Throwable? = null,
     val stackDepth: Int = 0,
@@ -64,33 +57,33 @@ internal class QException(
     private val srcCut: QSrcCut = QSrcCut.MULTILINE_NOCUT,
 ) : RuntimeException(msg, e) {
 
-    // CallChain[size=6] = QException.printStackTrace() <-[Propag]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QException.printStackTrace() <-[Propag]- QException.QException() <-[Ref]- QE. ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
     override fun printStackTrace(s: PrintStream) {
         s.println("\n" + qToString() + "\n" + mySrcAndStack)
     }
 
-    // CallChain[size=7] = QException.stackFrames <-[Call]- QException.getStackTrace() <-[Propag]- QExce ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QException.stackFrames <-[Call]- QException.getStackTrace() <-[Propag]- QExce ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
     val stackFrames = qStackFrames(stackDepth + 2, size = stackSize, filter = stackFilter)
 
-    // CallChain[size=7] = QException.mySrcAndStack <-[Call]- QException.printStackTrace() <-[Propag]- Q ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QException.mySrcAndStack <-[Call]- QException.printStackTrace() <-[Propag]- Q ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
     val mySrcAndStack: String by lazy {
         qLogStackFrames(frames = stackFrames, style = QLogStyle.SRC_AND_STACK, srcCut = srcCut, quiet = true)
-            .qColorTarget(qRe("""\sshould[a-zA-Z]+"""), QShColor.LightYellow)
+            .qColorTarget(qRe("""\sshould[a-zA-Z]+"""), QColor.LightYellow)
     }
 
-    // CallChain[size=6] = QException.getStackTrace() <-[Propag]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QException.getStackTrace() <-[Propag]- QException.QException() <-[Ref]- QE.th ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
     override fun getStackTrace(): Array<StackTraceElement> {
         return stackFrames.map {
             it.toStackTraceElement()
         }.toTypedArray()
     }
 
-    // CallChain[size=7] = QException.qToString() <-[Call]- QException.toString() <-[Propag]- QException ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=8] = QException.qToString() <-[Call]- QException.toString() <-[Propag]- QException ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
     fun qToString(): String {
         val msg = message
 
         return if (!msg.isNullOrEmpty() && type.name != message) {
-            "${type.name.yellow} ${":".yellow}${
+            "${type.name.qCamelCaseToSpaceSeparated().yellow} ${":".light_gray}${
             msg.qWithSpacePrefix(onlyIf = QOnlyIfStr.SingleLine).qWithNewLinePrefix(onlyIf = QOnlyIfStr.Multiline)
             }".trim()
         } else {
@@ -98,7 +91,7 @@ internal class QException(
         }
     }
 
-    // CallChain[size=6] = QException.toString() <-[Propag]- QException.QException() <-[Ref]- QE.throwItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+    // CallChain[size=7] = QException.toString() <-[Propag]- QException.QException() <-[Ref]- QE.throwIt ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
     override fun toString(): String {
         return qToString()
 //         used by @Test
@@ -113,8 +106,8 @@ internal fun Boolean.qaTrue(exceptionType: QE = QE.ShouldBeTrue, msg: Any? = "")
     }
 }
 
-// CallChain[size=12] = T.qaNotNull() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLinesAtFrame() < ... owItBrackets() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
-internal fun <T : Any> T?.qaNotNull(exceptionType: QE = QE.ShouldNotBeNull, msg: Any? = ""): T {
+// CallChain[size=13] = T.qaNotNull() <-[Call]- qSrcFileAtFrame() <-[Call]- qSrcFileLinesAtFrame() < ... racketsColored() <-[Call]- qBrackets() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
+internal inline fun <reified T : Any> T?.qaNotNull(exceptionType: QE = QE.ShouldNotBeNull, msg: Any? = "${T::class.simpleName} should not be null"): T {
     if (this != null) {
         return this
     } else {
@@ -122,7 +115,7 @@ internal fun <T : Any> T?.qaNotNull(exceptionType: QE = QE.ShouldNotBeNull, msg:
     }
 }
 
-// CallChain[size=5] = Int.qaNotZero() <-[Call]- CharSequence.qMask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=5] = Int.qaNotZero() <-[Call]- CharSequence.qMask() <-[Call]- Any.qToLogString() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 internal fun Int?.qaNotZero(exceptionType: QE = QE.ShouldNotBeZero, msg: Any? = ""): Int {
     if (this == null) {
         QE.ShouldNotBeNull.throwIt(stackDepth = 1, msg = msg)

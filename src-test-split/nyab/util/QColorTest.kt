@@ -1,12 +1,4 @@
-/*
- * Copyright 2023. nyabkun
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+// 2023. nyabkun  MIT LICENSE
 
 package nyab.util
 
@@ -25,11 +17,11 @@ fun main() {
 }
 
 // << Root of the CallChain >>
-class QShColorTest {
+class QColorTest {
     // << Root of the CallChain >>
     @QTestHumanCheckRequired
     fun listAllColors() {
-        val txt = QShColor.values().joinToString("\n") {
+        val txt = QColor.values().joinToString("\n") {
             "${it.name} => " + "　".qColor(bg = it)
         }
 
@@ -52,7 +44,7 @@ class QShColorTest {
     // << Root of the CallChain >>
     @QTest
     fun fgAndBg() {
-        """fg + bg""".qColor(QShColor.Red, QShColor.LightGray).qColorAndDecoDebug() shouldBe
+        """fg + bg""".qColor(QColor.Red, QColor.LightGray).qColorAndDecoDebug() shouldBe
                 """[LightGray_BG][Red]fg + bg[End][End]"""
     }
 
@@ -93,7 +85,7 @@ class QShColorTest {
     // << Root of the CallChain >>
     @QTest
     fun background() {
-        "GreenBG".qColor(fg = null, bg = QShColor.Green, false).qColorAndDecoDebug() shouldBe """
+        "GreenBG".qColor(fg = null, bg = QColor.Green, false).qColorAndDecoDebug() shouldBe """
             [Green_BG]GreenBG[End]
         """.trimIndent()
     }
@@ -101,7 +93,7 @@ class QShColorTest {
     // << Root of the CallChain >>
     @QTest
     fun foregroundAndBackground() {
-        "RedFG_YellowBG".qColor(fg = QShColor.Red, bg = QShColor.Yellow, false).qColorAndDecoDebug() shouldBe """
+        "RedFG_YellowBG".qColor(fg = QColor.Red, bg = QColor.Yellow, false).qColorAndDecoDebug() shouldBe """
             [Yellow_BG][Red]RedFG_YellowBG[End][End]
         """.trimIndent()
     }
@@ -109,13 +101,13 @@ class QShColorTest {
     // << Root of the CallChain >>
     @QTest
     fun multiline() {
-        "abc\ndef\nhij".qColor(fg = QShColor.Red, bg = null).qColorAndDecoDebug() shouldBe """
+        "abc\ndef\nhij".qColor(fg = QColor.Red, bg = null).qColorAndDecoDebug() shouldBe """
             [Red]abc[End]
             [Red]def[End]
             [Red]hij[End]
         """.trimIndent()
 
-        "abc\ndef\nhij".qColor(fg = null, bg = QShColor.Blue).qColorAndDecoDebug() shouldBe """
+        "abc\ndef\nhij".qColor(fg = null, bg = QColor.Blue).qColorAndDecoDebug() shouldBe """
             [Blue_BG]abc[End]
             [Blue_BG]def[End]
             [Blue_BG]hij[End]
@@ -125,7 +117,7 @@ class QShColorTest {
     // << Root of the CallChain >>
     @QTest
     fun multiline_fg_bg() {
-        "abc\ndef\nhij".qColor(fg = QShColor.Red, bg = QShColor.Blue).qColorAndDecoDebug() shouldBe """
+        "abc\ndef\nhij".qColor(fg = QColor.Red, bg = QColor.Blue).qColorAndDecoDebug() shouldBe """
             [Blue_BG][Red]abc[End][End]
             [Blue_BG][Red]def[End][End]
             [Blue_BG][Red]hij[End][End]
@@ -137,10 +129,10 @@ class QShColorTest {
     fun colorTarget() {
         """val color = "green"""".qColorTarget(
             ptn = """val""".toRegex(),
-            fg = QShColor.Purple
+            fg = QColor.Purple
         ).qColorTarget(
             ptn = """".*?"""".toRegex(),
-            fg = QShColor.Green
+            fg = QColor.Green
         ).qColorAndDecoDebug() shouldBe """
             [Purple]val[End] color = [Green]"green"[End]
         """.trimIndent()
@@ -151,10 +143,10 @@ class QShColorTest {
     fun noStyle() {
         """val color = "text"""".qColorTarget(
             ptn = """val""".toRegex(),
-            fg = QShColor.Purple
+            fg = QColor.Purple
         ).qColorTarget(
             ptn = """".*?"""".toRegex(),
-            fg = QShColor.Green
+            fg = QColor.Green
         ).noStyle.qColorAndDecoDebug() shouldBe """val color = "text""""
     }
 

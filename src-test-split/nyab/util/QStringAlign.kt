@@ -1,16 +1,9 @@
-/*
- * Copyright 2023. nyabkun
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+// 2023. nyabkun  MIT LICENSE
 
 package nyab.util
 
 import kotlin.math.abs
+import nyab.conf.QE
 
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
@@ -199,7 +192,7 @@ internal fun String.qIsNumber(): Boolean {
 internal fun String.qAlignCenter(
     vararg places: Regex = arrayOf("(.*)".re),
     onlyFirstMatch: Boolean = true,
-    oddLengthTuning: QLR = if (qIsNumber()) QLR.RIGHT else QLR.LEFT,
+    oddLengthTuning: QLR = if (qIsNumber()) QLR.Right else QLR.Left,
     groupIdx: QGroupIdx = QGroupIdx.FIRST
 ): String {
     return qAlign(QAlign.CENTER, *places, onlyFirstMatch = onlyFirstMatch, oddLengthTuning = oddLengthTuning, groupIdx = groupIdx)
@@ -211,7 +204,7 @@ private fun String.qAlign(
     vararg places: Regex,
     onlyFirstMatch: Boolean = true,
     keepLength: Boolean = false,
-    oddLengthTuning: QLR = if (qIsNumber()) QLR.RIGHT else QLR.LEFT,
+    oddLengthTuning: QLR = qDefaultOddLengthTuning(),
     groupIdx: QGroupIdx = QGroupIdx.ENTIRE_MATCH
 ): String {
     var text = this
@@ -262,7 +255,7 @@ private fun String.qMoveCenter(range: IntRange, oddLengthTuning: QLR): String {
     val nonSpaceChars = regionText.substring(nLeftSpace, regionText.length - nRightSpace)
 
     val nLeftSpaceTarget =
-        if (oddLengthTuning == QLR.LEFT || (nLeftSpace + nRightSpace) % 2 == 0) {
+        if (oddLengthTuning == QLR.Left || (nLeftSpace + nRightSpace) % 2 == 0) {
             abs(nLeftSpace + nRightSpace) / 2
         } else {
             abs(nLeftSpace + nRightSpace) / 2 + 1
@@ -322,4 +315,61 @@ private fun String.qMoveRight(range: IntRange, destRangeLeft: Int, keepLength: B
     } else {
         replaceRange(range, spaces + regionText)
     }
+}
+
+// CallChain[size=5] = String.qWithMinAndMaxLength() <-[Call]- qSeparatorWithLabel() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
+internal fun String.qWithMinAndMaxLength(
+    minLength: Int,
+    maxLength: Int,
+    alignment: QAlign = QAlign.RIGHT,
+    oddLengthTuning: QLR = qDefaultOddLengthTuning(),
+    endDots: String = "...",
+): String {
+    (minLength <= maxLength).qaTrue()
+
+    return if (this.lengthWithoutAnsiCode() > maxLength) {
+        qWithMaxLength(maxLength, endDots = endDots)
+    } else {
+        qWithMinLength(minLength, alignment, oddLengthTuning = oddLengthTuning)
+    }
+}
+
+// CallChain[size=6] = String.qDefaultOddLengthTuning() <-[Call]- String.qWithMinAndMaxLength() <-[Call]- qSeparatorWithLabel() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
+internal fun String.qDefaultOddLengthTuning(): QLR {
+    return if (qIsNumber()) QLR.Right else QLR.Left
+}
+
+// CallChain[size=6] = String.lengthWithoutAnsiCode() <-[Call]- String.qWithMinAndMaxLength() <-[Call]- qSeparatorWithLabel() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
+internal fun String.lengthWithoutAnsiCode(): Int {
+    return this.noStyle.length
+}
+
+// CallChain[size=7] = String.ansiCodeLength() <-[Call]- String.qWithMinLength() <-[Call]- String.qW ...  <-[Call]- qSeparatorWithLabel() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
+internal fun String.ansiCodeLength(): Int {
+    return this.length - this.noStyle.length
+}
+
+// CallChain[size=6] = String.qWithMinLength() <-[Call]- String.qWithMinAndMaxLength() <-[Call]- qSeparatorWithLabel() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
+internal fun String.qWithMinLength(minLength: Int, alignment: QAlign = QAlign.RIGHT, oddLengthTuning: QLR = qDefaultOddLengthTuning()): String {
+    val len = minLength + this.ansiCodeLength()
+    
+    return when (alignment) {
+        QAlign.LEFT -> String.format("%-${len}s", this)
+        QAlign.RIGHT -> String.format("%${len}s", this)
+        QAlign.CENTER -> String.format("%${len}s", this).qAlignCenter(oddLengthTuning = oddLengthTuning)
+    }
+}
+
+// CallChain[size=6] = String.qWithMaxLength() <-[Call]- String.qWithMinAndMaxLength() <-[Call]- qSeparatorWithLabel() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
+internal fun String.qWithMaxLength(maxLength: Int, endDots: String = " ..."): String {
+    if (maxLength - endDots.length < 0)
+        QE.IllegalArgument.throwIt(maxLength - endDots.length)
+
+    if (length < maxLength)
+        return this
+
+    if (endDots.isNotEmpty() && length < endDots.length + 1)
+        return this
+
+    return substring(0, length.coerceAtMost(maxLength - endDots.length)) + endDots
 }

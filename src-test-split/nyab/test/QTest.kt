@@ -1,12 +1,4 @@
-/*
- * Copyright 2023. nyabkun
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+// 2023. nyabkun  MIT LICENSE
 
 @file:Suppress("NOTHING_TO_INLINE", "FunctionName")
 
@@ -21,11 +13,11 @@ import nyab.conf.QMyTest
 import nyab.match.QMMethod
 import nyab.match.and
 import nyab.match.or
+import nyab.util.QColor
 import nyab.util.QException
 import nyab.util.QLogStyle
 import nyab.util.QOnlyIfStr
 import nyab.util.QOut
-import nyab.util.QShColor
 import nyab.util.QSrcCut
 import nyab.util.blue
 import nyab.util.green
@@ -36,6 +28,7 @@ import nyab.util.light_red
 import nyab.util.light_yellow
 import nyab.util.noStyle
 import nyab.util.qBrackets
+import nyab.util.qBracketsBlue
 import nyab.util.qCallerFileName
 import nyab.util.qColor
 import nyab.util.qFormatDuration
@@ -64,12 +57,12 @@ import nyab.util.yellow
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
 
-// CallChain[size=2] = QTest <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=2] = QTest <-[Call]- QColorTest.nest2()[Root]
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FUNCTION)
 internal annotation class QTest(val testOnlyThis: Boolean = false)
 
-// CallChain[size=2] = QTestHumanCheckRequired <-[Call]- QShColorTest.randomColor()[Root]
+// CallChain[size=2] = QTestHumanCheckRequired <-[Call]- QColorTest.randomColor()[Root]
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FUNCTION)
 internal annotation class QTestHumanCheckRequired(val testOnlyThis: Boolean = false)
@@ -94,7 +87,7 @@ internal data class QTestResultElement(val method: Method, val cause: Throwable?
 // CallChain[size=5] = List<QTestResultElement>.allTestedMethods <-[Call]- QTestResult.printIt() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
 internal val List<QTestResultElement>.allTestedMethods: String
     get() =
-        "\n[${"Tested".light_blue}]\n" +
+        "\n[${"Tested"}]\n".blue +
                 this.joinToString("\n") {
                     if (it.success) {
                         it.method.qName().green
@@ -114,14 +107,14 @@ internal class QTestResult(val elements: List<QTestResultElement>, val time: Lon
     val numFail = elements.count { !it.success }
 
     // CallChain[size=5] = QTestResult.str <-[Call]- QTestResult.printIt() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
-    val str = qBrackets("Result".blue, "$numSuccess / ${numFail + numSuccess}", "Time".blue, time.qFormatDuration())
+    val str = qBracketsBlue("Result", "$numSuccess / ${numFail + numSuccess}", "Time", time.qFormatDuration())
 
     // CallChain[size=4] = QTestResult.printIt() <-[Call]- qTestMethods() <-[Call]- qTest() <-[Call]- main()[Root]
     fun printIt(out: QOut = QOut.CONSOLE) {
         out.separator(start = "")
 
         if (numFail > 0) {
-            out.println("Fail ...".red)
+            out.println("Test Fail ...".red)
             out.println(str)
             out.println(elements.allTestedMethods)
 
@@ -144,14 +137,14 @@ internal class QTestResult(val elements: List<QTestResultElement>, val time: Lon
                     "null"
                 }
 
-                val msg = qBrackets("Failed".light_blue, ele.method.name.red, "Cause".light_blue, causeStr.red)
+                val msg = qBracketsBlue("Failed", ele.method.name.red, "Cause", causeStr.red)
 
                 val mySrcAndMsg = if (cause != null && cause is QException) {
                     val stackColoringRegex = targetClasses.joinToString("|") { ta ->
                         """(.*($ta|${ta}Kt).*?)\("""
                     }.re
 
-                    val stackStr = stackColoringRegex.replace(cause.mySrcAndStack, "$1".qColor(QShColor.Blue) + "(")
+                    val stackStr = stackColoringRegex.replace(cause.mySrcAndStack, "$1".qColor(QColor.Blue) + "(")
 
                     cause.message + "\n\n" + stackStr
                 } else {
@@ -168,9 +161,10 @@ internal class QTestResult(val elements: List<QTestResultElement>, val time: Lon
                 }
             }
         } else {
-            out.println("${"✨".yellow} ${" Success ".green} ${"✨".yellow}".green + "\n")
-            out.println(str)
             out.println(elements.allTestedMethods)
+            out.println()
+            out.println(str)
+            out.println("${"✨".yellow} ${" Success ".green} ${"✨".yellow}".green + "\n")
         }
     }
 }
@@ -193,7 +187,7 @@ private fun qTestMethods(
 
             val cause =
                 if (method.qIsInstanceMethod()) {
-                    val testInstance = method.declaringClass.qNewInstance()
+                    val testInstance = method.declaringClass.qNewInstance(setAccessible = true)
 
                     try {
                         for (before in beforeMethod) {
@@ -333,13 +327,13 @@ internal fun qTest(
     }
 }
 
-// CallChain[size=3] = qFailMsg() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = qFailMsg() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 private fun qFailMsg(msg: String = "it is null"): String {
     val cMsg = "[$msg]".colorIt
     return "${QMyMark.warn} $cMsg"
 }
 
-// CallChain[size=3] = qFailMsg() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = qFailMsg() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 private fun qFailMsg(actual: Any?, msg: String = "is not equals to", expected: Any?): String {
     val cMsg = "[$msg]".colorIt
     val actualStr = actual.qToLogString() + " " + "(actual)".light_green
@@ -349,16 +343,16 @@ private fun qFailMsg(actual: Any?, msg: String = "is not equals to", expected: A
     }"
 }
 
-// CallChain[size=4] = String.colorIt <-[Call]- qFailMsg() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=4] = String.colorIt <-[Call]- qFailMsg() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 private val String.colorIt: String
     get() = this.light_yellow
 
-// CallChain[size=3] = qThrowIt() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = qThrowIt() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 private fun qThrowIt(msg: String, exception: QE) {
     throw QException(exception, msg, null, stackDepth = 2, srcCut = QSrcCut.MULTILINE_INFIX_NOCUT)
 }
 
-// CallChain[size=2] = Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=2] = Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 internal infix fun Any?.shouldBe(expected: Any?) {
     if (!qOkToTest()) return
 
@@ -374,10 +368,12 @@ internal infix fun Any?.shouldBe(expected: Any?) {
         }
     }
 
-    val thisStr = this.qToLogString()
-    val expectedStr = expected.qToLogString()
+    // TODO create function without trim().noStyle
+    //      => shouldBeExact
+    val thisStr = this.qToLogString().trim().noStyle
+    val expectedStr = expected.qToLogString().trim().noStyle
 
-    if (thisStr.trim().noStyle != expectedStr.trim().noStyle) {
+    if (thisStr != expectedStr) {
         val msg = qFailMsg(thisStr, "is not equals to", expectedStr)
 
         val diffIdx =
@@ -418,7 +414,7 @@ internal infix fun Any?.shouldBe(expected: Any?) {
     }
 }
 
-// CallChain[size=3] = qOkToTest() <-[Call]- Any.shouldBe() <-[Call]- QShColorTest.nest2()[Root]
+// CallChain[size=3] = qOkToTest() <-[Call]- Any.shouldBe() <-[Call]- QColorTest.nest2()[Root]
 private inline fun qOkToTest(): Boolean {
     return QMyTest.forceTestMode || qIsTesting || qIsDebugging
 }

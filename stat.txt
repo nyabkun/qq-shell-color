@@ -1,4 +1,4 @@
-Version: v2023-06-01-bc03
+Version: v2023-11-13
 
 # Public API [main]
 String.qColor() - ExtensionFunction
@@ -27,50 +27,51 @@ String.light_magenta - ExtensionProperty
 String.light_cyan - ExtensionProperty
 String.white - ExtensionProperty
 String.noStyle - ExtensionProperty
-QShDeco - EnumClass
-QShColor - EnumClass
+QDeco - EnumClass
+QColor - EnumClass
+QMyColorStyle (Chained) - EnumClass
 
 # single src file number of lines [main]
-449
+609
 # split src file number of files [main]
-8
+10
 # number of marked nodes [main]
-90
+109
 # number of all nodes [main]
-148
+191
 # number of root of chain nodes [main]
-63
+72
 # single src file number of lines [test]
-4238
+5686
 # split src file number of files [test]
-30
+38
 # number of marked nodes [test]
-630
+792
 # number of all nodes [test]
-1568
+1971
 # number of root of chain nodes [test]
 19
 
 # chain node hit count [main]
-                       String.noStyle [KtProperty] <Top Level> : 19
-@receiver:Language("RegExp") String.re [KtProperty] <Top Level> : 18
-                           qRe() [KtNamedFunction] <Top Level> : 17
-     qCacheItOneSecThreadLocal() [KtNamedFunction] <Top Level> : 15
-      qCacheItTimedThreadLocal() [KtNamedFunction] <Top Level> : 14
-         QCacheMap.getOrPut() [KtNamedFunction] <Second Level> :  8
-           String.qColorRandom() [KtNamedFunction] <Top Level> :  4
-       qCallerSrcLineSignature() [KtNamedFunction] <Top Level> :  3
-                 String.qColor() [KtNamedFunction] <Top Level> :  2
-                   qStackFrame() [KtNamedFunction] <Top Level> :  2
+                        String.noStyle [KtProperty] <Top Level> :  19 [ 14.7 %]
+@receiver:Language("RegExp") String.re [KtProperty] <Top Level> :  18 [ 14.0 %]
+                            qRe() [KtNamedFunction] <Top Level> :  17 [ 13.2 %]
+      qCacheItOneSecThreadLocal() [KtNamedFunction] <Top Level> :  15 [ 11.6 %]
+       qCacheItTimedThreadLocal() [KtNamedFunction] <Top Level> :  14 [ 10.9 %]
+           QColor.toAWTColor() [KtNamedFunction] <Second Level> :  10 [  7.8 %]
+          QCacheMap.getOrPut() [KtNamedFunction] <Second Level> :   8 [  6.2 %]
+    QMyColorStyle.toAWTColor() [KtNamedFunction] <Second Level> :   8 [  6.2 %]
+            String.qColorRandom() [KtNamedFunction] <Top Level> :   4 [  3.1 %]
+        qCallerSrcLineSignature() [KtNamedFunction] <Top Level> :   3 [  2.3 %]
 
 # chain node hit count [test]
-        QShColorTest.nest2() [KtNamedFunction] <Second Level> : 435
-                 Any.shouldBe() [KtNamedFunction] <Top Level> : 423
-                    qBrackets() [KtNamedFunction] <Top Level> : 238
-           QE.throwItBrackets() [KtNamedFunction] <Top Level> : 214
-QException.QException() [KtPrimaryConstructor] <Second Level> : 212
-QException.printStackTrace() [KtNamedFunction] <Second Level> : 198
-         QException.mySrcAndStack [KtProperty] <Second Level> : 197
-                         main() [KtNamedFunction] <Top Level> : 167
-                        qTest() [KtNamedFunction] <Top Level> : 166
-              qLogStackFrames() [KtNamedFunction] <Top Level> : 156
+          QColorTest.nest2() [KtNamedFunction] <Second Level> :  584 [  8.5 %]
+                 Any.shouldBe() [KtNamedFunction] <Top Level> :  572 [  8.3 %]
+                    qBrackets() [KtNamedFunction] <Top Level> :  340 [  4.9 %]
+             qBracketsColored() [KtNamedFunction] <Top Level> :  339 [  4.9 %]
+           QE.throwItBrackets() [KtNamedFunction] <Top Level> :  306 [  4.4 %]
+QException.QException() [KtPrimaryConstructor] <Second Level> :  303 [  4.4 %]
+QException.printStackTrace() [KtNamedFunction] <Second Level> :  268 [  3.9 %]
+         QException.mySrcAndStack [KtProperty] <Second Level> :  267 [  3.9 %]
+              qLogStackFrames() [KtNamedFunction] <Top Level> :  242 [  3.5 %]
+                         main() [KtNamedFunction] <Top Level> :  182 [  2.6 %]

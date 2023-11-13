@@ -1,16 +1,10 @@
-/*
- * Copyright 2023. nyabkun
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+// 2023. nyabkun  MIT LICENSE
 
 package nyab.util
 
+import java.awt.Color
 import kotlin.math.absoluteValue
+import nyab.conf.QMyColorStyle
 
 // qq-shell-color is a self-contained single-file library created by nyabkun.
 // This is a split-file version of the library, this file is not self-contained.
@@ -28,15 +22,15 @@ private const val qEND = "${qSTART}0m"
 private fun String.qApplyEscapeNestable(start: String): String {
     val lastEnd = this.endsWith(qEND)
 
-    return if( lastEnd ) {
-            start + this.substring(0, this.length - 1).replace(qEND, qEND + start) + this[this.length - 1]
-        } else {
-            start + this.replace(qEND, qEND + start) + qEND
-        }
+    return if (lastEnd) {
+        start + this.substring(0, this.length - 1).replace(qEND, qEND + start) + this[this.length - 1]
+    } else {
+        start + this.replace(qEND, qEND + start) + qEND
+    }
 }
 
 // << Root of the CallChain >>
-fun String.qColor(fg: QShColor? = null, bg: QShColor? = null, nestable: Boolean = this.contains(qSTART)): String {
+fun String.qColor(fg: QColor? = null, bg: QColor? = null, nestable: Boolean = this.contains(qSTART)): String {
     return if (this.qIsSingleLine()) {
         this.qApplyEscapeLine(fg, bg, nestable)
     } else {
@@ -47,7 +41,7 @@ fun String.qColor(fg: QShColor? = null, bg: QShColor? = null, nestable: Boolean 
 }
 
 // << Root of the CallChain >>
-fun String.qDeco(deco: QShDeco): String {
+fun String.qDeco(deco: QDeco): String {
     return if (this.qIsSingleLine()) {
         this.qApplyEscapeLine(arrayOf(deco.start), nestable = this.contains(qSTART))
     } else {
@@ -58,7 +52,7 @@ fun String.qDeco(deco: QShDeco): String {
 }
 
 // << Root of the CallChain >>
-private fun String.qApplyEscapeLine(fg: QShColor?, bg: QShColor?, nestable: Boolean): String {
+private fun String.qApplyEscapeLine(fg: QColor?, bg: QColor?, nestable: Boolean): String {
     return this.qApplyEscapeLine(
         listOfNotNull(fg?.fg, bg?.bg).toTypedArray(),
         nestable
@@ -86,7 +80,7 @@ private fun String.qApplyEscapeLine(
 }
 
 // << Root of the CallChain >>
-enum class QShDeco(val code: Int) {
+enum class QDeco(val code: Int) {
     // << Root of the CallChain >>
     // https://en.wikipedia.org/wiki/ANSI_escape_code
     Bold(1),
@@ -100,16 +94,16 @@ enum class QShDeco(val code: Int) {
 
     companion object {
         // << Root of the CallChain >>
-        fun get(code: Int): QShDeco {
-            return QShDeco.values().find {
+        fun get(code: Int): QDeco? {
+            return QDeco.values().find {
                 it.code == code
-            }!!
+            }
         }
     }
 }
 
 // << Root of the CallChain >>
-enum class QShColor(val code: Int) {
+enum class QColor(val code: Int) {
     // << Root of the CallChain >>
     Black(30),
     // << Root of the CallChain >>
@@ -147,7 +141,16 @@ enum class QShColor(val code: Int) {
     // << Root of the CallChain >>
     LightCyan(96),
     // << Root of the CallChain >>
-    White(97);
+    White(97),
+
+    // << Root of the CallChain >>
+    CurrentLine(201),
+    // << Root of the CallChain >>
+    Selection(202),
+    // << Root of the CallChain >>
+    Caret(203),
+    // << Root of the CallChain >>
+    ErrorBG(204);
 
     // << Root of the CallChain >>
     val fg: String = "$qSTART${code}m"
@@ -155,18 +158,41 @@ enum class QShColor(val code: Int) {
     // << Root of the CallChain >>
     val bg: String = "$qSTART${code + qBG_JUMP}m"
 
+    // << Root of the CallChain >>
+    fun isExtraStyle(): Boolean {
+        return code >= 200
+    }
+
+    // << Root of the CallChain >>
+    fun toCSSHex(style: QMyColorStyle): String {
+        return style.toCSSHex(this)
+    }
+
+    // << Root of the CallChain >>
+    fun toAWTColor(style: QMyColorStyle): Color {
+        return style.toAWTColor(this)
+    }
+
     companion object {
         // << Root of the CallChain >>
-        fun random(seed: String, colors: Array<QShColor> = arrayOf(Yellow, Green, Blue, Purple, Cyan)): QShColor {
+        val Transparent = Color(0, 0, 0, 0)
+
+        // << Root of the CallChain >>
+        fun random(seed: String, colors: Array<QColor> = arrayOf(Yellow, Green, Blue, Purple, Cyan)): QColor {
             val idx = seed.hashCode().rem(colors.size).absoluteValue
             return colors[idx]
         }
 
         // << Root of the CallChain >>
-        fun get(ansiEscapeCode: Int): QShColor {
-            return QShColor.values().find {
+        fun getFG(ansiEscapeCode: Int): QColor {
+            return QColor.values().find {
                 it.code == ansiEscapeCode
             }!!
+        }
+
+        // << Root of the CallChain >>
+        fun getBG(ansiEscapeCode: Int): QColor {
+            return getFG(ansiEscapeCode - qBG_JUMP)
         }
     }
 }
@@ -174,11 +200,11 @@ enum class QShColor(val code: Int) {
 // << Root of the CallChain >>
 fun String.qColorAndDecoDebug(tagStart: String = "[", tagEnd: String = "]"): String {
     var txt = this
-    for (color in QShColor.values()) {
+    for (color in QColor.values()) {
         txt = txt.replace(color.fg, "$tagStart${color.name}$tagEnd", ignoreCase = false)
         txt = txt.replace(color.bg, "$tagStart${color.name}_BG$tagEnd", ignoreCase = false)
     }
-    for (deco in QShDeco.values()) {
+    for (deco in QDeco.values()) {
         txt = txt.replace(deco.start, "$tagStart${deco.name}$tagEnd", ignoreCase = false)
     }
 
@@ -188,96 +214,96 @@ fun String.qColorAndDecoDebug(tagStart: String = "[", tagEnd: String = "]"): Str
 }
 
 // << Root of the CallChain >>
-fun String.qColorTarget(ptn: Regex, fg: QShColor? = null, bg: QShColor? = null): String {
+fun String.qColorTarget(ptn: Regex, fg: QColor? = null, bg: QColor? = null): String {
     return ptn.replace(this, "$0".qColor(fg, bg))
 }
 
 // << Root of the CallChain >>
-fun String.qDecoTarget(ptn: Regex, deco: QShDeco): String {
+fun String.qDecoTarget(ptn: Regex, deco: QDeco): String {
     return ptn.replace(this, "$0".qDeco(deco))
 }
 
 // << Root of the CallChain >>
-fun String.qColorRandom(seed: String = qCallerSrcLineSignature()): String = this.qColor(QShColor.random(seed))
+fun String.qColorRandom(seed: String = qCallerSrcLineSignature()): String = this.qColor(QColor.random(seed))
 
 // << Root of the CallChain >>
 val String?.bold: String
-    get() = this?.qDeco(QShDeco.Bold) ?: "null".qDeco(QShDeco.Bold)
+    get() = this?.qDeco(QDeco.Bold) ?: "null".qDeco(QDeco.Bold)
 
 // << Root of the CallChain >>
 val String?.italic: String
-    get() = this?.qDeco(QShDeco.Italic) ?: "null".qDeco(QShDeco.Italic)
+    get() = this?.qDeco(QDeco.Italic) ?: "null".qDeco(QDeco.Italic)
 
 // << Root of the CallChain >>
 val String?.underline: String
-    get() = this?.qDeco(QShDeco.Underline) ?: "null".qDeco(QShDeco.Underline)
+    get() = this?.qDeco(QDeco.Underline) ?: "null".qDeco(QDeco.Underline)
 
 // << Root of the CallChain >>
 val String?.black: String
-    get() = this?.qColor(QShColor.Black) ?: "null".qColor(QShColor.Black)
+    get() = this?.qColor(QColor.Black) ?: "null".qColor(QColor.Black)
 
 // << Root of the CallChain >>
 val String?.red: String
-    get() = this?.qColor(QShColor.Red) ?: "null".qColor(QShColor.Red)
+    get() = this?.qColor(QColor.Red) ?: "null".qColor(QColor.Red)
 
 // << Root of the CallChain >>
 val String?.green: String
-    get() = this?.qColor(QShColor.Green) ?: "null".qColor(QShColor.Green)
+    get() = this?.qColor(QColor.Green) ?: "null".qColor(QColor.Green)
 
 // << Root of the CallChain >>
 val String?.yellow: String
-    get() = this?.qColor(QShColor.Yellow) ?: "null".qColor(QShColor.Yellow)
+    get() = this?.qColor(QColor.Yellow) ?: "null".qColor(QColor.Yellow)
 
 // << Root of the CallChain >>
 val String?.blue: String
-    get() = this?.qColor(QShColor.Blue) ?: "null".qColor(QShColor.Blue)
+    get() = this?.qColor(QColor.Blue) ?: "null".qColor(QColor.Blue)
 
 // << Root of the CallChain >>
 val String?.purple: String
-    get() = this?.qColor(QShColor.Purple) ?: "null".qColor(QShColor.Cyan)
+    get() = this?.qColor(QColor.Purple) ?: "null".qColor(QColor.Cyan)
 
 // << Root of the CallChain >>
 val String?.cyan: String
-    get() = this?.qColor(QShColor.Cyan) ?: "null".qColor(QShColor.Cyan)
+    get() = this?.qColor(QColor.Cyan) ?: "null".qColor(QColor.Cyan)
 
 // << Root of the CallChain >>
 val String?.light_gray: String
-    get() = this?.qColor(QShColor.LightGray) ?: "null".qColor(QShColor.LightGray)
+    get() = this?.qColor(QColor.LightGray) ?: "null".qColor(QColor.LightGray)
 
 // << Root of the CallChain >>
 val String?.dark_gray: String
-    get() = this?.qColor(QShColor.DarkGray) ?: "null".qColor(QShColor.DarkGray)
+    get() = this?.qColor(QColor.DarkGray) ?: "null".qColor(QColor.DarkGray)
 
 // << Root of the CallChain >>
 val String?.light_red: String
-    get() = this?.qColor(QShColor.LightRed) ?: "null".qColor(QShColor.LightRed)
+    get() = this?.qColor(QColor.LightRed) ?: "null".qColor(QColor.LightRed)
 
 // << Root of the CallChain >>
 val String?.light_green: String
-    get() = this?.qColor(QShColor.LightGreen) ?: "null".qColor(QShColor.LightGreen)
+    get() = this?.qColor(QColor.LightGreen) ?: "null".qColor(QColor.LightGreen)
 
 // << Root of the CallChain >>
 val String?.light_yellow: String
-    get() = this?.qColor(QShColor.LightYellow) ?: "null".qColor(QShColor.LightYellow)
+    get() = this?.qColor(QColor.LightYellow) ?: "null".qColor(QColor.LightYellow)
 
 // << Root of the CallChain >>
 val String?.light_blue: String
-    get() = this?.qColor(QShColor.LightBlue) ?: "null".qColor(QShColor.LightBlue)
+    get() = this?.qColor(QColor.LightBlue) ?: "null".qColor(QColor.LightBlue)
 
 // << Root of the CallChain >>
 val String?.light_magenta: String
-    get() = this?.qColor(QShColor.LightPurple) ?: "null".qColor(QShColor.LightPurple)
+    get() = this?.qColor(QColor.LightPurple) ?: "null".qColor(QColor.LightPurple)
 
 // << Root of the CallChain >>
 val String?.light_cyan: String
-    get() = this?.qColor(QShColor.LightCyan) ?: "null".qColor(QShColor.LightCyan)
+    get() = this?.qColor(QColor.LightCyan) ?: "null".qColor(QColor.LightCyan)
 
 // << Root of the CallChain >>
 val String?.white: String
-    get() = this?.qColor(QShColor.White) ?: "null".qColor(QShColor.White)
+    get() = this?.qColor(QColor.White) ?: "null".qColor(QColor.White)
 
 // << Root of the CallChain >>
 val String.noStyle: String
     get() {
-        return this.replace("""\Q$qSTART\E\d{1,2}m""".re, "")
+        return this.replace("""\Q$qSTART\E\d{1,3}m""".re, "")
     }

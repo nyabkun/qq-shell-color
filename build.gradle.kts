@@ -1,13 +1,3 @@
-/*
- * Copyright 2023. nyabkun
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 println("This Gradle script starts with -Dfile.encoding=" + System.getProperty("file.encoding"))
@@ -29,7 +19,7 @@ plugins {
 
 group = "com.github.nyabkun"
 
-version = "v2023-06-01-bc03"
+version = "v2023-11-13"
 
 repositories {
     mavenCentral()
@@ -56,24 +46,7 @@ sourceSets.test {
     resources.srcDirs("rsc-test")
 }
 
-sourceSets.register("example") {
-    java.srcDirs("src-example")
-    val jarFile = "$buildDir/libs/$qMavenArtifactId-$version.jar"
-    compileClasspath += files(jarFile)
-    runtimeClasspath += files(jarFile)
 
-    resources.srcDirs("rsc")
-}
-
-tasks.getByName("compileExampleKotlin").dependsOn("jar")
-
-val exampleImplementation: Configuration by configurations.getting {
-    extendsFrom(configurations.implementation.get())
-}
-
-val exampleRuntimeOnly: Configuration by configurations.getting {
-    extendsFrom(configurations.runtimeOnly.get())
-}
 
 sourceSets.register("single") {
     java.srcDirs("src-single")
@@ -103,6 +76,7 @@ val testSingleRuntimeOnly: Configuration by configurations.getting {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
+    implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.8.20")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.20")
 }
 
@@ -158,24 +132,20 @@ tasks {
     }
 
     register<JavaExec>("qRunTestSplit") {
-        mainClass.set("nyab.util.QShColorTestKt")
+        mainClass.set("nyab.util.QColorTestKt")
         classpath = sourceSets.get("test").runtimeClasspath
     }
 
     register<JavaExec>("qRunTestSingle") {
-        mainClass.set("QShColorTestKt")
+        mainClass.set("QColorTestKt")
         classpath = sourceSets.get("testSingle").runtimeClasspath
     }
 
-    register<JavaExec>("qRunExample") {
-        mainClass.set("shcolor.QShColorExampleKt")
-        classpath = sourceSets.get("example").runtimeClasspath
-    }
+    
     
     getByName<Test>("test") {
         dependsOn("qRunTestSingle")
         dependsOn("qRunTestSplit")
-        dependsOn("qRunExample")
     }
 }
 
